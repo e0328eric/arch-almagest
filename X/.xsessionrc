@@ -1,0 +1,3 @@
+#!/bin/bash
+# Set background image with feh
+feh --bg-scale ~/GDrive/wallpapers/lockimage.jpg &

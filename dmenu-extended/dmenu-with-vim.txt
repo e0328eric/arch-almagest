@@ -1,0 +1,5 @@
+In /usr/share/applications/vim.desktop, replace by
+
+Exec=Exec=i3-sensible-terminal -e vim %U
+
+where i3-sensible-terminal is urxvt.

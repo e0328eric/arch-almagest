@@ -1,0 +1,25 @@
+Config { font = "xft:LiberationMono:fontformat=truetype:size=10:antialias=true;1"
+       , additionalFonts = [ "xft:SpaceMono Nerd Font Mono:fontformat=truetype:size=16:antialias=true;3"
+                           , "xft:SpaceMono Nerd Font Mono:pixelsize=10;1"
+                           , "Siji:fontformat=truetype:size=12:antialias=true;1"
+                           , "xft:SpaceMono Nerd Font Mono:fontformat=truetype:size=10:antialias=true;"
+                           ]
+       , bgColor = "#2f343f"
+       , fgColor = "#f3f4f5"
+       , position = Top
+       , lowerOnStart = True
+       , hideOnStart = False
+       , allDesktops = True
+       , persistent = True
+       , commands = [ Run Date "%a, %b %d %Y, %H:%M:%S" "date" 10
+                    , Run Network "wlp2s0" ["-t", "<icon=net_up_20.xpm/>up <rxbar> <icon=net_down_20.xpm/>dn <txbar>"] 10
+                    , Run Cpu ["-t", "<icon=cpu_20.xpm/> cpu <bar> (<total>%)","-H","50","--high","red"] 10
+                    , Run Memory ["-t", "<icon=memory-icon_20.xpm/> mem <usedbar> (<usedratio>%)"] 10
+                    , Run DiskU [("/", "<icon=harddisk-icon_20.xpm/> hdd <usedbar> (<used>)")] [] 3600
+                    , Run UnsafeStdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%UnsafeStdinReader% }{ <fc=#FFB86C>%cpu%</fc> <fc=#FF5555>%memory%</fc> <fc=#82AAFF>%disku%</fc> <fc=#c3e88d>%enp4s0%</fc> <icon=calendar-clock-icon_20.xpm/> <fc=#8BE9FD>%date%</fc> "
+       }
+

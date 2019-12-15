@@ -1,0 +1,5 @@
+I was used suger-candy sddm theme
+To use this theme, you must type
+sudo pacman -S qt5
+
+theme.conf is my configuration file
