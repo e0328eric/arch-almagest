@@ -63,7 +63,17 @@ sudo systemctl enable sddm.service
 
 # ================================================================================================
 #
-# Chapter 3 : Pasting Configure Files
+# Chapter 3 : Install Nerd Font
+#
+# ================================================================================================
+
+git clone https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-font
+./install.sh
+
+# ================================================================================================
+#
+# Chapter 4 : Pasting Configure Files
 #
 # ================================================================================================
 
@@ -72,13 +82,13 @@ sudo systemctl enable sddm.service
 sleep 1
 echo "Pasting Configure Files"
 echo "X relevant files"
-cp ./X/.X* ~/
-cp ./X/.x* ~/
+cp $PWD/X/.X* ~/
+cp $PWD/X/.x* ~/
 
 # zshrc
 sleep 1
 echo "Zsh files"
-cp ./zsh/* ~/
+cp $PWD/zsh/* ~/
 
 # Installing zsh packages
 sleep 1
@@ -93,8 +103,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-sy
 sleep 1
 echo "Vim files"
 echo "Also install all vim plugins"
-cp ./vim/.vimrc ~/
-cp -r ./vim/localSnips ~/.vim/
+cp $PWD/vim/.vimrc ~/
+cp -r $PWD/vim/localSnips ~/.vim/
 
 # Installing Vundle
 sleep 1
@@ -107,19 +117,19 @@ echo "Xmonad files"
 if [[ ! -d ~/.xmonad ]]; then
     mkdir ~/.xmonad
 fi
-cp ./xmonad/xmonad.hs ~/.xmonad
+cp $PWD/xmonad/xmonad.hs ~/.xmonad
 
 # dmenu_extended
 if [[ ! -d ~/.config/dmenu-extended ]]; then
     mkdir ~/.config/dnemu-extended
 fi
-cp "./dmemu-extended/*" "~/.config/dmenu-extended/config"
+cp $PWD/dmemu-extended/* ~/.config/dmenu-extended/config
 
 function pasteFiles {
 if [[ ! -d ~/.config/$1 ]]; then
     mkdir ~/.config/polybar
 fi
-cp "./$1/*" "~/.config/$1/"
+cp "$PWD/$1/*" "~/.config/$1/"
 }
 
 # polybar
@@ -145,10 +155,10 @@ pasteFiles "qutebrower"
 # wallpapers
 sleep 1
 echo "Pasting wallpaper folder into home"
-cp -r ./wallpapers ~/
+cp -r $PWD/wallpapers ~/
 
 # keysetting script
 sleep 1
 echo "Copy Keyscript"
 mkdir ~/.scrpit
-cp ./keysetting_xmodmap.sh ~/.script
+cp $PWD/keysetting_xmodmap.sh ~/.script
