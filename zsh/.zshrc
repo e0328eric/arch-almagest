@@ -117,12 +117,11 @@ alias plpdfs="wget -A pdf -m -p -E -k -K -np http://prl.korea.ac.kr/\~pronto/hom
 alias checkclass="xprop | grep WM_CLASS"
 
 # Load Configures
-alias qutecfg="vim ~/GDrive/backup/qutebrowser/config.py"
-alias i3cfg="vim ~/GDrive/backup/i3/config"
-alias xmonadcfg="vim ~/GDrive/backup/xmonad/xmonad.hs"
-alias polybarcfg="vim ~/GDrive/backup/polybar/config"
-alias zshcfg="vim ~/GDrive/backup/zsh/.zshrc"
-alias vimcfg='vim ~/GDrive/backup/vim/.vimrc'
+alias qutecfg="vim ~/.config/qutebrowser/config.py"
+alias xmonadcfg="vim ~/.xmonad/xmonad.hs"
+alias polybarcfg="vim ~/.config/polybar/config"
+alias zshcfg="vim ~/.zshrc"
+alias vimcfg='vim ~/.vimrc'
 alias urxvtreset="xrdb ~/.Xresources"
 
 eval $(thefuck --alias)

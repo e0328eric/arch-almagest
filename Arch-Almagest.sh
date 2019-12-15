@@ -58,8 +58,7 @@ sudo pip install thefuck
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" && mv ./zsh-syntax-highlighting ~/.zsh/
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 
 # Installing Vundle
 sleep 1
@@ -134,5 +133,16 @@ pasteFiles "ranger"
 
 # qutebrowser
 sleep 1
-echo "QuteBrowser"
+echo "QuteBrowser files"
 pasteFiles "qutebrower"
+
+# wallpapers
+sleep 1
+echo "Pasting wallpaper folder into home"
+cp -r ./wallpapers ~/
+
+# keysetting script
+sleep 1
+echo "Copy Keyscript"
+mkdir ~/.scrpit
+cp ./keysetting_xmodmap.sh ~/.script

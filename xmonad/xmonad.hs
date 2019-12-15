@@ -253,11 +253,11 @@ myLogHook dbus = def
 
 myStartupHook = do
     -- Wallpaper
-    spawnOnce "feh --bg-scale ~/GDrive/backup/wallpapers/mainimage.jpg"
+    spawnOnce "feh --bg-scale ~/wallpapers/mainimage.jpg"
     -- Polybar Start
-    spawn "/home/almagest/GDrive/backup/polybar/launch.sh"
+    spawn "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting
-    spawnOnce "/home/almagest/GDrive/backup/keysetting_xmodmap.sh"
+    spawnOnce "~/.script/keysetting_xmodmap.sh"
 
 ------------------------------------------------------------------------------------------
 -- DBus
