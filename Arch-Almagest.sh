@@ -24,10 +24,10 @@ fi
 
 echo "Installing packages"
 
-# Install git
+# Install wget
 sleep 1
-echo "Installing git"
-sudo pacman -S git
+echo "Installing wget"
+sudo pacman -S wget
 
 # Install auryo
 sleep 1
