@@ -32,7 +32,8 @@ sudo pacman -S git
 # Install auryo
 sleep 1
 echo "Installing auryo"
-sudo pacman -U ./auryo.pacman
+wget https://github.com/Superjo149/auryo/releases/download/v2.4.0/auryo-2.4.0.pacman
+sudo pacman -U ./auryo-2.4.0.pacman
 
 # Install yay
 sleep 1
@@ -84,7 +85,7 @@ cp ./X/.x* ~/
 # zshrc
 sleep 1
 echo "Zsh files"
-cp ./zsh/.zshrc ~/
+cp ./zsh/* ~/*
 
 # Vim
 sleep 1
