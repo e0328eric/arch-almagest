@@ -29,12 +29,6 @@ sleep 1
 echo "Installing wget"
 sudo pacman -S wget
 
-# Install auryo
-sleep 1
-echo "Installing auryo"
-wget https://github.com/Superjo149/auryo/releases/download/v2.4.0/auryo-2.4.0.pacman
-sudo pacman -U ./auryo-2.4.0.pacman
-
 # Install yay
 sleep 1
 echo "Installing yay"
@@ -51,25 +45,25 @@ echo "Installing Main Packages"
 yay -Syyu
 yay -S $(cat ./pacman/pacman-installed.txt)
 
-# Installing zsh packages
+# Install auryo
 sleep 1
-echo "Installing zsh Plugins"
-sudo pip install thefuck
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-
-# Installing Vundle
-sleep 1
-echo "Installing Vundle"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo "Installing auryo"
+wget https://github.com/Superjo149/auryo/releases/download/v2.4.0/auryo-2.4.0.pacman
+sudo pacman -U ./auryo-2.4.0.pacman
 
 # This now install all of the packages as I used before
 
 # ================================================================================================
 #
-# Chapter 2 : Pasting Configure Files
+# Chapter 2 : Enable Systemd
+#
+# ================================================================================================
+
+sudo systemctl enable sddm.service
+
+# ================================================================================================
+#
+# Chapter 3 : Pasting Configure Files
 #
 # ================================================================================================
 
@@ -84,7 +78,16 @@ cp ./X/.x* ~/
 # zshrc
 sleep 1
 echo "Zsh files"
-cp ./zsh/* ~/*
+cp ./zsh/* ~/
+
+# Installing zsh packages
+sleep 1
+echo "Installing zsh Plugins"
+sudo pip install thefuck
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 
 # Vim
 sleep 1
@@ -93,6 +96,10 @@ echo "Also install all vim plugins"
 cp ./vim/.vimrc ~/
 cp -r ./vim/localSnips ~/.vim/
 
+# Installing Vundle
+sleep 1
+echo "Installing Vundle"
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # xmonad
 sleep 1
@@ -100,7 +107,7 @@ echo "Xmonad files"
 if [[ ! -d ~/.xmonad ]]; then
     mkdir ~/.xmonad
 fi
-cp ./xmonad/xmonad.hs
+cp ./xmonad/xmonad.hs ~/.xmonad
 
 # dmenu_extended
 if [[ ! -d ~/.config/dmenu-extended ]]; then
@@ -114,7 +121,6 @@ if [[ ! -d ~/.config/$1 ]]; then
 fi
 cp "./$1/*" "~/.config/$1/"
 }
-
 
 # polybar
 sleep 1
