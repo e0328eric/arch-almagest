@@ -55,25 +55,18 @@ sudo pacman -U ./auryo-2.4.0.pacman
 
 # ================================================================================================
 #
-# Chapter 2 : Enable Systemd
+# Chapter 2 : Install Fonts
 #
 # ================================================================================================
 
-sudo systemctl enable sddm.service
-
-# ================================================================================================
-#
-# Chapter 3 : Install Nerd Font
-#
-# ================================================================================================
-
+# Install nerd fonts
 git clone https://github.com/ryanoasis/nerd-fonts.git
 cd nerd-font
 ./install.sh
 
 # ================================================================================================
 #
-# Chapter 4 : Pasting Configure Files
+# Chapter 3 : Pasting Configure Files
 #
 # ================================================================================================
 
@@ -82,13 +75,20 @@ cd nerd-font
 sleep 1
 echo "Pasting Configure Files"
 echo "X relevant files"
-cp $PWD/X/.X* ~/
-cp $PWD/X/.x* ~/
+cp $PWD/X/.xprofile ~/
+cp $PWD/X/.xinitrc ~/
+cp $PWD/X/.Xauthority ~/
+cp $PWD/X/.Xmodmap ~/
+cp $PWD/X/.Xmodmap.default ~/
+cp $PWD/X/.Xmodmap.bak ~/
+cp $PWD/X/.xsessionrc ~/
+cp $PWD/X/.Xclients ~/
 
 # zshrc
 sleep 1
 echo "Zsh files"
-cp $PWD/zsh/* ~/
+cp $PWD/zsh/.zshrc ~/
+cp $PWD/zsh/.p10k.zsh ~/
 
 # Installing zsh packages
 sleep 1
@@ -118,6 +118,8 @@ if [[ ! -d ~/.xmonad ]]; then
     mkdir ~/.xmonad
 fi
 cp $PWD/xmonad/xmonad.hs ~/.xmonad
+sudo cp $PWD/xmonad/lock-alma /usr/bin/
+sudo cp $PWD/xmonad/lockscreen.service /etc/systemd/ststem/
 
 # dmenu_extended
 if [[ ! -d ~/.config/dmenu-extended ]]; then
@@ -125,32 +127,25 @@ if [[ ! -d ~/.config/dmenu-extended ]]; then
 fi
 cp $PWD/dmemu-extended/* ~/.config/dmenu-extended/config
 
-function pasteFiles {
-if [[ ! -d ~/.config/$1 ]]; then
-    mkdir ~/.config/polybar
-fi
-cp "$PWD/$1/*" "~/.config/$1/"
-}
-
 # polybar
 sleep 1
 echo "Polybar files"
-pasteFiles "polybar"
+cp -r $PWD/polybar ~/.config/
 
 # zathura
 sleep 1
 echo "Zathura files"
-pasteFiles "zathura"
+cp -r $PWD/zathura ~/.config/
 
 # ranger
 sleep 1
 echo "Ranger files"
-pasteFiles "ranger"
+cp -r $PWD/ranger ~/.config/
 
 # qutebrowser
 sleep 1
 echo "QuteBrowser files"
-pasteFiles "qutebrower"
+cp -r $PWD/qutebrowser ~/.config/
 
 # wallpapers
 sleep 1
@@ -162,3 +157,13 @@ sleep 1
 echo "Copy Keyscript"
 mkdir ~/.scrpit
 cp $PWD/keysetting_xmodmap.sh ~/.script
+
+# ================================================================================================
+#
+# Chapter 4 : Enable Systemd
+#
+# ================================================================================================
+
+sudo systemctl enable sddm.service
+sudo systemctl enable bluetooth.service
+sudo systemctl enable lockscreen.service

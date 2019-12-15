@@ -82,6 +82,7 @@ dconf
 debtap
 desktop-file-utils
 device-mapper
+dex
 dialog
 diffstat
 diffutils
