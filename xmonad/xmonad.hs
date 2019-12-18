@@ -112,17 +112,18 @@ myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
     , className =? "Gimp"             --> doFloat
     , className =? "albert"           --> doFloat
-    , resource  =? "desktop_window"   --> doIgnore
-    , resource  =? "kdesktop"         --> doIgnore
     , className =? "Plugin-container" --> doFloat
     , className =? "keepassx"         --> doFloat
     , className =? "Gpick"            --> doFloat
     , className =? "Thunar"           --> doFloat
     , className =? "Pcmanfm"          --> doFloat
+    , className =? "Civ6Sub"          --> unFloat
+    , className =? "qutebrowser"          --> unFloat
     -- Used by Chromium developer tools, maybe other apps as well
     , role =? "pop-up"                --> doFloat ]
   where
     role = stringProperty "WM_WINDOW_ROLE"
+    unFloat = ask >>= doF . W.sink
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 
@@ -188,8 +189,11 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     -- , ((modMask, xK_b), sendMessage ToggleStruts)
-    , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-    , ((0, xK_Print), spawn "scrot") -- 0 means no extra modifier key needs to be pressed in this case.
+    --, ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+    --, ((0, xK_Print), spawn "scrot") -- 0 means no extra modifier key needs to be pressed in this case.
+    , ((controlMask, xK_Print), spawn "spectacle -r")
+    , ((controlMask .|. shiftMask, xK_Print), spawn "spectacle -u")
+    , ((0, xK_Print), spawn "spectacle") -- 0 means no extra modifier key needs to be pressed in this case.
     , ((modMask, xK_F3), spawn "thunar")
     , ((modMask, xK_f), spawn "urxvt -e ranger") -- vim based file manager
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- dmenu
@@ -284,7 +288,6 @@ main = do
     dbus <- D.connectSession
     D.requestName dbus (D.busName_ "org.xmonad.Log")
         [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
-    xmproc <- spawnPipe "xmobar"
     xmonad $ ewmh def
         { modMask = mod4Mask
         , layoutHook = myLayout

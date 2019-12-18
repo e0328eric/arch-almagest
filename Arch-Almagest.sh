@@ -28,6 +28,7 @@ echo "Installing packages"
 sleep 1
 echo "Installing wget"
 sudo pacman -S wget
+send "y\r"
 
 # Install yay
 sleep 1
@@ -36,14 +37,24 @@ echo "Installing yay"
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+send "y\r"
+cd ..
+
+# Install dmenu-extended and dmenu
+sudo pacman -S dmenu
+yay -S dmenu-extended-git
 
 # Install all pacman packages
 # Package list are in ./pacman/pacman-installed.txt
 sleep 1
 echo "Installing Main Packages"
 
+sudo pacman -Syyu
+sudo pacman -S $(cat $PWD/pacman/pacman-packages.txt)
+send "y\r"
+send "y\r"
 yay -Syyu
-yay -S $(cat ./pacman/pacman-installed.txt)
+yay -S $(cat $PWD/pacman/yay-packages.txt)
 
 # Install auryo
 sleep 1
@@ -63,6 +74,7 @@ sudo pacman -U ./auryo-2.4.0.pacman
 git clone https://github.com/ryanoasis/nerd-fonts.git
 cd nerd-font
 ./install.sh
+cd ..
 
 # ================================================================================================
 #
@@ -83,6 +95,7 @@ cp $PWD/X/.Xmodmap.default ~/
 cp $PWD/X/.Xmodmap.bak ~/
 cp $PWD/X/.xsessionrc ~/
 cp $PWD/X/.Xclients ~/
+cp $PWD/X/.Xresources ~/
 
 # zshrc
 sleep 1
@@ -119,13 +132,12 @@ if [[ ! -d ~/.xmonad ]]; then
 fi
 cp $PWD/xmonad/xmonad.hs ~/.xmonad
 sudo cp $PWD/xmonad/lock-alma /usr/bin/
-sudo cp $PWD/xmonad/lockscreen.service /etc/systemd/ststem/
+sudo cp $PWD/xmonad/lockscreen.service /etc/systemd/system/
 
 # dmenu_extended
-if [[ ! -d ~/.config/dmenu-extended ]]; then
-    mkdir ~/.config/dnemu-extended
-fi
-cp $PWD/dmemu-extended/* ~/.config/dmenu-extended/config
+sleep 1
+echo "dmenu-extended"
+cp -r $PWD/dmemu-extended/ ~/.config/dmenu-extended/config
 
 # polybar
 sleep 1
