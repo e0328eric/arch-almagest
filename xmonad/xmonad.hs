@@ -262,6 +262,8 @@ myStartupHook = do
     spawn "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting
     spawnOnce "~/.script/keysetting_xmodmap.sh"
+    -- KDE Connect
+    spawn "kdeconnect-indicator"
 
 ------------------------------------------------------------------------------------------
 -- DBus
