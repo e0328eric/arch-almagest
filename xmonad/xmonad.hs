@@ -194,10 +194,10 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((controlMask, xK_Print), spawn "spectacle -r")
     , ((controlMask .|. shiftMask, xK_Print), spawn "spectacle -u")
     , ((0, xK_Print), spawn "spectacle") -- 0 means no extra modifier key needs to be pressed in this case.
-    , ((modMask, xK_F3), spawn "thunar")
+    , ((modMask, xK_F3), spawn "krusader")
     , ((modMask, xK_f), spawn "urxvt -e ranger") -- vim based file manager
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- dmenu
-    , ((modMask .|. shiftMask, xK_Return), spawn "qutebrowser") -- run qutebrowser
+    , ((modMask .|. shiftMask, xK_Return), spawn "vivaldi-stable") -- run browser
     , ((modMask .|. controlMask, xK_Return), spawn "urxvt -e cmus") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- terminal based music player
 

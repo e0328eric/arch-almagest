@@ -14,7 +14,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-" Breezy theme.
+" Vim Theme
 Plugin 'fneu/breezy'
 Plugin 'gruvbox-community/gruvbox'
 
@@ -371,6 +371,8 @@ command! -bang Profile call s:profile(<bang>0)
 " -----------------------------------------------------------------------------
 " Pluginin settings, mappings and autocommands
 " -----------------------------------------------------------------------------
+
+let g:airline_powerline_fonts = 1
 
 " .............................................................................
 " scrooloose/nerdtree
