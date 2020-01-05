@@ -109,7 +109,7 @@ Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-liquid'
 Plugin 'tpope/vim-rails'
 Plugin 'wgwoods/vim-systemd-syntax'
-Plugin 'lervag/vimtex'
+"Plugin 'lervag/vimtex'
 Plugin 'neovimhaskell/haskell-vim'
 
 call vundle#end()
@@ -220,11 +220,34 @@ runtime! macros/matchit.vim
 au BufRead,BufNewFile *.htex set syntax=tex
 
 " -----------------------------------------------------------------------------
+" Vim Buffers
+" -----------------------------------------------------------------------------
+" Turn on the buffer
+let g:airline#extensions#tabline#enabled = 1
+" Only for filenames
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" -----------------------------------------------------------------------------
 " Basic mappings
 " -----------------------------------------------------------------------------
 
 " Open Terminal
 map <Leader>tm :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>
+
+" Open new buffer
+nmap <leader>T :enew<cr>
+
+" Next Buffer
+nmap <leader>l :bnext<CR>
+
+" Previous  Buffer
+nmap <leader>h :bprevious<CR>
+
+" Close Current Buffer
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" ls
+nmap <leader>bl :ls<CR>
 
 " Seamlessly treat visual lines as actual lines when moving around.
 inoremap <Down> <C-o>gj
@@ -301,8 +324,6 @@ nnoremap <silent> <Leader>c :call QuickFix_toggle()<CR>
 vnoremap <Leader>tc c<C-r>=system('tcc', getreg('"'))[:-2]<CR>
 
 nnoremap <Leader>ml :r !typora % &<CR>
-nnoremap <Leader>tt :w <bar> :!pdftex %<CR><CR>
-nnoremap <Leader>tv :r !okular %<.pdf &<CR>
 map <F2> :NERDTreeToggle<CR>
 
 " -----------------------------------------------------------------------------
@@ -408,10 +429,10 @@ let g:limelight_conceal_ctermfg=244
 " lervag/vimtex
 " .............................................................................
 
-let g:tex_flavor = 'latex'
-let g:vimtex_view_general_viewer = 'zathura'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+"let g:tex_flavor = 'latex'
+"let g:vimtex_view_general_viewer = 'qpdfview'
+"let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+"let g:vimtex_view_general_options_latexmk = '--unique'
 
 " .............................................................................
 " plasticboy/vim-markdown:w

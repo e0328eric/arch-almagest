@@ -257,7 +257,7 @@ myLogHook dbus = def
 
 myStartupHook = do
     -- Wallpaper
-    spawnOnce "feh --bg-scale ~/wallpapers/mainimage.jpg"
+    spawnOnce "feh --bg-scale ~/wallpapers/railroad-forest.jpg"
     -- Polybar Start
     spawn "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting
