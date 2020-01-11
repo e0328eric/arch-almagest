@@ -118,7 +118,7 @@ myManageHook = composeAll
     , className =? "Thunar"           --> doFloat
     , className =? "Pcmanfm"          --> doFloat
     , className =? "Civ6Sub"          --> unFloat
-    , className =? "qutebrowser"          --> unFloat
+    , className =? "qutebrowser"      --> unFloat
     -- Used by Chromium developer tools, maybe other apps as well
     , role =? "pop-up"                --> doFloat ]
   where
@@ -196,7 +196,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0, xK_Print), spawn "spectacle") -- 0 means no extra modifier key needs to be pressed in this case.
     , ((modMask, xK_F3), spawn "krusader")
     , ((modMask, xK_f), spawn "urxvt -e ranger") -- vim based file manager
-    , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- dmenu
+    --, ((controlMask .|. mod1Mask, xK_s), spawn "albert") -- albert
     , ((modMask .|. shiftMask, xK_Return), spawn "vivaldi-stable") -- run browser
     , ((modMask .|. controlMask, xK_Return), spawn "urxvt -e cmus") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- terminal based music player
@@ -256,10 +256,14 @@ myLogHook dbus = def
 ------------------------------------------------------------------------------------------
 
 myStartupHook = do
+    -- screen locking
+    spawnOnce "light-locker --lock-on-lid"
     -- Wallpaper
     spawnOnce "feh --bg-scale ~/wallpapers/railroad-forest.jpg"
     -- Polybar Start
     spawn "~/.config/polybar/launch.sh"
+    -- albert
+    spawn "albert"
     -- Xmodmap keychange setting
     spawnOnce "~/.script/keysetting_xmodmap.sh"
     -- KDE Connect
@@ -296,7 +300,7 @@ main = do
         , workspaces = myWorkspaces
         , handleEventHook = handleEventHook def <+> HM.docksEventHook
         , logHook = dynamicLogWithPP (myLogHook dbus)
-        , manageHook = placeHook (smart (0.5, 0.5))
+        , manageHook = placeHook (fixed (0.5, 0.3))
                     <+> HM.manageDocks
                     <+> myManageHook
                     <+> myManageHook'
