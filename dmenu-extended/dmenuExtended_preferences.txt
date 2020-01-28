@@ -6,7 +6,7 @@
     "fileopener": "xdg-open",
     "filter_binaries": false,
     "follow_symlinks": false,
-    "frequently_used": 1,
+    "frequently_used": 100,
     "global_ignore_folders": [],
     "ignore_folders": [],
     "include_applications": true,
@@ -43,7 +43,7 @@
     "path_shellCommand": "~/.dmenuEextended_shellCommand.sh",
     "prompt": "Open:",
     "scan_hidden_folders": false,
-    "terminal": "terminator",
+    "terminal": "urxvt",
     "valid_extensions": [
         "py",
         "svg",

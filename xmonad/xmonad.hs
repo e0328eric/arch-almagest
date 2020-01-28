@@ -198,7 +198,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_F3), spawn "krusader")
     , ((modMask, xK_f), spawn "urxvt -e ranger") -- vim based file manager
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
-    --, ((controlMask .|. mod1Mask, xK_s), spawn "albert") -- albert
+    , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- albert
     , ((modMask .|. shiftMask, xK_Return), spawn "vivaldi-stable") -- run browser
     , ((modMask .|. controlMask, xK_Return), spawn "urxvt -e cmus") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- terminal based music player
@@ -264,8 +264,6 @@ myStartupHook = do
     spawnOnce "feh --bg-scale ~/wallpapers/lockimage.jpg"
     -- Polybar Start
     spawn "~/.config/polybar/launch.sh"
-    -- albert
-    spawn "albert"
     -- Xmodmap keychange setting
     --spawnOnce "~/.script/keysetting_xmodmap.sh"
     -- KDE Connect
