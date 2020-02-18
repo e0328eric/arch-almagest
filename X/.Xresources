@@ -39,17 +39,17 @@
 
 
 !! URxvt Appearance
-URxvt.font: xft:D2Coding ligature:style=Regular:size=11, \
-            xft:Inconsolata Nerd Font Mono:size=11, \
-            xft:UbuntuMono Nerd Font:size=11, \
-            xft:UbuntuMono Nerd Font Mono:size=11, \
-            xft:DejaVuSansMono Nerd Font:size=11, \
-            xft:DejaVuSansMono Nerd Font Complete Mono:size=11, \
-            xft:DroidSansMono Nerd Font:size=11, \
-            xft:DroidSansMono Nerd Font Mono:size=11, \
-            xft:FuraMono Nerd Font:size=11, \
-            xft:Robotomono Nerd Font:size=11, \
-            xft:Noto Sans CJK KR:size=11, \
+URxvt.font: xft:D2Coding ligature:style=Regular:size=14, \
+            xft:Inconsolata Nerd Font Mono:size=14, \
+            xft:UbuntuMono Nerd Font:size=14, \
+            xft:UbuntuMono Nerd Font Mono:size=14, \
+            xft:DejaVuSansMono Nerd Font:size=14, \
+            xft:DejaVuSansMono Nerd Font Complete Mono:size=14, \
+            xft:DroidSansMono Nerd Font:size=14, \
+            xft:DroidSansMono Nerd Font Mono:size=14, \
+            xft:FuraMono Nerd Font:size=14, \
+            xft:Robotomono Nerd Font:size=14, \
+            xft:Noto Sans CJK KR:size=14, \
             xft:Monospace:style=medium:antialias=false
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0

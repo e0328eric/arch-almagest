@@ -13,7 +13,9 @@
     "include_binaries": false,
     "include_hidden_files": false,
     "include_hidden_folders": false,
-    "include_items": [],
+    "include_items": [
+        "kakaotalk"
+    ],
     "indicator_alias": "",
     "indicator_edit": "*",
     "indicator_submenu": "->",

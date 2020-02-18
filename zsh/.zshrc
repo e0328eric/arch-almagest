@@ -111,11 +111,13 @@ export EDITOR="$VISUAL"
 alias vimplupdate='sudo vim =PluginInstall +qall'
 alias vols='amixer -D pulse sset Master'
 alias getmusic='youtube-dl -x --audio-format m4a'
-alias gsync='cd ~/GDrive && grive'
+alias gsync='cd ~/GDrive && drive push'
 alias dynamix='google-chrome-stable --disable-web-security --allow-file-access-from-files --allow-file-access --allow-cross-origin-auth-prompt ~/GDrive/Dynamix/index.html'
 alias plpdfs="wget -A pdf -m -p -E -k -K -np http://prl.korea.ac.kr/\~pronto/home/courses/cose212/2019/ && cp -r ~/prl.korea.ac.kr/~pronto/home/courses/cose212/2019 ~/GDrive/Haskell/PL/ && rm -r ~/prl.korea.ac.kr"
 alias checkclass="xprop | grep WM_CLASS"
 alias conph="kdeconnect-cli -n 'Samsung SM-A810S'"
+alias kakaotalk="wine ~/.wine/drive_c/Program\ Files/Kakao/KakaoTalk/KakaoTalk.exe"
+alias br="broot"
 
 # Load Configures
 alias qutecfg="vim ~/.config/qutebrowser/config.py"

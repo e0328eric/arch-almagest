@@ -219,6 +219,11 @@ runtime! macros/matchit.vim
 " Colour files called htex like tex
 au BufRead,BufNewFile *.htex set syntax=tex
 
+" Change vim cursor
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
 " -----------------------------------------------------------------------------
 " Vim Buffers
 " -----------------------------------------------------------------------------

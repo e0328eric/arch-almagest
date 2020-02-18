@@ -120,6 +120,7 @@ myManageHook = composeAll
     , className =? "Civ6Sub"          --> unFloat
     , className =? "qutebrowser"      --> unFloat
     , className =? "scrcpy"           --> doFloat
+    , className =? "Kakaotalk.exe"           --> doFloat
     -- Used by Chromium developer tools, maybe other apps as well
     , role =? "pop-up"                --> doFloat ]
   where
@@ -196,7 +197,6 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((controlMask .|. shiftMask, xK_Print), spawn "spectacle -u")
     , ((0, xK_Print), spawn "spectacle") -- 0 means no extra modifier key needs to be pressed in this case.
     , ((modMask, xK_F3), spawn "krusader")
-    , ((modMask, xK_f), spawn "urxvt -e ranger") -- vim based file manager
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- albert
     , ((modMask .|. shiftMask, xK_Return), spawn "vivaldi-stable") -- run browser
