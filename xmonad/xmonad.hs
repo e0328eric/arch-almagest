@@ -119,6 +119,7 @@ myManageHook = composeAll
     , className =? "Pcmanfm"          --> doFloat
     , className =? "Civ6Sub"          --> unFloat
     , className =? "qutebrowser"      --> unFloat
+    , className =? "Terminator"       --> unFloat
     , className =? "scrcpy"           --> doFloat
     , className =? "Kakaotalk.exe"           --> doFloat
     -- Used by Chromium developer tools, maybe other apps as well
@@ -199,9 +200,10 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_F3), spawn "krusader")
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- albert
-    , ((modMask .|. shiftMask, xK_Return), spawn "vivaldi-stable") -- run browser
-    , ((modMask .|. controlMask, xK_Return), spawn "urxvt -e cmus") -- terminal based music player
-    , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- terminal based music player
+    , ((modMask .|. shiftMask, xK_Return), spawn "google-chrome-stable") -- run browser
+    , ((modMask, xK_f), spawn "terminator -e ranger") -- ranger
+    , ((modMask .|. controlMask, xK_Return), spawn "terminator -e cmus") -- terminal based music player
+    , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
 
     -- End of Computer
     , ((modMask .|. shiftMask, xK_c), spawn "check-twice \"Are you sure you want to shutdown?\" \"poweroff\"")
@@ -258,6 +260,8 @@ myLogHook dbus = def
 ------------------------------------------------------------------------------------------
 
 myStartupHook = do
+    -- Transparent Terminal
+    spawn "compton --backend xrender --xrender-sync --xrender-sync-fence"
     -- screen locking
     spawnOnce "light-locker"
     -- Wallpaper
@@ -305,7 +309,7 @@ main = do
                     <+> myManageHook
                     <+> myManageHook'
                     <+> manageHook def
-        , terminal = "urxvt"
+        , terminal = "terminator"
         , borderWidth = 2
         , keys = myKeysKeyBoard
         , mouseBindings = myKeysMouse

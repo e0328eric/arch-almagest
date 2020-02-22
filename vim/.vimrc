@@ -198,7 +198,7 @@ set softtabstop=4
 set splitbelow
 set tabstop=4
 set textwidth=0
-set term=rxvt-unicode-256color
+set term=terminator
 set ttimeout
 set ttyfast
 set ttymouse=sgr

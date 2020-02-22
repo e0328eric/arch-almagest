@@ -1,12 +1,19 @@
-\documentclass{coprime}
+\font\sectionfont=cmbx10 at 12pt
+\font\titlefont=cmbx10 at 20pt
+\newcount\section
 
-\settitle{Arch-Almagest}{Almagest (Sungbae Jeong)}
+\centerline{\titlefont Arch-Almagest}
+\centerline{Almagest (Sungbae Jeong)}
+\vskip3em
 
-\begin{document}
-\section{What is this?}
+\advance\section by 1
+\noindent{\sectionfont \the\section.\kern1em What is this?}\par
 This bash scipt is my personal Arch Linux configure script.
 After install an arch and make a user who is sudoable, then run this script will install my configuration.
 
-\section{Computer Style}
+\vskip\baselineskip
+
+\advance\section by 1
+\noindent{\sectionfont \the\section.\kern1em Computer Style}\par
 I use Xmonad for window manager and qutebrowser for browser.
-\end{document}
+\bye

@@ -1,4 +1,4 @@
-export TERMINAL=/usr/bin/urxvt
+export TERMINAL=/usr/bin/terminator
 xrdb ~/.Xresources
 export GTK_IM_MODULE=nimf
 export QT4_IM_MODULE="nimf"
