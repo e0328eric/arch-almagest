@@ -5,19 +5,19 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "D2 Coding ligature:pixelsize=18:antialias=true:autohint=true";
+static char *font = "D2 Coding ligature:pixelsize=20:antialias=true:autohint=true";
 static char *font2[] = {
-"Inconsolata Nerd Font Mono:pixelsize=18:antialias=true:autohint=true",
-"UbuntuMono Nerd Font:pixelsize=18:antialias=true:autohint=true",
-"UbuntuMono Nerd Font Mono:pixelsize=18:antialias=true:autohint=true",
-"DejaVuSansMono Nerd Font:pixelsize=18:antialias=true:autohint=true",
-"DejaVuSansMono Nerd Font Complete Mono:pixelsize=18:antialias=true:autohint=true",
-"DroidSansMono Nerd Font:pixelsize=18:antialias=true:autohint=true",
-"DroidSansMono Nerd Font Mono:pixelsize=18:antialias=true:autohint=true",
-"FuraMono Nerd Font:pixelsize=18:antialias=true:autohint=true",
-"Robotomono Nerd Font:pixelsize=18:antialias=true:autohint=true",
-"Noto Sans CJK KR:pixelsize=18:antialias=true:autohint=true",
-"Monospace:pixelsize=18:style=medium:antialias=false"
+"Inconsolata Nerd Font Mono:pixelsize=20:antialias=true:autohint=true",
+"UbuntuMono Nerd Font:pixelsize=20:antialias=true:autohint=true",
+"UbuntuMono Nerd Font Mono:pixelsize=20:antialias=true:autohint=true",
+"DejaVuSansMono Nerd Font:pixelsize=20:antialias=true:autohint=true",
+"DejaVuSansMono Nerd Font Complete Mono:pixelsize=20:antialias=true:autohint=true",
+"DroidSansMono Nerd Font:pixelsize=20:antialias=true:autohint=true",
+"DroidSansMono Nerd Font Mono:pixelsize=20:antialias=true:autohint=true",
+"FuraMono Nerd Font:pixelsize=20:antialias=true:autohint=true",
+"Robotomono Nerd Font:pixelsize=20:antialias=true:autohint=true",
+"Noto Sans CJK KR:pixelsize=20:antialias=true:autohint=true",
+"Monospace:pixelsize=20:style=medium:antialias=false"
 };
 
 static int borderpx = 2;
