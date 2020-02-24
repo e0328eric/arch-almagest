@@ -201,8 +201,8 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- albert
     , ((modMask .|. shiftMask, xK_Return), spawn "google-chrome-stable") -- run browser
-    , ((modMask, xK_f), spawn "terminator -e ranger") -- ranger
-    , ((modMask .|. controlMask, xK_Return), spawn "terminator -e cmus") -- terminal based music player
+    , ((modMask, xK_f), spawn "st -e ranger") -- ranger
+    , ((modMask .|. controlMask, xK_Return), spawn "st -e cmus") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
 
     -- End of Computer
@@ -309,7 +309,7 @@ main = do
                     <+> myManageHook
                     <+> myManageHook'
                     <+> manageHook def
-        , terminal = "terminator"
+        , terminal = "st"
         , borderWidth = 2
         , keys = myKeysKeyBoard
         , mouseBindings = myKeysMouse
