@@ -10,6 +10,10 @@
 # If you want to intalling arch linux itself, then run another sh file
 #
 # Also, you must run this installer at user not root!
+
+# Exit this script if some error occurs
+set -e
+
 if [[ $USER == "root" ]]
 then
     echo "You must run this installer not in root"

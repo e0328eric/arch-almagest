@@ -214,8 +214,9 @@ set wrap
 :hi CursorLine ctermbg = NONE guibg = NONE
 :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=Black guibg=#589A5D
 
+let &t_kD = "\x1b[3~"
+
 runtime! macros/matchit.vim
-"
 " Colour files called htex like tex
 au BufRead,BufNewFile *.htex set syntax=tex
 
@@ -260,6 +261,9 @@ inoremap <Up> <C-o>gk
 
 " Move test top while in insert mode
 inoremap <C-S-t> <C-o>zt
+
+" Fix Delete key
+"inoremap [P <Del>
 
 " Navigate around splits with a single key combo.
 nnoremap <C-l> <C-w><C-l>

@@ -111,7 +111,6 @@ myExtraWorkspaces = [(xK_0, "10")]
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
     , className =? "Gimp"             --> doFloat
-    , className =? "albert"           --> doFloat
     , className =? "Plugin-container" --> doFloat
     , className =? "keepassx"         --> doFloat
     , className =? "Gpick"            --> doFloat
@@ -119,9 +118,8 @@ myManageHook = composeAll
     , className =? "Pcmanfm"          --> doFloat
     , className =? "Civ6Sub"          --> unFloat
     , className =? "qutebrowser"      --> unFloat
-    , className =? "Terminator"       --> unFloat
     , className =? "scrcpy"           --> doFloat
-    , className =? "Kakaotalk.exe"           --> doFloat
+    , className =? "Kakaotalk.exe"    --> doFloat
     -- Used by Chromium developer tools, maybe other apps as well
     , role =? "pop-up"                --> doFloat ]
   where
@@ -135,8 +133,10 @@ myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 ------------------------------------------------------------------------------------------
 
 myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
+    [
     -- launch a terminal
-    [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
+      ((modMask, xK_t), spawn $ XMonad.terminal conf)
+    , ((modMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- close focused window
     , ((modMask .|. shiftMask, xK_q), kill)
@@ -188,6 +188,10 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_semicolon), sendMessage MirrorExpand)
     , ((modMask, xK_semicolon), sendMessage MirrorExpand)
 
+    -- Run Browser
+    , ((modMask .|. shiftMask, xK_t), spawn "firefox")
+    , ((modMask .|. shiftMask, xK_Return), spawn "firefox")
+
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
@@ -200,7 +204,6 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_F3), spawn "krusader")
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- albert
-    , ((modMask .|. shiftMask, xK_Return), spawn "google-chrome-stable") -- run browser
     , ((modMask, xK_f), spawn "st -e ranger") -- ranger
     , ((modMask .|. controlMask, xK_Return), spawn "st -e cmus") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
