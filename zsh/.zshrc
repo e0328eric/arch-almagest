@@ -117,6 +117,7 @@ alias plpdfs="wget -A pdf -m -p -E -k -K -np http://prl.korea.ac.kr/\~pronto/hom
 alias checkclass="xprop | grep WM_CLASS"
 alias conph="kdeconnect-cli -n 'Samsung SM-A810S'"
 alias kakaotalk="wine ~/.wine/drive_c/Program\ Files/Kakao/KakaoTalk/KakaoTalk.exe"
+alias mahjong="wine ~/.wine/drive_c/Program\ Files/SEGA/MJ_Mahjong/MJ_Launcher.exe"
 
 # Load Configures
 alias qutecfg="vim ~/.config/qutebrowser/config.py"
@@ -132,3 +133,5 @@ eval $(thefuck --alias)
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+
+bindkey -v

@@ -8,74 +8,82 @@ Use pacman to install it
 -}
 -- XMonad Modules
 -- Basic Modules
-import Data.Default
-import qualified DBus as D
-import qualified DBus.Client as D
-import qualified Codec.Binary.UTF8.String as UTF8
-import qualified Data.Map as M
-import Data.List (sortBy)
-import Data.Function (on)
-import Control.Monad (forM_, join)
-import Graphics.X11.ExtraTypes.XF86
-import System.IO
-import System.Exit
-import XMonad hiding ((|||))
-import qualified XMonad.StackSet as W
+import qualified Codec.Binary.UTF8.String            as UTF8
+import           Control.Monad                       (forM_, join)
+import           Data.Default
+import           Data.Function                       (on)
+import           Data.List                           (sortBy)
+import qualified Data.Map                            as M
+import qualified DBus                                as D
+import qualified DBus.Client                         as D
+import           Graphics.X11.ExtraTypes.XF86
+import           System.Exit
+import           System.IO
+import           XMonad                              hiding ((|||))
+import qualified XMonad.StackSet                     as W
 
 -- Actions
-import XMonad.Actions.FloatSnap
-import XMonad.Actions.GroupNavigation
-import XMonad.Actions.MouseResize
-import XMonad.Actions.PhysicalScreens
+import           XMonad.Actions.FloatSnap
+import           XMonad.Actions.GroupNavigation
+import           XMonad.Actions.MouseResize
+import           XMonad.Actions.PhysicalScreens
 
 -- Hooks
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.InsertPosition
-import qualified XMonad.Hooks.ManageDocks as HM
-import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.Place
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.EwmhDesktops
+import           XMonad.Hooks.InsertPosition
+import qualified XMonad.Hooks.ManageDocks            as HM
+import           XMonad.Hooks.ManageHelpers
+import           XMonad.Hooks.Place
 
 -- Layout Modifiers
-import XMonad.Layout.BinarySpacePartition
-import XMonad.Layout.LayoutBuilder
-import XMonad.Layout.LayoutCombinators
-import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
-import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), Toggle(..), (??))
-import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
-import XMonad.Layout.Reflect (reflectVert, reflectHoriz, REFLECTX(..), REFLECTY(..))
-import XMonad.Layout.Renamed (renamed, Rename(CutWordsLeft, Replace))
-import XMonad.Layout.SimpleDecoration (shrinkText)
-import XMonad.Layout.Spacing
-import XMonad.Layout.ThreeColumns
-import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
-import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
+import           XMonad.Layout.BinarySpacePartition
+import           XMonad.Layout.LayoutBuilder
+import           XMonad.Layout.LayoutCombinators
+import           XMonad.Layout.LimitWindows          (decreaseLimit,
+                                                      increaseLimit,
+                                                      limitWindows)
+import           XMonad.Layout.MultiToggle           (EOT (EOT), Toggle (..),
+                                                      mkToggle, single, (??))
+import           XMonad.Layout.MultiToggle.Instances (StdTransformers (MIRROR, NBFULL, NOBORDERS))
+import           XMonad.Layout.Reflect               (REFLECTX (..),
+                                                      REFLECTY (..),
+                                                      reflectHoriz, reflectVert)
+import           XMonad.Layout.SimpleDecoration      (shrinkText)
+import           XMonad.Layout.Spacing
+import qualified XMonad.Layout.ToggleLayouts         as T (ToggleLayout (Toggle),
+                                                           toggleLayouts)
+import           XMonad.Layout.WindowArranger        (WindowArrangerMsg (..),
+                                                      windowArrange)
 
 -- Layouts
-import XMonad.Layout.Dwindle
-import XMonad.Layout.GridVariants (Grid(Grid))
-import XMonad.Layout.IM (withIM, Property(Role))
-import XMonad.Layout.NoBorders
-import XMonad.Layout.OneBig
-import XMonad.Layout.Renamed (renamed, Rename(CutWordsLeft, Replace))
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.Tabbed
-import XMonad.Layout.ThreeColumns
-import XMonad.Layout.TwoPane
-import XMonad.Layout.SimplestFloat
-import XMonad.Layout.ZoomRow (zoomRow, zoomIn, zoomOut, zoomReset, ZoomMessage(ZoomFullToggle))
+import           XMonad.Layout.Dwindle
+import           XMonad.Layout.GridVariants          (Grid (Grid))
+import           XMonad.Layout.IM                    (Property (Role), withIM)
+import           XMonad.Layout.NoBorders
+import           XMonad.Layout.OneBig
+import           XMonad.Layout.Renamed               (Rename (CutWordsLeft, Replace),
+                                                      renamed)
+import           XMonad.Layout.ResizableTile
+import           XMonad.Layout.SimplestFloat
+import           XMonad.Layout.Tabbed
+import           XMonad.Layout.ThreeColumns
+import           XMonad.Layout.TwoPane
+import           XMonad.Layout.ZoomRow               (ZoomMessage (ZoomFullToggle),
+                                                      zoomIn, zoomOut,
+                                                      zoomReset, zoomRow)
 
 -- Util
-import XMonad.Util.NamedWindows (getName)
-import XMonad.Util.Run(spawnPipe, safeSpawn)
-import XMonad.Util.SpawnOnce (spawnOnce)
-import XMonad.Util.WorkspaceCompare
+import           XMonad.Util.NamedWindows            (getName)
+import           XMonad.Util.Run                     (safeSpawn, spawnPipe)
+import           XMonad.Util.SpawnOnce               (spawnOnce)
+import           XMonad.Util.WorkspaceCompare
 
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Layouts
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
-myLayout = HM.avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) $ myDefaultLayout
+myLayout = HM.avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
   where
     myDefaultLayout = tall
         ||| grid
@@ -97,16 +105,16 @@ space      = renamed [Replace "space"]    $ limitWindows 4  $ spacing 6 $ Mirror
     mkToggle (single REFLECTX) $ mkToggle (single REFLECTY) $ OneBig (2/3) (2/3)
 floats     = renamed [Replace "floats"]   $ limitWindows 20 $ simplestFloat
 
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Workspaces
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"] ++ (map snd myExtraWorkspaces)
 myExtraWorkspaces = [(xK_0, "10")]
 
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- ManageHook
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
@@ -128,15 +136,14 @@ myManageHook = composeAll
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Keybinding
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [
     -- launch a terminal
-      ((modMask, xK_t), spawn $ XMonad.terminal conf)
-    , ((modMask, xK_Return), spawn $ XMonad.terminal conf)
+    ((modMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- close focused window
     , ((modMask .|. shiftMask, xK_q), kill)
@@ -189,7 +196,6 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_semicolon), sendMessage MirrorExpand)
 
     -- Run Browser
-    , ((modMask .|. shiftMask, xK_t), spawn "firefox")
     , ((modMask .|. shiftMask, xK_Return), spawn "firefox")
 
     -- Toggle the status bar gap
@@ -207,6 +213,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_f), spawn "st -e ranger") -- ranger
     , ((modMask .|. controlMask, xK_Return), spawn "st -e cmus") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
+    , ((modMask .|. controlMask, xK_m), spawn "st -e mahjong")
 
     -- End of Computer
     , ((modMask .|. shiftMask, xK_c), spawn "check-twice \"Are you sure you want to shutdown?\" \"poweroff\"")
@@ -238,9 +245,9 @@ myKeysMouse conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, button1), (\w -> focus w >> mouseResizeWindow w >> ifClick (snapMagicResize [R,D] (Just 50) (Just 50) w)))
     ]
 
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- LogHook
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 myLogHook :: D.Client -> PP
 myLogHook dbus = def
@@ -258,15 +265,17 @@ myLogHook dbus = def
     bg2 = "#504945"
     red = "#fb4934"
 
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Startup Applications
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 myStartupHook = do
     -- Transparent Terminal
     spawn "compton --backend xrender --xrender-sync --xrender-sync-fence"
     -- screen locking
     spawnOnce "light-locker"
+    -- Alert Low Battery
+    spawnOnce "battery-low"
     -- Wallpaper
     spawnOnce "feh --bg-scale ~/wallpapers/lockimage.jpg"
     -- Polybar Start
@@ -276,9 +285,9 @@ myStartupHook = do
     -- KDE Connect
     spawn "kdeconnect-indicator"
 
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- DBus
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 dbusOutput :: D.Client -> String -> IO ()
 dbusOutput dbus str = do
@@ -291,10 +300,9 @@ dbusOutput dbus str = do
     interfaceName = D.interfaceName_ "org.xmonad.Log"
     memberName = D.memberName_ "Update"
 
-
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Main
-------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 main :: IO ()
 main = do
@@ -313,7 +321,7 @@ main = do
                     <+> myManageHook'
                     <+> manageHook def
         , terminal = "st"
-        , borderWidth = 2
+        , borderWidth = 3
         , keys = myKeysKeyBoard
         , mouseBindings = myKeysMouse
         , startupHook = myStartupHook
