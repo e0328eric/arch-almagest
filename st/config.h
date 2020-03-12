@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "D2 Coding ligature:pixelsize=20:antialias=true:autohint=true";
+static char *font = "D2Coding ligature:pixelsize=20:antialias=true:autohint=true";
 static char *font2[] = {
 "Inconsolata Nerd Font Mono:pixelsize=20:antialias=true:autohint=true",
 "UbuntuMono Nerd Font:pixelsize=20:antialias=true:autohint=true",
