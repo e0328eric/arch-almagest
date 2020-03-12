@@ -1,4 +1,4 @@
-export TERMINAL=/usr/local/bin/st
+export TERMINAL=/usr/bin/konsole
 xrdb ~/.Xresources
 export GTK_IM_MODULE=nimf
 export QT4_IM_MODULE="nimf"

@@ -2,7 +2,7 @@
 
 BATTINFO=`acpi -b`
 while true; do
-    if [[ `echo $BATTINFO | grep Discharging` && `echo $BATTINFO | cut -f 5 -d " "` < 00:15:00 ]] ; then
+    if [[ `echo $BATTINFO | grep Discharging` && `echo $BATTINFO | cut -f 4 -d " " | cut -f 1 -d "%"` < 20 ]] ; then
         DISPLAY=:0.0 /usr/bin/notify-send --urgency=critical "low battery" "$BATTINFO"
     fi
     sleep 20

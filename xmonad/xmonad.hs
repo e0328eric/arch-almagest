@@ -210,10 +210,10 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_F3), spawn "krusader")
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- albert
-    , ((modMask, xK_f), spawn "st -e ranger") -- ranger
-    , ((modMask .|. controlMask, xK_Return), spawn "st -e cmus") -- terminal based music player
+    , ((modMask, xK_f), spawn "konsole -e ranger") -- ranger
+    , ((modMask .|. controlMask, xK_Return), spawn "konsole -e cmus") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
-    , ((modMask .|. controlMask, xK_m), spawn "st -e mahjong")
+    , ((modMask .|. controlMask, xK_m), spawn "konsole -e mahjong")
 
     -- End of Computer
     , ((modMask .|. shiftMask, xK_c), spawn "check-twice \"Are you sure you want to shutdown?\" \"poweroff\"")
@@ -320,7 +320,7 @@ main = do
                     <+> myManageHook
                     <+> myManageHook'
                     <+> manageHook def
-        , terminal = "st"
+        , terminal = "konsole"
         , borderWidth = 3
         , keys = myKeysKeyBoard
         , mouseBindings = myKeysMouse

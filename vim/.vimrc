@@ -187,6 +187,7 @@ set nospell
 set nostartofline
 set nu rnu
 set regexpengine=1
+set renderoptions=type:directx
 set ruler
 set scrolloff=3
 set shiftwidth=4
