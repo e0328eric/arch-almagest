@@ -275,7 +275,7 @@ myStartupHook = do
     -- screen locking
     spawnOnce "light-locker"
     -- Alert Low Battery
-    spawn "battery-low"
+    spawnOnce "battery-low"
     -- Wallpaper
     spawnOnce "feh --bg-scale ~/wallpapers/lockimage.jpg"
     -- Polybar Start
