@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "D2Coding ligature:pixelsize=20:antialias=true:autohint=true";
+static char *font = "D2Coding:pixelsize=20:antialias=true:autohint=true";
 static char *font2[] = {
 "Inconsolata Nerd Font Mono:pixelsize=20:antialias=true:autohint=true",
 "UbuntuMono Nerd Font:pixelsize=20:antialias=true:autohint=true",
@@ -101,7 +101,8 @@ float alpha = 0.83;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
+	/* Colorset 1
+	// 8 normal colors
 	"#2d2d2d", // black
 	"#f2777a", // red
 	"#99cc99", // green
@@ -111,7 +112,7 @@ static const char *colorname[] = {
 	"#66cccc", // cyan
 	"#d3d0c8", // white
 
-	/* 8 bright colors */
+	// 8 bright colors
 	"#747369", // black
 	"#f2777a", // red
 	"#99cc99", // green
@@ -123,10 +124,38 @@ static const char *colorname[] = {
 
 	[255] = 0,
 
-	/* more colors can be added after 255 to use with DefaultXX */
+	// more colors can be added after 255 to use with DefaultXX
 	"#d3d0c8", // color 256 (foreground)
 	"#111111", // color 257 (background)
-	"#d3d0c8", // color 258 (cursor)
+	"#d3d0c8", // color 258 (cursor) */
+
+	/* Colorset 2 */
+	// 8 normal colors
+	"#1b1d1e", // black
+	"#f92672", // red
+	"#82b414", // green
+	"#fd971f", // yellow
+	"#4e82aa", // blue
+	"#8c54fe", // magenta
+	"#66cccc", // cyan
+	"#ccccc6", // white
+
+	// 8 bright colors
+	"#505354", // black
+	"#ff5995", // red
+	"#b6e354", // green
+	"#feed6c", // yellow
+	"#0c73c2", // blue
+	"#9e6ffe", // magenta
+	"#75ebeb", // cyan
+	"#f8f8f2", // white
+
+	[255] = 0,
+
+	// more colors can be added after 255 to use with DefaultXX
+	"#a0a0a0", // color 256 (foreground)
+	"#121212", // color 257 (background)
+	"#a0a0a0", // color 258 (cursor)
 };
 
 
