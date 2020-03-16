@@ -94,7 +94,6 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Preferred editor for local and remote sessions
 export PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export PATH="$PATH:/home/almagest/.cabal/bin"
 export PATH="$PATH:/home/almagest/.local/bin"
 export VISUAL=vim
 export EDITOR="$VISUAL"
