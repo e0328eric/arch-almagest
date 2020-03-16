@@ -1,0 +1,8 @@
+To install xmonad, first install gobject-introspection by pacman.
+Then install xmonad, xmonad-contrib and xmonad-utils with pacman.
+
+To install taffybar, install four packages with pacman:
+
+    haskell-gi, haskell-gi-base, haskell-gi-overloading, haskell-gtk
+
+Now clone taffybar and install it with cabal.
