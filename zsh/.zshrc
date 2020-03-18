@@ -94,7 +94,7 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Preferred editor for local and remote sessions
 export PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export PATH="$PATH:/home/almagest/.local/bin"
+export PATH="/home/almagest/.local/bin:$PATH"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 # Compilation flags
@@ -108,6 +108,7 @@ export EDITOR="$VISUAL"
 # Define aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias e='emacs'
 alias vimplupdate='sudo vim =PluginInstall +qall'
 alias vols='amixer -D pulse sset Master'
 alias getmusic='youtube-dl -x --audio-format m4a'
@@ -117,11 +118,8 @@ alias plpdfs="wget -A pdf -m -p -E -k -K -np http://prl.korea.ac.kr/\~pronto/hom
 alias checkclass="xprop | grep WM_CLASS"
 alias conph="kdeconnect-cli -n 'Samsung SM-A810S'"
 alias kakaotalk="wine ~/.wine/drive_c/Program\ Files/Kakao/KakaoTalk/KakaoTalk.exe"
-<<<<<<< HEAD
-=======
 alias mahjong="wine ~/.wine/drive_c/Program\ Files/SEGA/MJ_Mahjong/MJ_Launcher.exe"
 alias installstack="curl -sSL https://get.haskellstack.org/ | sh"
->>>>>>> 961e28e41ca2592594ab019ee855e7a771782d2c
 
 # Load Configures
 alias qutecfg="vim ~/.config/qutebrowser/config.py"
