@@ -29,12 +29,12 @@ version :: Version
 version = Version [1,0,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/home/almagest/GDrive/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/bin"
-libdir     = "/home/almagest/GDrive/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/lib/x86_64-linux-ghc-8.8.3/battery-low-1.0.0.0-4I8FXZi5YnRGT14UXkKiDU-battery-low"
-dynlibdir  = "/home/almagest/GDrive/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/lib/x86_64-linux-ghc-8.8.3"
-datadir    = "/home/almagest/GDrive/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/share/x86_64-linux-ghc-8.8.3/battery-low-1.0.0.0"
-libexecdir = "/home/almagest/GDrive/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/libexec/x86_64-linux-ghc-8.8.3/battery-low-1.0.0.0"
-sysconfdir = "/home/almagest/GDrive/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/etc"
+bindir     = "/home/almagest/GitHub/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/bin"
+libdir     = "/home/almagest/GitHub/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/lib/x86_64-linux-ghc-8.8.3/battery-low-1.0.0.0-4I8FXZi5YnRGT14UXkKiDU-battery-low"
+dynlibdir  = "/home/almagest/GitHub/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/lib/x86_64-linux-ghc-8.8.3"
+datadir    = "/home/almagest/GitHub/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/share/x86_64-linux-ghc-8.8.3/battery-low-1.0.0.0"
+libexecdir = "/home/almagest/GitHub/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/libexec/x86_64-linux-ghc-8.8.3/battery-low-1.0.0.0"
+sysconfdir = "/home/almagest/GitHub/backup/xmonad/battery-low/.stack-work/install/x86_64-linux-tinfo6/0cceb95eab3f3b9d8a80f6ca33f0caffc736c0731ff2b773dfe62b90a798635e/8.8.3/etc"
 
 getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "battery_low_bindir") (\_ -> return bindir)

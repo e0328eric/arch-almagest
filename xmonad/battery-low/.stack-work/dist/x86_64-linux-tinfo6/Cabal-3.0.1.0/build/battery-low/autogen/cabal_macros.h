@@ -33,15 +33,15 @@
   (major1) == 1 && (major2) == 6 && (minor) <= 8)
 #endif /* MIN_VERSION_process */
 
-/* tool gcc-9.2.1 */
+/* tool gcc-9.3.0 */
 #ifndef TOOL_VERSION_gcc
-#define TOOL_VERSION_gcc "9.2.1"
+#define TOOL_VERSION_gcc "9.3.0"
 #endif /* TOOL_VERSION_gcc */
 #ifndef MIN_TOOL_VERSION_gcc
 #define MIN_TOOL_VERSION_gcc(major1,major2,minor) (\
   (major1) <  9 || \
-  (major1) == 9 && (major2) <  2 || \
-  (major1) == 9 && (major2) == 2 && (minor) <= 1)
+  (major1) == 9 && (major2) <  3 || \
+  (major1) == 9 && (major2) == 3 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_gcc */
 
 /* tool ghc-8.8.3 */
