@@ -1,0 +1,4 @@
+To install xmonad and taffybar, first install gobject-introspection by pacman.
+Then install xmonad, xmonad-contrib, xmonad-utils, taffybar with stack.
+
+Finally, move build into ~/.xmonad.

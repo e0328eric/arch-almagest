@@ -197,9 +197,9 @@ label = %percentage_used%%
 
 [module/bluetooth]
 type = custom/script
-exec = $HOME/GDrive/backup/polybar/bluetooth.sh
+exec = $HOME/.config/polybar/bluetooth.sh
 interval = 2
-click-left = exec $HOME/GDrive/backup/polybar/toggle_bluetooth.sh
+click-left = exec $HOME/.config/polybar/toggle_bluetooth.sh
 format-padding = -1
 format-background = ${colors.background}
 format-foreground = #ffffff
@@ -234,12 +234,12 @@ tail = true
 label=%output%
 format-underline = ${colors.blue}
 
-exec = $HOME/GDrive/backup/polybar/pulseaudio-control.sh --listen
+exec = $HOME/.config/polybar/pulseaudio-control.sh --listen
 click-left = exec pavucontrol &
-click-right = $HOME/GDrive/backup/polybar/pulseaudio-control.sh --togmute
-click-middle = $HOME/GDrive/backup/polybar/pulseaudio-control.sh --change
-scroll-up = $HOME/GDrive/backup/polybar/pulseaudio-control.sh --up
-scroll-down = $HOME/GDrive/backup/polybar/pulseaudio-control.sh --down
+click-right = $HOME/.config/polybar/pulseaudio-control.sh --togmute
+click-middle = $HOME/.config/polybar/pulseaudio-control.sh --change
+scroll-up = $HOME/.config/polybar/pulseaudio-control.sh --up
+scroll-down = $HOME/.config/polybar/pulseaudio-control.sh --down
 label-padding = 0
 label-foreground = ${colors.foreground}
 

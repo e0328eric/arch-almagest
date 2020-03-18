@@ -198,7 +198,7 @@ set softtabstop=4
 set splitbelow
 set tabstop=4
 set textwidth=0
-set term=rxvt-unicode-256color
+set term=terminator
 set ttimeout
 set ttyfast
 set ttymouse=sgr
@@ -218,6 +218,11 @@ runtime! macros/matchit.vim
 "
 " Colour files called htex like tex
 au BufRead,BufNewFile *.htex set syntax=tex
+
+" Change vim cursor
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 " -----------------------------------------------------------------------------
 " Vim Buffers
