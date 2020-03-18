@@ -198,9 +198,12 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- Run Browser
     , ((modMask .|. shiftMask, xK_Return), spawn "firefox")
 
+<<<<<<< HEAD
     -- Run Emacs
     , ((modMask .|. shiftMask, xK_e), spawn "emacs")
 
+=======
+>>>>>>> 961e28e41ca2592594ab019ee855e7a771782d2c
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
@@ -217,12 +220,15 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. controlMask, xK_Return), spawn "st -e cmus") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
     , ((modMask .|. controlMask, xK_m), spawn "st -e mahjong")
+<<<<<<< HEAD
 
     -- Turn on setting files
     , ((controlMask .|. modMask .|. shiftMask, xK_z), spawn "emacs ~/.zshrc")
     , ((controlMask .|. modMask .|. shiftMask, xK_v), spawn "emacs ~/.vimrc")
     , ((controlMask .|. modMask .|. shiftMask, xK_x), spawn "emacs ~/.xmonad/xmonad.hs")
     , ((controlMask .|. modMask .|. shiftMask, xK_e), spawn "~/.emacs.d/bin/doom sync")
+=======
+>>>>>>> 961e28e41ca2592594ab019ee855e7a771782d2c
 
     -- End of Computer
     , ((modMask .|. shiftMask, xK_c), spawn "check-twice \"Are you sure you want to shutdown?\" \"poweroff\"")

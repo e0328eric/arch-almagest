@@ -1,4 +1,5 @@
 # ~/.xmonad/build
+<<<<<<< HEAD
 #! /bin/sh
 
 exec stack ghc -- \
@@ -9,3 +10,14 @@ exec stack ghc -- \
     -main-is main \
     -v0 \
     -o "$1"
+=======
+#!/bin/sh
+exec stack ghc -- \
+  --make xmonad.hs \
+  -i \
+  -ilib \
+  -fforce-recomp \
+  -main-is main \
+  -v0 \
+  -o "$1"
+>>>>>>> 961e28e41ca2592594ab019ee855e7a771782d2c

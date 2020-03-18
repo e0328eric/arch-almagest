@@ -1,44 +1,45 @@
 !! Colorscheme
 
 ! special
-*.foreground:   #d3d0c8
-*.background:   #2d2d2d
-*.cursorColor:  #d3d0c8
+*.foreground:   #a0a0a0
+*.background:   #121212
+*.cursorColor:  #a0a0a0
 
 ! black
-*.color0:       #2d2d2d
-*.color8:       #747369
+*.color0:       #1b1d1e
+*.color8:       #505354
 
 ! red
-*.color1:       #f2777a
-*.color9:       #f2777a
+*.color1:       #f92672
+*.color9:       #ff5995
 
 ! green
-*.color2:       #99cc99
-*.color10:      #99cc99
+*.color2:       #82b414
+*.color10:      #b6e354
 
 ! yellow
-*.color3:       #ffcc66
-*.color11:      #ffcc66
+*.color3:       #fd971f
+*.color11:      #feed6c
 
 ! blue
-*.color4:       #6699cc
-*.color12:      #6699cc
+*.color4:       #4e82aa
+*.color12:      #0c73c2
 
 ! magenta
-*.color5:       #cc99cc
-*.color13:      #cc99cc
+*.color5:       #8c54fe
+*.color13:      #9e6ffe
 
 ! cyan
 *.color6:       #66cccc
-*.color14:      #66cccc
+*.color14:      #75ebeb
 
 ! white
-*.color7:       #d3d0c8
-*.color15:      #f2f0ec
+*.color7:       #ccccc6
+*.color15:      #f8f8f2
 
 
 !! URxvt Appearance
+<<<<<<< HEAD
 URxvt.font: xft:D2Coding ligature:style=Regular:size=13, \
             xft:Inconsolata Nerd Font Mono:size=13, \
             xft:UbuntuMono Nerd Font:size=13, \
@@ -50,6 +51,19 @@ URxvt.font: xft:D2Coding ligature:style=Regular:size=13, \
             xft:FuraMono Nerd Font:size=13, \
             xft:Robotomono Nerd Font:size=13, \
             xft:Noto Sans CJK KR:size=13, \
+=======
+URxvt.font: xft:D2Coding ligature:style=Regular:size=14, \
+            xft:Inconsolata Nerd Font Mono:size=14, \
+            xft:UbuntuMono Nerd Font:size=14, \
+            xft:UbuntuMono Nerd Font Mono:size=14, \
+            xft:DejaVuSansMono Nerd Font:size=14, \
+            xft:DejaVuSansMono Nerd Font Complete Mono:size=14, \
+            xft:DroidSansMono Nerd Font:size=14, \
+            xft:DroidSansMono Nerd Font Mono:size=14, \
+            xft:FuraMono Nerd Font:size=14, \
+            xft:Robotomono Nerd Font:size=14, \
+            xft:Noto Sans CJK KR:size=14, \
+>>>>>>> 961e28e41ca2592594ab019ee855e7a771782d2c
             xft:Monospace:style=medium:antialias=false
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
