@@ -112,7 +112,7 @@ alias e='emacs'
 alias vimplupdate='sudo vim =PluginInstall +qall'
 alias vols='amixer -D pulse sset Master'
 alias getmusic='youtube-dl -x --audio-format m4a'
-alias gsync='cd ~/GDrive && drive push'
+alias gsync='cd ~/GDrive && grive'
 alias dynamix='google-chrome-stable --disable-web-security --allow-file-access-from-files --allow-file-access --allow-cross-origin-auth-prompt ~/GDrive/Dynamix/index.html'
 alias plpdfs="wget -A pdf -m -p -E -k -K -np http://prl.korea.ac.kr/\~pronto/home/courses/cose212/2019/ && cp -r ~/prl.korea.ac.kr/~pronto/home/courses/cose212/2019 ~/GDrive/Haskell/PL/ && rm -r ~/prl.korea.ac.kr"
 alias checkclass="xprop | grep WM_CLASS"

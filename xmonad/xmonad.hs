@@ -222,12 +222,12 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((controlMask .|. modMask .|. shiftMask, xK_z), spawn "emacs ~/.zshrc")
     , ((controlMask .|. modMask .|. shiftMask, xK_v), spawn "emacs ~/.vimrc")
     , ((controlMask .|. modMask .|. shiftMask, xK_x), spawn "emacs ~/.xmonad/xmonad.hs")
-    , ((controlMask .|. modMask .|. shiftMask, xK_e), spawn "~/.emacs.d/bin/doom sync")
+    , ((controlMask .|. modMask .|. shiftMask, xK_e), spawn "~/.emacs.d/bin/doom refresh")
 
     -- End of Computer
-    , ((modMask .|. shiftMask, xK_c), spawn "check-twice \"Are you sure you want to shutdown?\" \"poweroff\"")
-    , ((modMask .|. shiftMask, xK_v), spawn "check-twice \"Are you sure you want to reboot?\" \"reboot\"")
-    , ((modMask .|. shiftMask, xK_z), spawn "check-twice \"Are you sure you want to suspend?\" \"systemctl suspend -i\"")
+    , ((modMask .|. shiftMask, xK_c), spawn "check-twice.sh \"Are you sure you want to shutdown?\" \"poweroff\"")
+    , ((modMask .|. shiftMask, xK_v), spawn "check-twice.sh \"Are you sure you want to reboot?\" \"reboot\"")
+    , ((modMask .|. shiftMask, xK_z), spawn "check-twice.sh \"Are you sure you want to suspend?\" \"systemctl suspend -i\"")
     , ((modMask .|. shiftMask, xK_x), io (exitWith ExitSuccess))
 
     -- Volume Settings
