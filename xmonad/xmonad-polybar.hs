@@ -8,16 +8,18 @@ Use pacman to install it
 -}
 -- XMonad Modules
 -- Basic Modules
-import           Control.Monad                       ( forM_, join )
+import qualified Codec.Binary.UTF8.String            as UTF8
+import           Control.Monad                       (forM_, join)
 import           Data.Default
-import           Data.Function                       ( on )
-import           Data.List                           ( sortBy )
+import           Data.Function                       (on)
+import           Data.List                           (sortBy)
 import qualified Data.Map                            as M
+import qualified DBus                                as D
+import qualified DBus.Client                         as D
 import           Graphics.X11.ExtraTypes.XF86
 import           System.Exit
 import           System.IO
-import           System.Taffybar.Hooks.PagerHints    ( pagerHints )
-import           XMonad                              hiding ( (|||) )
+import           XMonad                              hiding ((|||))
 import qualified XMonad.StackSet                     as W
 
 -- Actions
@@ -38,44 +40,43 @@ import           XMonad.Hooks.Place
 import           XMonad.Layout.BinarySpacePartition
 import           XMonad.Layout.LayoutBuilder
 import           XMonad.Layout.LayoutCombinators
-import           XMonad.Layout.LimitWindows          ( decreaseLimit,
-                                                       increaseLimit,
-                                                       limitWindows )
-import           XMonad.Layout.MultiToggle           ( EOT (EOT), Toggle (..),
-                                                       mkToggle, single, (??) )
-import           XMonad.Layout.MultiToggle.Instances ( StdTransformers (MIRROR, NBFULL, NOBORDERS) )
-import           XMonad.Layout.Reflect               ( REFLECTX (..),
-                                                       REFLECTY (..),
-                                                       reflectHoriz,
-                                                       reflectVert )
-import           XMonad.Layout.SimpleDecoration      ( shrinkText )
+import           XMonad.Layout.LimitWindows          (decreaseLimit,
+                                                      increaseLimit,
+                                                      limitWindows)
+import           XMonad.Layout.MultiToggle           (EOT (EOT), Toggle (..),
+                                                      mkToggle, single, (??))
+import           XMonad.Layout.MultiToggle.Instances (StdTransformers (MIRROR, NBFULL, NOBORDERS))
+import           XMonad.Layout.Reflect               (REFLECTX (..),
+                                                      REFLECTY (..),
+                                                      reflectHoriz, reflectVert)
+import           XMonad.Layout.SimpleDecoration      (shrinkText)
 import           XMonad.Layout.Spacing
-import qualified XMonad.Layout.ToggleLayouts         as T ( ToggleLayout (Toggle),
-                                                            toggleLayouts )
-import           XMonad.Layout.WindowArranger        ( WindowArrangerMsg (..),
-                                                       windowArrange )
+import qualified XMonad.Layout.ToggleLayouts         as T (ToggleLayout (Toggle),
+                                                           toggleLayouts)
+import           XMonad.Layout.WindowArranger        (WindowArrangerMsg (..),
+                                                      windowArrange)
 
 -- Layouts
 import           XMonad.Layout.Dwindle
-import           XMonad.Layout.GridVariants          ( Grid (Grid) )
-import           XMonad.Layout.IM                    ( Property (Role), withIM )
+import           XMonad.Layout.GridVariants          (Grid (Grid))
+import           XMonad.Layout.IM                    (Property (Role), withIM)
 import           XMonad.Layout.NoBorders
 import           XMonad.Layout.OneBig
-import           XMonad.Layout.Renamed               ( Rename (CutWordsLeft, Replace),
-                                                       renamed )
+import           XMonad.Layout.Renamed               (Rename (CutWordsLeft, Replace),
+                                                      renamed)
 import           XMonad.Layout.ResizableTile
 import           XMonad.Layout.SimplestFloat
 import           XMonad.Layout.Tabbed
 import           XMonad.Layout.ThreeColumns
 import           XMonad.Layout.TwoPane
-import           XMonad.Layout.ZoomRow               ( ZoomMessage (ZoomFullToggle),
-                                                       zoomIn, zoomOut,
-                                                       zoomReset, zoomRow )
+import           XMonad.Layout.ZoomRow               (ZoomMessage (ZoomFullToggle),
+                                                      zoomIn, zoomOut,
+                                                      zoomReset, zoomRow)
 
 -- Util
-import           XMonad.Util.NamedWindows            ( getName )
-import           XMonad.Util.Run                     ( safeSpawn, spawnPipe )
-import           XMonad.Util.SpawnOnce               ( spawnOnce )
+import           XMonad.Util.NamedWindows            (getName)
+import           XMonad.Util.Run                     (safeSpawn, spawnPipe)
+import           XMonad.Util.SpawnOnce               (spawnOnce)
 import           XMonad.Util.WorkspaceCompare
 
 ---------------------------------------------------------------------------------------
@@ -257,12 +258,21 @@ myKeysMouse conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- LogHook
 ---------------------------------------------------------------------------------------
 
-myPP = def { ppLayout = const ""
-           , ppSort = getSortByXineramaRule
-           , ppTitle = const ""
-           , ppTitleSanitize = const ""
-           , ppVisible = wrap "(" ")"
-           }
+myLogHook :: D.Client -> PP
+myLogHook dbus = def
+    { ppOutput = dbusOutput dbus
+    , ppCurrent = wrap ("%{B" ++ bg2 ++ "} ") " %{B-}"
+    , ppVisible = wrap ("%{B" ++ bg1 ++ "} ") " %{B-}"
+    , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
+    , ppHidden = wrap " " " "
+    , ppWsSep = ""
+    , ppSep = " : "
+    , ppTitle = shorten 40
+    }
+  where
+    bg1 = "#3c3836"
+    bg2 = "#504945"
+    red = "#fb4934"
 
 ---------------------------------------------------------------------------------------
 -- Startup Applications
@@ -277,31 +287,54 @@ myStartupHook = do
     spawnOnce "battery-low"
     -- Wallpaper
     spawnOnce "feh --bg-scale ~/wallpapers/lockimage.jpg"
+    -- Polybar Start
+    spawn "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting
     --spawnOnce "~/.script/keysetting_xmodmap.sh"
     -- KDE Connect
     spawn "kdeconnect-indicator"
-    spawn "taffybar"
+
+---------------------------------------------------------------------------------------
+-- DBus
+---------------------------------------------------------------------------------------
+
+dbusOutput :: D.Client -> String -> IO ()
+dbusOutput dbus str = do
+    let signal = (D.signal objectPath interfaceName memberName) {
+            D.signalBody = [D.toVariant $ UTF8.decodeString str]
+        }
+    D.emit dbus signal
+  where
+    objectPath = D.objectPath_ "/org/xmonad/Log"
+    interfaceName = D.interfaceName_ "org.xmonad.Log"
+    memberName = D.memberName_ "Update"
+
+---------------------------------------------------------------------------------------
+-- Main
+---------------------------------------------------------------------------------------
 
 main :: IO ()
 main = do
-    xmonad $ ewmh $ pagerHints $ defaultConfig
-      { modMask = mod4Mask
-      , layoutHook = myLayout
-      , workspaces = myWorkspaces
-      , handleEventHook = handleEventHook def <+> HM.docksEventHook
-      , logHook = return ()
-      , manageHook = placeHook (fixed (0.5, 0.3))
-                  <+> HM.manageDocks
-                  <+> myManageHook
-                  <+> myManageHook'
-                  <+> manageHook def
-      , terminal = "st"
-      , borderWidth = 3
-      , keys = myKeysKeyBoard
-      , mouseBindings = myKeysMouse
-      , startupHook = myStartupHook
-      -- This is the color of the borders of the windows themselves.
-      , normalBorderColor  = "#2f3d44"
-      , focusedBorderColor = "#268bd2"
-      }
+    dbus <- D.connectSession
+    D.requestName dbus (D.busName_ "org.xmonad.Log")
+        [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
+    xmonad $ ewmh def
+        { modMask = mod4Mask
+        , layoutHook = myLayout
+        , workspaces = myWorkspaces
+        , handleEventHook = handleEventHook def <+> HM.docksEventHook
+        , logHook = dynamicLogWithPP (myLogHook dbus)
+        , manageHook = placeHook (fixed (0.5, 0.3))
+                    <+> HM.manageDocks
+                    <+> myManageHook
+                    <+> myManageHook'
+                    <+> manageHook def
+        , terminal = "st"
+        , borderWidth = 3
+        , keys = myKeysKeyBoard
+        , mouseBindings = myKeysMouse
+        , startupHook = myStartupHook
+        -- This is the color of the borders of the windows themselves.
+        , normalBorderColor  = "#2f3d44"
+        , focusedBorderColor = "#268bd2"
+        }

@@ -23,6 +23,8 @@
 (package! fira-code-mode)
 (package! disable-mouse)
 (package! haskell-mode)
+(package! lua-mode)
+(package! rust-mode)
 (package! evil-multiedit)
 
 ;; To install a package directly from a particular repo, you'll need to specify

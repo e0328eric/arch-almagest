@@ -95,6 +95,8 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="/home/almagest/.local/bin:$PATH"
+export PATH="/home/almagest/.cabal/bin:$PATH"
+export PATH="/home/almagest/.cargo/bin:$PATH"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 # Compilation flags
@@ -120,6 +122,7 @@ alias conph="kdeconnect-cli -n 'Samsung SM-A810S'"
 alias kakaotalk="wine ~/.wine/drive_c/Program\ Files/Kakao/KakaoTalk/KakaoTalk.exe"
 alias mahjong="wine ~/.wine/drive_c/Program\ Files/SEGA/MJ_Mahjong/MJ_Launcher.exe"
 alias installstack="curl -sSL https://get.haskellstack.org/ | sh"
+alias autohaskell="stack exec ghcid"
 
 # Load Configures
 alias qutecfg="vim ~/.config/qutebrowser/config.py"

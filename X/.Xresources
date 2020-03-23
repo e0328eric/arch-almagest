@@ -39,7 +39,6 @@
 
 
 !! URxvt Appearance
-<<<<<<< HEAD
 URxvt.font: xft:D2Coding ligature:style=Regular:size=13, \
             xft:Inconsolata Nerd Font Mono:size=13, \
             xft:UbuntuMono Nerd Font:size=13, \
@@ -51,19 +50,6 @@ URxvt.font: xft:D2Coding ligature:style=Regular:size=13, \
             xft:FuraMono Nerd Font:size=13, \
             xft:Robotomono Nerd Font:size=13, \
             xft:Noto Sans CJK KR:size=13, \
-=======
-URxvt.font: xft:D2Coding ligature:style=Regular:size=14, \
-            xft:Inconsolata Nerd Font Mono:size=14, \
-            xft:UbuntuMono Nerd Font:size=14, \
-            xft:UbuntuMono Nerd Font Mono:size=14, \
-            xft:DejaVuSansMono Nerd Font:size=14, \
-            xft:DejaVuSansMono Nerd Font Complete Mono:size=14, \
-            xft:DroidSansMono Nerd Font:size=14, \
-            xft:DroidSansMono Nerd Font Mono:size=14, \
-            xft:FuraMono Nerd Font:size=14, \
-            xft:Robotomono Nerd Font:size=14, \
-            xft:Noto Sans CJK KR:size=14, \
->>>>>>> 961e28e41ca2592594ab019ee855e7a771782d2c
             xft:Monospace:style=medium:antialias=false
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0

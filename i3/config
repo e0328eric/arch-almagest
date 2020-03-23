@@ -67,10 +67,10 @@ bindsym Control+Mod1+s exec --no-startup-id dmenu_extended_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # End of Computer
-bindsym $mod+Shift+x exec check-twice "Are you sure you want to shutdown?" "poweroff"
-bindsym $mod+Shift+z exec check-twice "Are you sure you want to reboot?" "reboot"
-bindsym $mod+Shift+c exec check-twice "Are you sure you want to suspend?" "systemctl suspend -i"
-bindsym $mod+Shift+e exec check-twice "Are you sure you want to logout?" "i3-msg exit"
+bindsym $mod+Shift+c exec check-twice "Are you sure you want to shutdown?" "poweroff"
+bindsym $mod+Shift+v exec check-twice "Are you sure you want to reboot?" "reboot"
+bindsym $mod+Shift+z exec check-twice "Are you sure you want to suspend?" "systemctl suspend -i"
+bindsym $mod+Shift+x exec check-twice "Are you sure you want to logout?" "i3-msg exit"
 
 # change focus
 bindsym $mod+a focus left
@@ -230,7 +230,7 @@ client.urgent               $urgentBgColor       $urgentBgColor       $textColor
 #}
 
 # Open a Browser
-bindsym $mod+Shift+Return exec qutebrowser
+bindsym $mod+Shift+Return exec firefox
 
 # Screen Shots
 bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
@@ -243,4 +243,4 @@ exec_always --no-startup-id feh --bg-scale ~/GDrive/wallpapers/lockimage.jpg
 # Change Key settings
 exec_always ~/GDrive/backup/keysetting_xmodmap.sh
 
-exec_always --no-startup-id /home/almagest/GDrive/backup/polybar/launch.sh
+exec_always --no-startup-id /home/almagest/.config/polybar/launch.sh

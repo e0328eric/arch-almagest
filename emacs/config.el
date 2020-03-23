@@ -21,6 +21,9 @@
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "Fira Code Medium" :size 16))
 
+;; Default Tab Width
+(setq-default tab-width 4)
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -58,3 +61,5 @@
 
 (require 'evil-multiedit)
 (evil-multiedit-default-keybinds)
+
+(custom-set-variables '(haskell-stylish-on-save t))
