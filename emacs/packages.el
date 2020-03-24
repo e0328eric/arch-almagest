@@ -26,6 +26,7 @@
 (package! lua-mode)
 (package! rust-mode)
 (package! evil-multiedit)
+(package! auto-complete)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Fraction
+# key: frac
+# --
+{$1\over $2}$0

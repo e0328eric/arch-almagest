@@ -126,7 +126,7 @@ myManageHook = composeAll
     , className =? "Thunar"           --> doFloat
     , className =? "Pcmanfm"          --> doFloat
     , className =? "Civ6Sub"          --> unFloat
-    , className =? "qutebrowser"      --> unFloat
+    , className =? "firefox"      --> unFloat
     , className =? "scrcpy"           --> doFloat
     , className =? "Kakaotalk.exe"    --> doFloat
     -- Used by Chromium developer tools, maybe other apps as well
@@ -287,7 +287,7 @@ myStartupHook = do
     -- Alert Low Battery
     spawnOnce "battery-low"
     -- Wallpaper
-    spawnOnce "feh --bg-scale ~/wallpapers/wallpaper.png"
+    spawnOnce "feh --bg-scale ~/wallpapers/railroad-forest.jpg"
     -- Polybar Start
     spawn "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting

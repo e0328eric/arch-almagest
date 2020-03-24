@@ -35,7 +35,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -62,4 +62,11 @@
 (require 'evil-multiedit)
 (evil-multiedit-default-keybinds)
 
+(setq ac-auto-start t)
+
 (custom-set-variables '(haskell-stylish-on-save t))
+
+;; Allow Nested Snippet
+(setq yas-triggers-in-field t)
+
+(global-prettify-symbols-mode)
