@@ -8,15 +8,17 @@ Use pacman to install it
 -}
 -- XMonad Modules
 -- Basic Modules
+import qualified Codec.Binary.UTF8.String            as UTF8
 import           Control.Monad                       ( forM_, join )
 import           Data.Default
 import           Data.Function                       ( on )
 import           Data.List                           ( sortBy )
 import qualified Data.Map                            as M
+import qualified DBus                                as D
+import qualified DBus.Client                         as D
 import           Graphics.X11.ExtraTypes.XF86
 import           System.Exit
 import           System.IO
-import           System.Taffybar.Hooks.PagerHints    ( pagerHints )
 import           XMonad                              hiding ( (|||) )
 import qualified XMonad.StackSet                     as W
 
@@ -257,12 +259,21 @@ myKeysMouse conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- LogHook
 ---------------------------------------------------------------------------------------
 
-myPP = def { ppLayout = const ""
-           , ppSort = getSortByXineramaRule
-           , ppTitle = const ""
-           , ppTitleSanitize = const ""
-           , ppVisible = wrap "(" ")"
-           }
+myLogHook :: D.Client -> PP
+myLogHook dbus = def
+    { ppOutput = dbusOutput dbus
+    , ppCurrent = wrap ("%{B" ++ bg2 ++ "} ") " %{B-}"
+    , ppVisible = wrap ("%{B" ++ bg1 ++ "} ") " %{B-}"
+    , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
+    , ppHidden = wrap " " " "
+    , ppWsSep = ""
+    , ppSep = " : "
+    , ppTitle = shorten 40
+    }
+  where
+    bg1 = "#3c3836"
+    bg2 = "#504945"
+    red = "#fb4934"
 
 ---------------------------------------------------------------------------------------
 -- Startup Applications
@@ -276,32 +287,55 @@ myStartupHook = do
     -- Alert Low Battery
     spawnOnce "battery-low"
     -- Wallpaper
-    spawnOnce "feh --bg-scale ~/wallpapers/lockimage.jpg"
+    spawnOnce "feh --bg-scale ~/wallpapers/wallpaper.png"
+    -- Polybar Start
+    spawn "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting
     --spawnOnce "~/.script/keysetting_xmodmap.sh"
     -- KDE Connect
     spawn "kdeconnect-indicator"
-    spawn "taffybar"
+
+---------------------------------------------------------------------------------------
+-- DBus
+---------------------------------------------------------------------------------------
+
+dbusOutput :: D.Client -> String -> IO ()
+dbusOutput dbus str = do
+    let signal = (D.signal objectPath interfaceName memberName) {
+            D.signalBody = [D.toVariant $ UTF8.decodeString str]
+        }
+    D.emit dbus signal
+  where
+    objectPath = D.objectPath_ "/org/xmonad/Log"
+    interfaceName = D.interfaceName_ "org.xmonad.Log"
+    memberName = D.memberName_ "Update"
+
+---------------------------------------------------------------------------------------
+-- Main
+---------------------------------------------------------------------------------------
 
 main :: IO ()
 main = do
-    xmonad $ ewmh $ pagerHints $ defaultConfig
-      { modMask = mod4Mask
-      , layoutHook = myLayout
-      , workspaces = myWorkspaces
-      , handleEventHook = handleEventHook def <+> HM.docksEventHook
-      , logHook = return ()
-      , manageHook = placeHook (fixed (0.5, 0.3))
-                  <+> HM.manageDocks
-                  <+> myManageHook
-                  <+> myManageHook'
-                  <+> manageHook def
-      , terminal = "st"
-      , borderWidth = 3
-      , keys = myKeysKeyBoard
-      , mouseBindings = myKeysMouse
-      , startupHook = myStartupHook
-      -- This is the color of the borders of the windows themselves.
-      , normalBorderColor  = "#2f3d44"
-      , focusedBorderColor = "#268bd2"
-      }
+    dbus <- D.connectSession
+    D.requestName dbus (D.busName_ "org.xmonad.Log")
+        [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
+    xmonad $ ewmh def
+        { modMask = mod4Mask
+        , layoutHook = myLayout
+        , workspaces = myWorkspaces
+        , handleEventHook = handleEventHook def <+> HM.docksEventHook
+        , logHook = dynamicLogWithPP (myLogHook dbus)
+        , manageHook = placeHook (fixed (0.5, 0.3))
+                    <+> HM.manageDocks
+                    <+> myManageHook
+                    <+> myManageHook'
+                    <+> manageHook def
+        , terminal = "st"
+        , borderWidth = 3
+        , keys = myKeysKeyBoard
+        , mouseBindings = myKeysMouse
+        , startupHook = myStartupHook
+        -- This is the color of the borders of the windows themselves.
+        , normalBorderColor  = "#2f3d44"
+        , focusedBorderColor = "#268bd2"
+        }
