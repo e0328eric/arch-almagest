@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Normal Braket
+# key: lrr
+# --
+($1)$0

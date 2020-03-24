@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Normal Braket (Big)
+# key: LRR
+# --
+\left($1\right)$0

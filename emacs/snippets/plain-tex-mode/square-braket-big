@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Square Braket (Big)
+# key: LRS
+# --
+\left[$1\right]$0
