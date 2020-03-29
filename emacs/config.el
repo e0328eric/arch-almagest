@@ -20,7 +20,8 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "Fira Code Medium" :size 16))
-
+(set-frame-parameter (selected-frame) 'alpha '(88 . 88))
+(add-to-list 'default-frame-alist '(alpha . (88 . 88)))
 ;; Default Tab Width
 (setq-default tab-width 4)
 
@@ -71,14 +72,18 @@
 
 (global-prettify-symbols-mode)
 
-(add-hook 'rust-mode-hook 'cargo-minor-mode)
-
-(add-hook 'rust-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c TAB") #'rust-format-buffer)))
-(setq racer-cmd "~/.cargo/bin/racer") ;; Rustup binaries PATH
-(setq racer-rust-src-path "~/.doom.d/rust-code/src") ;; Rust source code PATH
+(global-aggressive-indent-mode 1)
+(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 
 (add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode)
+(add-hook 'rust-mode-hook #'eldoc-mode)
+(add-hook 'rust-mode-hook #'company-mode)
+
+(require 'rust-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
+
+(use-package color-theme-approximate
+  :config
+  (color-theme-approximate-on)
+  )

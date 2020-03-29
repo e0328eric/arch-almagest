@@ -287,7 +287,7 @@ myStartupHook = do
     -- Alert Low Battery
     spawnOnce "battery-low"
     -- Wallpaper
-    spawnOnce "feh --bg-scale ~/wallpapers/railroad-forest.jpg"
+    spawnOnce "feh --bg-scale ~/wallpapers/zelda.jpg"
     -- Polybar Start
     spawn "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting
