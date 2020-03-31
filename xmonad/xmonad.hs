@@ -161,7 +161,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_e), windows W.focusMaster)
     , ((modMask .|. shiftMask, xK_Tab), windows W.swapDown)
     , ((mod1Mask .|. shiftMask, xK_Tab), windows W.swapUp)
-    , ((modMask .|. controlMask, xK_e), windows W.swapMaster)
+    , ((modMask .|. shiftMask, xK_e), windows W.swapMaster)
 
     , ((modMask .|. controlMask .|. mod1Mask, xK_w), sendMessage Arrange)
     , ((modMask .|. controlMask .|. mod1Mask, xK_s), sendMessage DeArrange)
@@ -200,7 +200,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_Return), spawn "firefox")
 
     -- Run Emacs
-    , ((modMask .|. shiftMask, xK_e), spawn "emacs")
+    , ((modMask .|. controlMask, xK_e), spawn "emacs")
 
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
@@ -220,9 +220,9 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. controlMask, xK_m), spawn "st -e mahjong")
 
     -- Turn on setting files
-    , ((controlMask .|. modMask .|. shiftMask, xK_z), spawn "emacs ~/.zshrc")
-    , ((controlMask .|. modMask .|. shiftMask, xK_v), spawn "emacs ~/.vimrc")
-    , ((controlMask .|. modMask .|. shiftMask, xK_x), spawn "emacs ~/.xmonad/xmonad.hs")
+    , ((controlMask .|. modMask .|. shiftMask, xK_z), spawn "st -e vim ~/.zshrc")
+    , ((controlMask .|. modMask .|. shiftMask, xK_v), spawn "st -e vim ~/.vimrc")
+    , ((controlMask .|. modMask .|. shiftMask, xK_x), spawn "st -e vim ~/.xmonad/xmonad.hs")
     , ((controlMask .|. modMask .|. shiftMask, xK_e), spawn "~/.emacs.d/bin/doom refresh")
 
     -- End of Computer

@@ -87,13 +87,16 @@ Plugin 'reedes/vim-thematic'
 
 Plugin 'ervandew/supertab'
 
-Plugin 'vim-python/python-syntax'
-
 " Coloring Hex code
 Plugin 'lilydjwg/colorizer'
 
+" YouCompleteMe
+Plugin 'ycm-core/YouCompleteMe'
+
+" Braket Matching
+Plugin 'jiangmiao/auto-pairs'
+
 " Languages and file types.
-Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'chr4/nginx.vim'
 Plugin 'chrisbra/csv.vim'
 Plugin 'ekalinin/dockerfile.vim'
@@ -104,12 +107,10 @@ Plugin 'lifepillar/pgsql.vim'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-liquid'
 Plugin 'tpope/vim-rails'
 Plugin 'wgwoods/vim-systemd-syntax'
-"Plugin 'lervag/vimtex'
 Plugin 'neovimhaskell/haskell-vim'
 
 call vundle#end()
@@ -242,19 +243,19 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 map <Leader>tm :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>
 
 " Open new buffer
-nmap <leader>T :enew<cr>
+nmap <leader>bn :enew<cr>
 
 " Next Buffer
-nmap <leader>l :bnext<CR>
+nmap <leader>bl :bnext<CR>
 
-" Previous  Buffer
-nmap <leader>h :bprevious<CR>
+" Previous Buffer
+nmap <leader>bh :bprevious<CR>
 
 " Close Current Buffer
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>bd :bp <BAR> bd #<CR>
 
 " ls
-nmap <leader>bl :ls<CR>
+nmap <leader>ls :ls<CR>
 
 " Haskell Auto Indent
 nmap <leader>hs :%!stylish-haskell<CR>
@@ -482,3 +483,11 @@ let g:haskell_indent_before_where = 2
 let g:haskell_indent_after_bare_where = 2
 let g:haskell_indent_do = 3
 let g:haskell_indent_guard = 2
+
+
+"==============================================================================
+" ycm-core/YouCompleteMe
+"==============================================================================
+
+noremap <leader>gto :YcmCompleter GoTo<CR>
+noremap <leader>gt :YcmCompleter GetType<CR>
