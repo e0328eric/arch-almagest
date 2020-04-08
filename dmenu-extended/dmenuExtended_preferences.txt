@@ -74,6 +74,8 @@
         "docxxls",
         "xlsx",
         "md",
+        "rs",
+        "hs",
         "html",
         "sublime-project",
         "docx",

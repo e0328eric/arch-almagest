@@ -81,6 +81,38 @@ import           XMonad.Util.SpawnOnce               ( spawnOnce )
 import           XMonad.Util.WorkspaceCompare
 
 ---------------------------------------------------------------------------------------
+-- Main
+---------------------------------------------------------------------------------------
+
+myterm = "konsole"
+
+main :: IO ()
+main = do
+    dbus <- D.connectSession
+    D.requestName dbus (D.busName_ "org.xmonad.Log")
+        [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
+    xmonad $ ewmh def
+        { modMask = mod4Mask
+        , layoutHook = myLayout
+        , workspaces = myWorkspaces
+        , handleEventHook = handleEventHook def <+> HM.docksEventHook
+        , logHook = dynamicLogWithPP (myLogHook dbus)
+        , manageHook = placeHook (fixed (0.5, 0.3))
+                    <+> HM.manageDocks
+                    <+> myManageHook
+                    <+> myManageHook'
+                    <+> manageHook def
+        , terminal =  myterm
+        , borderWidth = 3
+        , keys = myKeysKeyBoard
+        , mouseBindings = myKeysMouse
+        , startupHook = myStartupHook
+        -- This is the color of the borders of the windows themselves.
+        , normalBorderColor  = "#2f3d44"
+        , focusedBorderColor = "#268bd2"
+        }
+
+---------------------------------------------------------------------------------------
 -- Layouts
 ---------------------------------------------------------------------------------------
 
@@ -126,7 +158,8 @@ myManageHook = composeAll
     , className =? "Thunar"           --> doFloat
     , className =? "Pcmanfm"          --> doFloat
     , className =? "Civ6Sub"          --> unFloat
-    , className =? "firefox"      --> unFloat
+    , className =? "firefox"          --> unFloat
+    , className =? "naver-whale"      --> unFloat
     , className =? "scrcpy"           --> doFloat
     , className =? "Kakaotalk.exe"    --> doFloat
     -- Used by Chromium developer tools, maybe other apps as well
@@ -197,7 +230,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_semicolon), sendMessage MirrorExpand)
 
     -- Run Browser
-    , ((modMask .|. shiftMask, xK_Return), spawn "firefox")
+    , ((modMask .|. shiftMask, xK_Return), spawn "naver-whale-stable")
 
     -- Run Emacs
     , ((modMask .|. controlMask, xK_e), spawn "emacs")
@@ -214,15 +247,15 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_F3), spawn "krusader")
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- albert
-    , ((modMask, xK_f), spawn "st -e ranger") -- ranger
-    , ((modMask .|. controlMask, xK_Return), spawn "st -e cmus") -- terminal based music player
+    --, ((modMask, xK_f), spawn $ myterm ++ "-e ranger") -- ranger
+    , ((modMask .|. controlMask, xK_Return), spawn $ "konsole -e cmus") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
-    , ((modMask .|. controlMask, xK_m), spawn "st -e mahjong")
+    --, ((modMask .|. controlMask, xK_m), spawn $ myterm ++ "-e mahjong")
 
     -- Turn on setting files
-    , ((controlMask .|. modMask .|. shiftMask, xK_z), spawn "st -e vim ~/.zshrc")
-    , ((controlMask .|. modMask .|. shiftMask, xK_v), spawn "st -e vim ~/.vimrc")
-    , ((controlMask .|. modMask .|. shiftMask, xK_x), spawn "st -e vim ~/.xmonad/xmonad.hs")
+    , ((controlMask .|. modMask .|. shiftMask, xK_z), spawn $ "konsole -e vim ~/.zshrc")
+    , ((controlMask .|. modMask .|. shiftMask, xK_v), spawn $ "konsole -e vim ~/.vimrc")
+    , ((controlMask .|. modMask .|. shiftMask, xK_x), spawn $ "konsole -e vim ~/.xmonad/xmonad.hs")
     , ((controlMask .|. modMask .|. shiftMask, xK_e), spawn "~/.emacs.d/bin/doom refresh")
 
     -- End of Computer
@@ -309,33 +342,3 @@ dbusOutput dbus str = do
     objectPath = D.objectPath_ "/org/xmonad/Log"
     interfaceName = D.interfaceName_ "org.xmonad.Log"
     memberName = D.memberName_ "Update"
-
----------------------------------------------------------------------------------------
--- Main
----------------------------------------------------------------------------------------
-
-main :: IO ()
-main = do
-    dbus <- D.connectSession
-    D.requestName dbus (D.busName_ "org.xmonad.Log")
-        [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
-    xmonad $ ewmh def
-        { modMask = mod4Mask
-        , layoutHook = myLayout
-        , workspaces = myWorkspaces
-        , handleEventHook = handleEventHook def <+> HM.docksEventHook
-        , logHook = dynamicLogWithPP (myLogHook dbus)
-        , manageHook = placeHook (fixed (0.5, 0.3))
-                    <+> HM.manageDocks
-                    <+> myManageHook
-                    <+> myManageHook'
-                    <+> manageHook def
-        , terminal = "st"
-        , borderWidth = 3
-        , keys = myKeysKeyBoard
-        , mouseBindings = myKeysMouse
-        , startupHook = myStartupHook
-        -- This is the color of the borders of the windows themselves.
-        , normalBorderColor  = "#2f3d44"
-        , focusedBorderColor = "#268bd2"
-        }

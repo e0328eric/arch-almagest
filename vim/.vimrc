@@ -31,9 +31,6 @@ Plugin 'tmux-plugins/vim-tmux-focus-events'
 " Navigate and manipulate files in a tree view.
 Plugin 'scrooloose/nerdtree'
 
-" Launch Ranger from Vim.
-Plugin 'francoiscabrol/ranger.vim'
-
 " Run a diff on 2 directories.
 Plugin 'will133/vim-dirdiff'
 
@@ -256,6 +253,15 @@ nmap <leader>bd :bp <BAR> bd #<CR>
 
 " ls
 nmap <leader>ls :ls<CR>
+
+" Window configs
+nmap <leader>wv <C-w>v
+nmap <leader>ws <C-w>S
+nmap <leader>wq <C-w>q
+nmap <leader>wh <C-w>h
+nmap <leader>wj <C-w>j
+nmap <leader>wk <C-w>k
+nmap <leader>wl <C-w>l
 
 " Haskell Auto Indent
 nmap <leader>hs :%!stylish-haskell<CR>
@@ -484,10 +490,18 @@ let g:haskell_indent_after_bare_where = 2
 let g:haskell_indent_do = 3
 let g:haskell_indent_guard = 2
 
-
 "==============================================================================
 " ycm-core/YouCompleteMe
 "==============================================================================
 
-noremap <leader>gto :YcmCompleter GoTo<CR>
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+noremap <leader>gto :YcmCompleter GetDoc<CR>
 noremap <leader>gt :YcmCompleter GetType<CR>
+
+"==============================================================================
+" jiangmiao/auto-pairs
+"==============================================================================
+
+let g:AutoPairsShortcutFastWrap = '<C-]>'
