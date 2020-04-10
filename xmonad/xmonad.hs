@@ -230,7 +230,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_semicolon), sendMessage MirrorExpand)
 
     -- Run Browser
-    , ((modMask .|. shiftMask, xK_Return), spawn "naver-whale-stable")
+    , ((modMask .|. shiftMask, xK_Return), spawn "firefox")
 
     -- Run Emacs
     , ((modMask .|. controlMask, xK_e), spawn "emacs")
@@ -313,8 +313,7 @@ myLogHook dbus = def
 ---------------------------------------------------------------------------------------
 
 myStartupHook = do
-    -- Transparent Terminal
-    spawn "compton"--backend xrender --xrender-sync --xrender-sync-fence"
+    spawn "compton"
     -- screen locking
     spawnOnce "light-locker"
     -- Alert Low Battery
