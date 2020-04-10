@@ -43,8 +43,8 @@ fi
 get_session(){
 	local dbus_args=(--sh-syntax --exit-with-session)
 	case $1 in
-		xmonad) dbus_args+=(xmonad) ;;
 		awesome) dbus_args+=(awesome) ;;
+		xmonad) dbus_args+=(xmonad) ;;
 		bspwm) dbus_args+=(bspwm-session) ;;
 		budgie) dbus_args+=(budgie-desktop) ;;
 		cinnamon) dbus_args+=(cinnamon-session) ;;
