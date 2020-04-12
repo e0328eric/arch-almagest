@@ -313,7 +313,7 @@ myLogHook dbus = def
 ---------------------------------------------------------------------------------------
 
 myStartupHook = do
-    spawn "compton"
+    spawn "compton -b --config $HOME/.config/compton/compton.conf"
     -- screen locking
     spawnOnce "light-locker"
     -- Alert Low Battery
