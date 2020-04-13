@@ -269,6 +269,10 @@ nmap <leader>hs :%!stylish-haskell<CR>
 " Seamlessly treat visual lines as actual lines when moving around.
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
+nmap <C-Left> <C-o>h
+nmap <C-Right> <C-o>l
+inoremap <C-Left> <C-o>h
+inoremap <C-Right> <C-o>l
 
 " Move test top while in insert mode
 inoremap <C-S-t> <C-o>zt
