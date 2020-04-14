@@ -316,6 +316,8 @@ myStartupHook = do
     spawn "compton -b --config $HOME/.config/compton/compton.conf"
     -- screen locking
     spawnOnce "light-locker"
+    -- pcloud
+    spawnOnce "pcloud"
     -- Alert Low Battery
     spawnOnce "battery-low"
     -- Wallpaper
