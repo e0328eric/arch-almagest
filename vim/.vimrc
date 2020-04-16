@@ -94,7 +94,6 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 
 " Languages and file types.
-Plugin 'chr4/nginx.vim'
 Plugin 'chrisbra/csv.vim'
 Plugin 'ekalinin/dockerfile.vim'
 Plugin 'elixir-editors/vim-elixir'
@@ -109,6 +108,7 @@ Plugin 'tpope/vim-liquid'
 Plugin 'tpope/vim-rails'
 Plugin 'wgwoods/vim-systemd-syntax'
 Plugin 'neovimhaskell/haskell-vim'
+Plugin 'iamcco/markdown-preview.nvim'
 
 call vundle#end()
 filetype plugin indent on

@@ -237,8 +237,7 @@ bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures
 bindsym Shift+Print exec scrot -u '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
 
 # Change Background
-#exec_always --no-startup-id feh --randomize --bg-scale ~/GDrive/wallpapers/*.jpg
-exec_always --no-startup-id feh --bg-scale ~/GDrive/wallpapers/lockimage.jpg
+exec_always --no-startup-id feh --bg-scale ~/wallpapers/zelda.jpg
 
 # Change Key settings
 exec_always ~/GDrive/backup/keysetting_xmodmap.sh

@@ -230,7 +230,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_semicolon), sendMessage MirrorExpand)
 
     -- Run Browser
-    , ((modMask .|. shiftMask, xK_Return), spawn "firefox")
+    , ((modMask .|. shiftMask, xK_Return), spawn "naver-whale-stable")
 
     -- Run Emacs
     , ((modMask .|. controlMask, xK_e), spawn "emacs")
@@ -317,7 +317,7 @@ myStartupHook = do
     -- screen locking
     spawnOnce "light-locker"
     -- pcloud
-    spawnOnce "pcloud"
+    spawnOnce "nextcloud"
     -- Alert Low Battery
     spawnOnce "battery-low"
     -- Wallpaper
