@@ -19,20 +19,28 @@ font pango:Noto Sans CJK KR 9
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# Border Config
+default_border pixel
+default_border pixel 3
+
+# Gaps
+gaps inner 10
+gaps outer 0
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock -- i3lock-alma
-bindsym $mod+Shift+l exec check-twice "Are you sure you want to lock?" "i3lock-alma"
+bindsym $mod+Shift+l exec check-twice.sh "Are you sure you want to lock?" "i3lock-alma"
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
 # Load compton
-exec_always --no-startup-id compton
+exec_always --no-startup-id compton -b --config $HOME/.config/compton/compton.conf
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -49,13 +57,13 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # launch ranger
-bindsym $mod+f exec i3-sensible-terminal -e ranger
+#bindsym $mod+f exec i3-sensible-terminal -e ranger
 
 # start dmenu (a program launcher)
 # You must install dmenu-extended-git at AUR.
@@ -67,10 +75,10 @@ bindsym Control+Mod1+s exec --no-startup-id dmenu_extended_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # End of Computer
-bindsym $mod+Shift+c exec check-twice "Are you sure you want to shutdown?" "poweroff"
-bindsym $mod+Shift+v exec check-twice "Are you sure you want to reboot?" "reboot"
-bindsym $mod+Shift+z exec check-twice "Are you sure you want to suspend?" "systemctl suspend -i"
-bindsym $mod+Shift+x exec check-twice "Are you sure you want to logout?" "i3-msg exit"
+bindsym $mod+Shift+c exec check-twice.sh "Are you sure you want to shutdown?" "poweroff"
+bindsym $mod+Shift+v exec check-twice.sh "Are you sure you want to reboot?" "reboot"
+bindsym $mod+Shift+z exec check-twice.sh "Are you sure you want to suspend?" "systemctl suspend -i"
+bindsym $mod+Shift+x exec check-twice.sh "Are you sure you want to logout?" "i3-msg exit"
 
 # change focus
 bindsym $mod+a focus left
@@ -79,10 +87,10 @@ bindsym $mod+d focus right
 bindsym $mod+w focus up
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left focus left
-bindsym $mod+Shift+Down focus down
-bindsym $mod+Shift+Up focus up
-bindsym $mod+Shift+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+a move left
@@ -91,10 +99,10 @@ bindsym $mod+Shift+d move right
 bindsym $mod+Shift+w move up
 
 # alternatively, you can use the cursor keys:
-bindsym Mod1+Shift+Left move left
-bindsym Mod1+Shift+Down move down
-bindsym Mod1+Shift+Up move up
-bindsym Mod1+Shift+Right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -103,7 +111,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+Shift+f fullscreen toggle
+bindsym $mod+Shift+e fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+j layout stacking
@@ -111,16 +119,16 @@ bindsym $mod+k layout tabbed
 bindsym $mod+l layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+Mod1+space focus mode_toggle
+bindsym $mod+Shift+t focus mode_toggle
 
 # focus the parent container
-bindsym $mod+semicolon focus parent
+bindsym $mod+q focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Control+q focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -199,18 +207,27 @@ bindsym Mod1+Shift+Control+s resize shrink height 10 px or 10 ppt
 bindsym Mod1+Shift+Control+d resize grow width 10 px or 10 ppt
 bindsym Mod1+Shift+Control+w resize grow height 10 px or 10 ppt
 
+# Use Arrow Keys
+bindsym Mod1+Shift+Left resize shrink width 1 px or 1 ppt
+bindsym Mod1+Shift+Down resize shrink height 1 px or 1 ppt
+bindsym Mod1+Shift+Right resize grow width 1 px or 1 ppt
+bindsym Mod1+Shift+Up resize grow height 1 px or 1 ppt
+bindsym Mod1+Shift+Control+Left resize shrink width 10 px or 10 ppt
+bindsym Mod1+Shift+Control+Down resize shrink height 10 px or 10 ppt
+bindsym Mod1+Shift+Control+Right resize grow width 10 px or 10 ppt
+bindsym Mod1+Shift+Control+Up resize grow height 10 px or 10 ppt
 
 # Color Variables
-set $bgColor #2f343f
-set $inactiveBgColor #2f343f
+set $bgColor #268bd2
+set $inactiveBgColor #2f3d44
 set $textColor #f3f4f5
 set $inactiveTextColor #676e7d
 set $urgentBgColor #e53935
 
 # Window Colors
 #                           border               background           text                   indicator
-client.focused              $bgColor             $bgColor             $textColor             #f867b6
-client.unfocused            $inactiveBgColor     $inactiveBgColor     $inactiveTextColor     #f867b6
+client.focused              $bgColor             $bgColor             $textColor             #268bd2
+client.unfocused            $inactiveBgColor     $inactiveBgColor     $inactiveTextColor     #2f3d44
 client.focused_inactive     $inactiveBgColor     $inactiveBgColor     $inactiveTextColor     #f867b6
 client.urgent               $urgentBgColor       $urgentBgColor       $textColor             #f867b6
 
@@ -230,16 +247,17 @@ client.urgent               $urgentBgColor       $urgentBgColor       $textColor
 #}
 
 # Open a Browser
-bindsym $mod+Shift+Return exec firefox
+bindsym $mod+Shift+Return exec naver-whale-stable
 
 # Screen Shots
-bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
-bindsym Shift+Print exec scrot -u '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+bindsym Control+Print exec spectacle -r
+bindsym Control+Shift+Print exec spectacle -u
+bindsym Print exec spectacle
 
 # Change Background
 exec_always --no-startup-id feh --bg-scale ~/wallpapers/zelda.jpg
 
 # Change Key settings
-exec_always ~/GDrive/backup/keysetting_xmodmap.sh
+exec_always ~/.config/i3/keysetting_xmodmap.sh
 
 exec_always --no-startup-id /home/almagest/.config/polybar/launch.sh

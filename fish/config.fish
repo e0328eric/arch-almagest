@@ -16,6 +16,14 @@ function vimcfg
     vim ~/.vimrc
 end
 
+function xmonadcfg
+    vim ~/.xmonad/xmonad.hs
+end
+
+function i3cfg
+    vim ~/.config/i3/config
+end
+
 function fishcfg
     vim ~/.config/fish/config.fish
 end

@@ -9,7 +9,7 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-DEFAULT_SESSION=xmonad
+DEFAULT_SESSION=i3
 
 xsetroot -cursor_name XC_left_ptr
 
@@ -45,6 +45,7 @@ fi
 get_session(){
 	local dbus_args=(--sh-syntax --exit-with-session)
 	case $1 in
+		i3|i3wm) dbus_args+=(i3 --shmlog-size 0) ;;
 		awesome) dbus_args+=(awesome) ;;
 		xmonad) dbus_args+=(xmonad) ;;
 		bspwm) dbus_args+=(bspwm-session) ;;
@@ -54,7 +55,6 @@ get_session(){
 		enlightenment) dbus_args+=(enlightenment_start) ;;
 		fluxbox) dbus_args+=(startfluxbox) ;;
 		gnome) dbus_args+=(gnome-session) ;;
-		i3|i3wm) dbus_args+=(i3 --shmlog-size 0) ;;
 		jwm) dbus_args+=(jwm) ;;
 		kde) dbus_args+=(startkde) ;;
 		lxde) dbus_args+=(startlxde) ;;
