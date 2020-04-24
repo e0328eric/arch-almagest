@@ -63,6 +63,9 @@ bindsym $mod+Shift+q kill
 # launch ranger
 #bindsym $mod+f exec i3-sensible-terminal -e ranger
 
+# Launch vifm
+bindsym $mod+f exec konsole -e vifm
+
 # start dmenu (a program launcher)
 # You must install dmenu-extended-git at AUR.
 #bindsym Control+Mod1+d exec --no-startup-id dmenu_run
@@ -103,10 +106,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+h split horizontal
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split vertical
 
 # enter fullscreen mode for the focused container
 bindsym $mod+Shift+e fullscreen toggle
@@ -257,6 +260,8 @@ exec kdeconnect-indicator
 
 # Change Background
 exec_always --no-startup-id feh --bg-scale ~/wallpapers/zelda.jpg
+
+exec --no-startup-id nextcloud
 
 # Change Key settings
 exec_always ~/.config/i3/keysetting_xmodmap.sh
