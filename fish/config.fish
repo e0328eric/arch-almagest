@@ -31,3 +31,5 @@ end
 function getmusic
     youtube-dl -x --audio-format m4a
 end
+
+thefuck --alias | source
