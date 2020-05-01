@@ -90,9 +90,6 @@ Plugin 'lilydjwg/colorizer'
 " YouCompleteMe
 Plugin 'ycm-core/YouCompleteMe'
 
-" Braket Matching
-Plugin 'jiangmiao/auto-pairs'
-
 " Languages and file types.
 Plugin 'chrisbra/csv.vim'
 Plugin 'ekalinin/dockerfile.vim'
@@ -498,11 +495,16 @@ let g:haskell_indent_guard = 2
 " ycm-core/YouCompleteMe
 "==============================================================================
 
+noremap <leader>gt :YcmCompleter GetType<CR>
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
-noremap <leader>gto :YcmCompleter GetDoc<CR>
-noremap <leader>gt :YcmCompleter GetType<CR>
+let g:ycm_error_symbol = '??'
+let g:ycm_warning_symbol = '>>'
+let g:ycm_filetype_blacklist = {
+  \ 'plaintex': 1,
+  \ 'tex': 1
+  \}
 
 "==============================================================================
 " jiangmiao/auto-pairs

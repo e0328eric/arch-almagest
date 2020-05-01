@@ -3,6 +3,10 @@ set -gx PATH $PATH ~/.cabal/bin
 set -gx PATH $PATH ~/.ghcup/bin
 set -gx PATH $PATH ~/.ghcup/env
 
+function e
+    emacs -nw
+end
+
 function gsync
     cd ~/GDrive
     grive
@@ -30,6 +34,10 @@ end
 
 function getmusic
     youtube-dl -x --audio-format m4a
+end
+
+function conph
+    kdeconnect-cli -n 'Samsung SM-A810S' --share
 end
 
 thefuck --alias | source
