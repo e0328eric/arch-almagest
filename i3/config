@@ -255,6 +255,7 @@ bindsym Control+Print exec spectacle -r
 bindsym Control+Shift+Print exec spectacle -u
 bindsym Print exec spectacle
 bindsym $mod+F12 exec wine ~/.wine/drive_c/Program\ Files/Kakao/KakaoTalk/KakaoTalk.exe
+bindsym $mod+t exec code-insiders
 
 # KDE Connect
 exec kdeconnect-indicator
