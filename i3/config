@@ -247,6 +247,9 @@ client.urgent               $urgentBgColor       $urgentBgColor       $textColor
         #position top
 #}
 
+# Move mouse cursor to bottom left
+bindsym $mod+Control+Tab exec xdotool mousemove --polar 245 2000
+
 # Open a Browser
 bindsym $mod+Shift+Return exec firefox
 
@@ -254,7 +257,14 @@ bindsym $mod+Shift+Return exec firefox
 bindsym Control+Print exec spectacle -r
 bindsym Control+Shift+Print exec spectacle -u
 bindsym Print exec spectacle
+
+# Joplin Gui version
+bindsym $mod+F1 exec joplin-desktop
+
+# Kakaotalk
 bindsym $mod+F12 exec wine ~/.wine/drive_c/Program\ Files/Kakao/KakaoTalk/KakaoTalk.exe
+
+# Run VSCode
 bindsym $mod+t exec code-insiders
 
 # KDE Connect
@@ -263,6 +273,7 @@ exec kdeconnect-indicator
 # Change Background
 exec_always --no-startup-id feh --bg-scale ~/wallpapers/zelda.jpg
 
+# Nextcloud
 exec --no-startup-id nextcloud
 
 # Change Key settings
