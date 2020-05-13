@@ -1,0 +1,13 @@
+--- vim.desktop	2020-05-09 13:58:34.538494512 +0900
++++ vim_modified.desktop	2020-05-09 13:59:37.874247984 +0900
+@@ -95,8 +95,8 @@
+ Comment[zh_CN]=编辑文本文件
+ Comment[zh_TW]=編輯文字檔
+ TryExec=vim
+-Exec=vim %F
+-Terminal=true
++Exec=konsole -e vim %F
++Terminal=false
+ Type=Application
+ # Translators: Search terms to find this application. Do NOT change the semicolons! The list MUST also end with a semicolon!
+ Keywords[de]=Text;Editor;

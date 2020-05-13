@@ -40,6 +40,9 @@ exec --no-startup-id nm-applet
 # Load compton
 exec_always --no-startup-id compton -b --config $HOME/.config/compton/compton.conf
 
+# Load polybar
+exec --no-startup-id polybar --config=~/.config/polybar/config laptop
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
@@ -271,7 +274,7 @@ bindsym $mod+t exec code-insiders
 exec kdeconnect-indicator
 
 # Change Background
-exec_always --no-startup-id feh --bg-scale ~/wallpapers/zelda.jpg
+exec_always --no-startup-id nitrogen --restore
 
 # Nextcloud
 exec --no-startup-id nextcloud
@@ -279,4 +282,3 @@ exec --no-startup-id nextcloud
 # Change Key settings
 exec_always ~/.config/i3/keysetting_xmodmap.sh
 
-exec_always --no-startup-id /home/almagest/.config/polybar/launch.sh

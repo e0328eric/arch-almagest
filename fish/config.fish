@@ -33,11 +33,11 @@ function fishcfg
 end
 
 function getmusic
-    youtube-dl -x --audio-format m4a
+    youtube-dl -x --audio-format m4a $argv
 end
 
 function conph
-    kdeconnect-cli -n 'Samsung SM-A810S' --share
+    kdeconnect-cli -n 'Samsung SM-A810S' --share $argv
 end
 
 thefuck --alias | source

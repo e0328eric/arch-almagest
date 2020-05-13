@@ -59,7 +59,7 @@ import           XMonad.Layout.WindowArranger        ( WindowArrangerMsg (..),
 
 -- Layouts
 import           XMonad.Layout.Dwindle
-import           XMonad.Layout.GridVariants          ( Grid (Grid) )
+import           XMonad.Layout.GridVariants          as GV
 import           XMonad.Layout.IM                    ( Property (Role), withIM )
 import           XMonad.Layout.NoBorders
 import           XMonad.Layout.OneBig
@@ -67,7 +67,7 @@ import           XMonad.Layout.Renamed               ( Rename (CutWordsLeft, Rep
                                                        renamed )
 import           XMonad.Layout.ResizableTile
 import           XMonad.Layout.SimplestFloat
-import           XMonad.Layout.Tabbed
+import           XMonad.Layout.Tabbed                as LT
 import           XMonad.Layout.ThreeColumns
 import           XMonad.Layout.TwoPane
 import           XMonad.Layout.ZoomRow               ( ZoomMessage (ZoomFullToggle),
@@ -103,7 +103,7 @@ main = do
                     <+> myManageHook'
                     <+> manageHook def
         , terminal =  myterm
-        , borderWidth = 3
+        , borderWidth = 0
         , keys = myKeysKeyBoard
         , mouseBindings = myKeysMouse
         , startupHook = myStartupHook
@@ -128,7 +128,7 @@ myLayout = HM.avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
         ||| floats
 
 tall       = renamed [Replace "tall"]     $ limitWindows 12 $ spacing 6 $ ResizableTall 1 (3/100) (1/2) []
-grid       = renamed [Replace "grid"]     $ limitWindows 12 $ spacing 6 $ mkToggle (single MIRROR) $ Grid (16/10)
+grid       = renamed [Replace "grid"]     $ limitWindows 12 $ spacing 6 $ mkToggle (single MIRROR) $ GV.Grid (16/10)
 threeCol   = renamed [Replace "threeCol"] $ limitWindows 3  $ ThreeCol 1 (3/100) (1/3)
 threeRow   = renamed [Replace "threeRow"] $ limitWindows 3  $ Mirror $ mkToggle (single MIRROR) zoomRow
 oneBig     = renamed [Replace "oneBig"]   $ limitWindows 6  $ spacing 6 $ Mirror $ mkToggle (single MIRROR) $
@@ -198,14 +198,14 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((modMask .|. controlMask .|. mod1Mask, xK_w), sendMessage Arrange)
     , ((modMask .|. controlMask .|. mod1Mask, xK_s), sendMessage DeArrange)
-    , ((modMask, xK_w), withFocused $ snapMove U Nothing)
-    , ((modMask, xK_a), withFocused $ snapMove L Nothing)
-    , ((modMask, xK_s), withFocused $ snapMove D Nothing)
-    , ((modMask, xK_d), withFocused $ snapMove R Nothing)
-    , ((modMask .|. shiftMask, xK_w), withFocused $ snapShrink D Nothing)
-    , ((modMask .|. shiftMask, xK_a), withFocused $ snapShrink R Nothing)
-    , ((modMask .|. shiftMask, xK_s), withFocused $ snapGrow D Nothing)
-    , ((modMask .|. shiftMask, xK_d), withFocused $ snapGrow R Nothing)
+    , ((modMask, xK_w), withFocused $ snapMove LT.U Nothing)
+    , ((modMask, xK_a), withFocused $ snapMove LT.L Nothing)
+    , ((modMask, xK_s), withFocused $ snapMove LT.D Nothing)
+    , ((modMask, xK_d), withFocused $ snapMove LT.R Nothing)
+    , ((modMask .|. shiftMask, xK_w), withFocused $ snapShrink LT.D Nothing)
+    , ((modMask .|. shiftMask, xK_a), withFocused $ snapShrink LT.R Nothing)
+    , ((modMask .|. shiftMask, xK_s), withFocused $ snapGrow LT.D Nothing)
+    , ((modMask .|. shiftMask, xK_d), withFocused $ snapGrow LT.R Nothing)
 
     -- Layouts
     , ((modMask, xK_space), sendMessage NextLayout)
@@ -230,10 +230,10 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_semicolon), sendMessage MirrorExpand)
 
     -- Run Browser
-    , ((modMask .|. shiftMask, xK_Return), spawn "naver-whale-stable")
+    , ((modMask .|. shiftMask, xK_Return), spawn "firefox")
 
     -- Run Emacs
-    , ((modMask .|. controlMask, xK_e), spawn "emacs")
+    --, ((modMask .|. controlMask, xK_e), spawn "emacs")
 
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
@@ -248,9 +248,10 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- albert
     --, ((modMask, xK_f), spawn $ myterm ++ "-e ranger") -- ranger
-    , ((modMask .|. controlMask, xK_Return), spawn $ "konsole -e cmus") -- terminal based music player
+    , ((modMask .|. controlMask, xK_Return), spawn $ "konsole -e mocp") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
     --, ((modMask .|. controlMask, xK_m), spawn $ myterm ++ "-e mahjong")
+    , ((modMask, xK_F12), spawn "wine ~/.wine/drive_c/Program\\ Files/Kakao/KakaoTalk/KakaoTalk.exe")
 
     -- Turn on setting files
     , ((controlMask .|. modMask .|. shiftMask, xK_z), spawn $ "konsole -e vim ~/.zshrc")
@@ -285,7 +286,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 myKeysMouse conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask, button1), (\w -> focus w >> mouseMoveWindow w >> ifClick (snapMagicMove (Just 50) (Just 50) w)))
-    , ((modMask .|. shiftMask, button1), (\w -> focus w >> mouseResizeWindow w >> ifClick (snapMagicResize [R,D] (Just 50) (Just 50) w)))
+    , ((modMask .|. shiftMask, button1), (\w -> focus w >> mouseResizeWindow w >> ifClick (snapMagicResize [LT.R,LT.D] (Just 50) (Just 50) w)))
     ]
 
 ---------------------------------------------------------------------------------------
