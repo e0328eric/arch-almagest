@@ -24,6 +24,10 @@ function xmonadcfg
     vim ~/.xmonad/xmonad.hs
 end
 
+function dwmcfg
+    vim ~/.dwm/config.h
+end
+
 function i3cfg
     vim ~/.config/i3/config
 end
