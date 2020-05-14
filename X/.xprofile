@@ -6,8 +6,3 @@ export QT5_IM_MODULE="nimf"
 export QT_IM_MODULE=nimf
 export XMODIFIERS="@im=nimf"
 nimf &
-light-locker &
-nm-applet &
-picom -b --config $HOME/.config/compton/compton.conf &
-kdeconnect-indicator &
-nitrogen --restore &

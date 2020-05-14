@@ -103,7 +103,7 @@ main = do
                     <+> myManageHook'
                     <+> manageHook def
         , terminal =  myterm
-        , borderWidth = 0
+        , borderWidth = 3
         , keys = myKeysKeyBoard
         , mouseBindings = myKeysMouse
         , startupHook = myStartupHook
@@ -127,7 +127,8 @@ myLayout = HM.avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
         ||| space
         ||| floats
 
-tall       = renamed [Replace "tall"]     $ limitWindows 12 $ spacing 6 $ ResizableTall 1 (3/100) (1/2) []
+spacingBorder = spacingRaw True (Border 7 7 7 7) True (Border 7 7 7 7) True
+tall       = renamed [Replace "tall"]     $ limitWindows 12 $ spacingBorder $ ResizableTall 1 (3/100) (1/2) []
 grid       = renamed [Replace "grid"]     $ limitWindows 12 $ spacing 6 $ mkToggle (single MIRROR) $ GV.Grid (16/10)
 threeCol   = renamed [Replace "threeCol"] $ limitWindows 3  $ ThreeCol 1 (3/100) (1/3)
 threeRow   = renamed [Replace "threeRow"] $ limitWindows 3  $ Mirror $ mkToggle (single MIRROR) zoomRow
@@ -191,9 +192,13 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- Window Navigation
     , ((modMask, xK_Tab), windows W.focusDown)
     , ((mod1Mask, xK_Tab), windows W.focusUp)
+    , ((modMask, xK_Right), windows W.focusDown)
+    , ((modMask, xK_Left), windows W.focusUp)
     , ((modMask, xK_e), windows W.focusMaster)
     , ((modMask .|. shiftMask, xK_Tab), windows W.swapDown)
     , ((mod1Mask .|. shiftMask, xK_Tab), windows W.swapUp)
+    , ((modMask .|. shiftMask, xK_Right), windows W.swapDown)
+    , ((modMask .|. shiftMask, xK_Left), windows W.swapUp)
     , ((modMask .|. shiftMask, xK_e), windows W.swapMaster)
 
     , ((modMask .|. controlMask .|. mod1Mask, xK_w), sendMessage Arrange)
@@ -246,7 +251,7 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0, xK_Print), spawn "spectacle") -- 0 means no extra modifier key needs to be pressed in this case.
     , ((modMask, xK_F3), spawn "krusader")
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
-    , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- albert
+    , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- dmenu_extended
     --, ((modMask, xK_f), spawn $ myterm ++ "-e ranger") -- ranger
     , ((modMask .|. controlMask, xK_Return), spawn $ "konsole -e mocp") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
@@ -271,8 +276,8 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0, xF86XK_AudioMute), spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
 
     -- Brightness Setting
-    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10 # increase screen brightness")
-    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10 # decrease screen brightness")
+    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
+    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 
     -- Reset xmonad
     , ((modMask .|. shiftMask, xK_r), spawn "xmonad --recompile; xmonad --restart")
@@ -314,7 +319,7 @@ myLogHook dbus = def
 ---------------------------------------------------------------------------------------
 
 myStartupHook = do
-    spawn "compton -b --config $HOME/.config/compton/compton.conf"
+    spawn "picom -b --config $HOME/.config/compton/compton.conf"
     -- screen locking
     spawnOnce "light-locker"
     -- pcloud
@@ -322,7 +327,7 @@ myStartupHook = do
     -- Alert Low Battery
     spawnOnce "battery-low"
     -- Wallpaper
-    spawnOnce "feh --bg-scale ~/wallpapers/zelda.jpg"
+    spawnOnce "nitrogen --restore"
     -- Polybar Start
     spawn "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting
