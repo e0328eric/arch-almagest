@@ -11,7 +11,13 @@ static const unsigned int gappov    = 13;       /* vert outer gap between window
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Noto Sans CJK KR:size=9" };
+static const char *fonts[]          = {
+    "Noto Sans CJK KR:size=9",
+    "LiberationMono:fontformat=truetype:size=12:antialias=true",
+    "SpaceMono Nerd Font:fontformat=truetype:size=10:antialias=true",
+    "SpaceMono Nerd Font Mono:pixselsize=9",
+    "Siji:fontformat=truetype:size=12:antialias=true",
+};
 static const char dmenufont[]       = "Noto Sans CJK KR:size=9";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -72,13 +78,8 @@ static const char *screenAcmd[]  = { "spectacle", "-r", NULL };
 static const char *screenBcmd[]  = { "spectacle", "-r", NULL };
 static const char *screenCcmd[]  = { "spectacle", "-u", NULL };
 static const char *musiccmd[]  = { "konsole", "-e", "mocp", NULL };
-static const char *poweroffcmd[] = { "check-twice.sh", "\"Are you sure you want to shutdown?\"", "\"poweroff\"", NULL };
-static const char *rebootcmd[] = { "check-twice.sh", "\"Are you sure you want to reboot?\"", "\"reboot\"", NULL };
-static const char *volupcmd[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%", NULL };
-static const char *voldowncmd[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%", NULL };
-static const char *volmutecmd[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
-static const char *backlightupcmd[] = { "xbacklight", "-inc", "10", NULL };
-static const char *backlightdowncmd[] = { "xbacklight", "-dec", "10", NULL };
+static const char *poweroffcmd[] = { "check-twice.sh", "Are you sure you want to shutdown?", "poweroff", NULL };
+static const char *rebootcmd[] = { "check-twice.sh", "Are you sure you want to reboot?", "reboot", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -93,11 +94,11 @@ static Key keys[] = {
     { 0,                            XK_Print,  spawn,          {.v = screenAcmd } },
     { ControlMask,                  XK_Print,  spawn,          {.v = screenBcmd } },
     { ControlMask|ShiftMask,        XK_Print,  spawn,          {.v = screenCcmd } },
-    { 0,                          0x1008ff13,  spawn,          {.v = volupcmd } },
-    { 0,                          0x1008ff11,  spawn,          {.v = voldowncmd } },
-    { 0,                          0x1008ff12,  spawn,          {.v = volmutecmd } },
-    { 0,                          0x1008ff02,  spawn,          {.v = backlightupcmd } },
-    { 0,                          0x1008ff03,  spawn,          {.v = backlightdowncmd } },
+    { 0,                          0x1008ff13,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +1% && resbar") },
+    { 0,                          0x1008ff11,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -1% && resbar") },
+    { 0,                          0x1008ff12,  spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && resbar") },
+    { 0,                          0x1008ff02,  spawn,          SHCMD("xbacklight -inc 10 && resbar") },
+    { 0,                          0x1008ff03,  spawn,          SHCMD("xbacklight -dec 10 && resbar") },
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
     { MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
@@ -133,7 +134,7 @@ static Key keys[] = {
     { MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
     { MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
     { MODKEY,                       XK_space,  setlayout,      {0} },
-    { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+    { MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
     { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
     { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
     { MODKEY|ControlMask,           XK_comma,  focusmon,       {.i = -1 } },
