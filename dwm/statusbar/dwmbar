@@ -52,8 +52,9 @@ bluetooth() {
       if [ $(echo info | bluetoothctl | grep 'Device' | wc -c) -eq 0 ]
       then
         echo -e " Powered"
+      else
+        echo -e " Connected"
       fi
-      echo -e " Connected"
     fi
 }
 
