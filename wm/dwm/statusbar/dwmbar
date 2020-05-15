@@ -5,13 +5,13 @@ volume() { \
     curVol=$(pacmd list-sinks | grep 'volume:' | grep -E -v 'base volume:' | awk '{print $5}' | tr -d '%' | tail -n 1)
     isMuted=$(pacmd list-sinks | grep 'muted:' | awk '{print $2}' | tail -n 1)
     if [[ $isMuted = 'yes' ]]; then
-        echo -e "  "
+        echo "  "
     elif [[ $curVol -gt 66 ]] || [[ $curVol -eq 66 ]]; then
-        echo -e "  $curVol%"
+        echo "  $curVol%"
     elif [[ $curVol -lt 66 ]] && ([[ $curVol -gt 20 ]] || [[ $curVol -eq 20 ]]); then
-        echo -e "  $curVol%"
+        echo "  $curVol%"
     else
-        echo -e "  $curVol%"
+        echo "  $curVol%"
     fi
 }
 
@@ -22,13 +22,13 @@ battery() { \
         echo -e " $persentage%"
     else
         case "$persentage" in
-            100|9[0-9]) echo -e " $persentage%";;
-            8[0-9]|7[0-9]) echo -e " $persentage%";;
-            6[0-9]|5[0-9]) echo -e " $persentage%";;
-            4[0-9]|3[0-9]) echo -e " $persentage%";;
-            2[0-9]|1[8-9]) echo -e " $persentage%";;
-            1[0-7]) echo -e " $persentage%";;
-            *) echo -e " $persentage%";;
+            100|9[0-9]) echo " $persentage%";;
+            8[0-9]|7[0-9]) echo " $persentage%";;
+            6[0-9]|5[0-9]) echo " $persentage%";;
+            4[0-9]|3[0-9]) echo " $persentage%";;
+            2[0-9]|1[8-9]) echo " $persentage%";;
+            1[0-7]) echo " $persentage%";;
+            *) echo " $persentage%";;
         esac
     fi
 }
@@ -36,24 +36,24 @@ battery() { \
 brightness() { \
     backlight=$(xbacklight -get | awk -F . '{print $1}')
     case "$backlight" in
-        100|9[0-9]|8[0-9]) echo -e "🌑";;
-        7[0-9]|6[0-9]) echo -e "🌒";;
-        5[0-9]|4[0-9]) echo -e "🌓";;
-        3[0-9]|2[0-9]) echo -e "🌔";;
-        *) echo -e "🌕";;
+        100|9[0-9]|8[0-9]) echo "🌑";;
+        7[0-9]|6[0-9]) echo "🌒";;
+        5[0-9]|4[0-9]) echo "🌓";;
+        3[0-9]|2[0-9]) echo "🌔";;
+        *) echo "🌕";;
     esac
 }
 
 bluetooth() {
     if [ $(bluetoothctl show | grep "Powered: yes" | wc -c) -eq 0 ]
     then
-      echo -e ""
+      echo ""
     else
       if [ $(echo info | bluetoothctl | grep 'Device' | wc -c) -eq 0 ]
       then
-        echo -e " Powered"
+        echo " Powered"
       else
-        echo -e " Connected"
+        echo " Connected"
       fi
     fi
 }
@@ -67,12 +67,12 @@ network() { \
         echo -e "Disconnected"
     else
         case "$ntamount" in
-            100|9[0-9]) echo -e "$ntname  😈";;
-            8[0-9]|7[0-9]|6[0-9]) echo -e "$ntname  😃";;
-            6[0-9]|5[0-9]) echo -e "$ntname  😊";;
-            4[0-9]|3[0-9]) echo -e "$ntname  😒";;
-            2[0-9]) echo -e "$ntname  😠";;
-            *) echo -e "$ntname  😱";;
+            100|9[0-9]) echo "$ntname  😈";;
+            8[0-9]|7[0-9]|6[0-9]) echo "$ntname  😃";;
+            6[0-9]|5[0-9]) echo "$ntname  😊";;
+            4[0-9]|3[0-9]) echo "$ntname  😒";;
+            2[0-9]) echo "$ntname  😠";;
+            *) echo "$ntname  😱";;
         esac
     fi
 }
@@ -81,7 +81,7 @@ network() { \
 timedate() { \
     date=$(date '+%Y-%m-%d')
     time=$(date '+%p %l:%M')
-    echo -e "   $time  |     $date"
+    echo "   $time  |     $date"
 }
 
 while true; do
