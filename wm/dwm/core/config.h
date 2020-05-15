@@ -94,6 +94,7 @@ static Key keys[] = {
     { 0,                            XK_Print,  spawn,          {.v = screenAcmd } },
     { ControlMask,                  XK_Print,  spawn,          {.v = screenBcmd } },
     { ControlMask|ShiftMask,        XK_Print,  spawn,          {.v = screenCcmd } },
+    { MODKEY,                       XK_F12,    spawn,          SHCMD("wine ~/.wine/drive_c/Program\\ Files/Kakao/KakaoTalk/KakaoTalk.exe") },
     { 0,                          0x1008ff13,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +1% && resbar") },
     { 0,                          0x1008ff11,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -1% && resbar") },
     { 0,                          0x1008ff12,  spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && resbar") },
