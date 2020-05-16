@@ -1,5 +1,10 @@
 #! /bin/sh
 
+# A number of packages to update
+update_package() { \
+    echo "Update : $(checkupdates | wc -l)"
+}
+
 # Display the volume
 volume() { \
     curVol=$(pacmd list-sinks | grep 'volume:' | grep -E -v 'base volume:' | awk '{print $5}' | tr -d '%' | tail -n 1)
@@ -15,6 +20,7 @@ volume() { \
     fi
 }
 
+# Battery notification
 battery() { \
     isCharging=$(acpi -b | grep -o "Charging")
     persentage=$(acpi -b | awk '{print $4}' | tr -d '%,')
@@ -33,6 +39,7 @@ battery() { \
     fi
 }
 
+# Monior brightness
 brightness() { \
     backlight=$(xbacklight -get | awk -F . '{print $1}')
     case "$backlight" in
@@ -44,6 +51,7 @@ brightness() { \
     esac
 }
 
+# Bluetooth Connection
 bluetooth() {
     if [ $(bluetoothctl show | grep "Powered: yes" | wc -c) -eq 0 ]
     then
@@ -58,7 +66,7 @@ bluetooth() {
     fi
 }
 
-
+# Network (wifi) Connection
 network() { \
     isConnected=$(nmcli -a | grep -v "p2p" | grep "wlp2s0:" | awk '{print $2}')
     ntname=$(nmcli d wifi list | grep "*" | awk '{print $3}')
@@ -85,6 +93,6 @@ timedate() { \
 }
 
 while true; do
-    xsetroot -name "| $(brightness) | $(network) | $(bluetooth) |  $(volume)  | $(battery) |  $(timedate)"
+    xsetroot -name "| $(update_package) | $(brightness) | $(network) | $(bluetooth) |  $(volume)  | $(battery) |  $(timedate)"
     sleep 5s
 done
