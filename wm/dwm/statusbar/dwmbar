@@ -93,6 +93,6 @@ timedate() { \
 }
 
 while true; do
-    xsetroot -name "| $(update_package) | $(brightness) | $(network) | $(bluetooth) |  $(volume)  | $(battery) |  $(timedate)"
-    sleep 5s
+    xsetroot -name "| $(update_package) | $(brightness) | $(network) | $(bluetooth) |  $(volume)  | $(battery) |  $(timedate) |"
+    sleep 3s
 done
