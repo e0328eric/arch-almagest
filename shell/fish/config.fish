@@ -56,6 +56,12 @@ function dwmcfg
     vim ~/.dwm/config.h
 end
 
+function dwmrest
+    cd ~/.dwm
+    sudo make clean install
+    cd ~/
+end
+
 function i3cfg
     vim ~/.config/i3/config
 end

@@ -71,14 +71,16 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "konsole", "-e", cmd, NULL } }
-#define TERMCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define TERMCMD(cmd) { .v = (const char*[]){ "konsole", "-e", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_extended_run", NULL };
 static const char *termcmd[]  = { "konsole", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
+static const char *officecmd[]  = { "onlyoffice", NULL };
+static const char *guifilecmd[]  = { "krusader", NULL };
 static const char *screenAcmd[]  = { "spectacle", "-r", NULL };
 static const char *screenBcmd[]  = { "spectacle", "-r", NULL };
 static const char *screenCcmd[]  = { "spectacle", "-u", NULL };
@@ -92,6 +94,9 @@ static Key keys[] = {
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = browsercmd } },
     { ControlMask|ShiftMask,        XK_Return, spawn,          TERMCMD("mocp") },
+    { MODKEY,                       XK_f,      spawn,          TERMCMD("vifm") },
+    { MODKEY,                       XK_F1,     spawn,          {.v = guifilecmd } },
+    { MODKEY,                       XK_o,      spawn,          {.v = officecmd } },
     { MODKEY|ShiftMask,             XK_x,      quit,           {0} },
     { MODKEY|ShiftMask,             XK_c,      spawn,          {.v = poweroffcmd } },
     { MODKEY|ShiftMask,             XK_v,      spawn,          {.v = rebootcmd } },
@@ -104,7 +109,6 @@ static Key keys[] = {
     { 0,                          0x1008ff12,  spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && resbar") },
     { 0,                          0x1008ff02,  spawn,          SHCMD("xbacklight -inc 10 && resbar") },
     { 0,                          0x1008ff03,  spawn,          SHCMD("xbacklight -dec 10 && resbar") },
-    { MODKEY,                       XK_f,      spawn,          TERMCMD("vifm") },
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
     { MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
@@ -136,9 +140,9 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
     { MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
     { MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-    { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-    { MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
-    { MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
+    { MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
+    { MODKEY|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[3]} },
+    { MODKEY|ShiftMask,             XK_o,      setlayout,      {.v = &layouts[4]} },
     { MODKEY,                       XK_space,  setlayout,      {0} },
     { MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
     { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
