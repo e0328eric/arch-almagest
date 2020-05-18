@@ -71,7 +71,8 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "konsole", "-e", cmd, NULL } }
+#define TERMCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -81,7 +82,6 @@ static const char *browsercmd[]  = { "firefox", NULL };
 static const char *screenAcmd[]  = { "spectacle", "-r", NULL };
 static const char *screenBcmd[]  = { "spectacle", "-r", NULL };
 static const char *screenCcmd[]  = { "spectacle", "-u", NULL };
-static const char *musiccmd[]  = { "konsole", "-e", "mocp", NULL };
 static const char *poweroffcmd[] = { "check-twice.sh", "Are you sure you want to shutdown?", "poweroff", NULL };
 static const char *rebootcmd[] = { "check-twice.sh", "Are you sure you want to reboot?", "reboot", NULL };
 
@@ -91,7 +91,7 @@ static Key keys[] = {
     { ControlMask|AltMask,          XK_s,      spawn,          {.v = dmenucmd } },
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = browsercmd } },
-    { ControlMask|ShiftMask,        XK_Return, spawn,          {.v = musiccmd } },
+    { ControlMask|ShiftMask,        XK_Return, spawn,          TERMCMD("mocp") },
     { MODKEY|ShiftMask,             XK_x,      quit,           {0} },
     { MODKEY|ShiftMask,             XK_c,      spawn,          {.v = poweroffcmd } },
     { MODKEY|ShiftMask,             XK_v,      spawn,          {.v = rebootcmd } },
@@ -104,7 +104,7 @@ static Key keys[] = {
     { 0,                          0x1008ff12,  spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && resbar") },
     { 0,                          0x1008ff02,  spawn,          SHCMD("xbacklight -inc 10 && resbar") },
     { 0,                          0x1008ff03,  spawn,          SHCMD("xbacklight -dec 10 && resbar") },
-    { MODKEY,                       XK_f,      spawn,          SHCMD("vifm") },
+    { MODKEY,                       XK_f,      spawn,          TERMCMD("vifm") },
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
     { MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
