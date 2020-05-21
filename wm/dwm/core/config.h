@@ -81,6 +81,7 @@ static const char *termcmd[]  = { "konsole", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *officecmd[]  = { "onlyoffice", NULL };
 static const char *guifilecmd[]  = { "krusader", NULL };
+static const char *soundcloudcmd[] = { "auryo", NULL };
 static const char *screenAcmd[]  = { "spectacle", "-r", NULL };
 static const char *screenBcmd[]  = { "spectacle", "-r", NULL };
 static const char *screenCcmd[]  = { "spectacle", "-u", NULL };
@@ -94,6 +95,7 @@ static Key keys[] = {
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = browsercmd } },
     { ControlMask|ShiftMask,        XK_Return, spawn,          TERMCMD("mocp") },
+    { MODKEY|ControlMask,           XK_Return, spawn,          {.v = soundcloudcmd } },
     { MODKEY,                       XK_f,      spawn,          TERMCMD("vifm") },
     { MODKEY,                       XK_F1,     spawn,          {.v = guifilecmd } },
     { MODKEY,                       XK_o,      spawn,          {.v = officecmd } },

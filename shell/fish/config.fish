@@ -78,4 +78,8 @@ function conph
     kdeconnect-cli -n 'Samsung SM-A810S' --share $argv
 end
 
+function installstack
+    curl -sSL https://get.haskellstack.org/ | sh
+end
+
 thefuck --alias | source
