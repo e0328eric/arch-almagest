@@ -76,6 +76,9 @@ Plugin 'junegunn/goyo.vim'
 " A bunch of useful language related snippets (ultisnips is the engine).
 Plugin 'SirVer/ultisnips'
 
+" Rust in vim
+Plugin 'rust-lang/rust.vim'
+
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
@@ -90,6 +93,9 @@ Plugin 'lilydjwg/colorizer'
 " YouCompleteMe
 Plugin 'ycm-core/YouCompleteMe'
 
+" AutoPair
+Plugin 'jiangmiao/auto-pairs'
+
 " Languages and file types.
 Plugin 'chrisbra/csv.vim'
 Plugin 'ekalinin/dockerfile.vim'
@@ -98,14 +104,12 @@ Plugin 'elzr/vim-json'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'lifepillar/pgsql.vim'
 Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-liquid'
 Plugin 'tpope/vim-rails'
 Plugin 'wgwoods/vim-systemd-syntax'
 Plugin 'neovimhaskell/haskell-vim'
-Plugin 'iamcco/markdown-preview.nvim'
 
 call vundle#end()
 filetype plugin indent on
@@ -513,7 +517,7 @@ let g:ycm_filetype_blacklist = {
 let g:AutoPairsShortcutFastWrap = '<C-]>'
 
 "==============================================================================
-" iamcco / markdown-preview.nvim
+" rust-lang/rust.vim
 "==============================================================================
 
-let g:mkdp_browser = 'firefox'
+let g:rustfmt_autosave = 1

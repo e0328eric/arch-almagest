@@ -80,7 +80,8 @@
         "sublime-project",
         "docx",
         "pptx",
-        "ppt"
+        "ppt",
+        "djvu"
     ],
     "watch_folders": [
         "~/"
