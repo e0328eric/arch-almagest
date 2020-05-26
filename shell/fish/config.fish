@@ -74,6 +74,10 @@ function getmusic
     youtube-dl -x --audio-format m4a $argv
 end
 
+function gitall
+    git add . && git commit -m $argv && git push origin master
+end
+
 function conph
     kdeconnect-cli -n 'Samsung SM-A810S' --share $argv
 end
