@@ -203,6 +203,18 @@ let g:which_key_map.w = {
       \ 'U' : ['<plug>(wiki-list-uniq-local)'                              , 'ncdu'],
       \ }
 
+" H is for haskell
+let g:which_key_map.H = {
+      \ 'name' : '+haskell' ,
+      \ 'k' : [':call LanguageClient#textDocument_hover()'          , 'hover'],
+      \ 'g' : [':call LanguageClient#textDocument_definition()'     , 'definition'],
+      \ 'r' : [':call LanguageClient#textDocument_rename()'         , 'rename'],
+      \ 'f' : [':call LanguageClient#textDocument_formatting()'     , 'formatting'],
+      \ 'b' : [':call LanguageClient#textDocument_references()'     , 'references'],
+      \ 'a' : [':call LanguageClient#textDocument_codeAction()'     , 'code action'],
+      \ 's' : [':call LanguageClient#textDocument_documentSymbol()' , 'doc symbol'],
+      \ }
+
 " Global
 " <Plug>VimwikiIndex
 " <Plug>VimwikiTabIndex
