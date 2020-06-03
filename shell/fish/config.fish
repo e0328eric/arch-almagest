@@ -31,13 +31,8 @@ set -gx PATH $PATH ~/.cabal/bin
 set -gx PATH $PATH ~/.ghcup/bin
 set -gx PATH $PATH ~/.ghcup/env
 
-function e
-    emacs -nw
-end
-
-function gsync
-    cd ~/GDrive
-    grive
+function vim
+    nvim $argv
 end
 
 function xmonadcfg
@@ -45,7 +40,7 @@ function xmonadcfg
 end
 
 function vimcfg
-    vim ~/.vimrc
+    vim ~/.config/nvim/init.vim
 end
 
 function xmonadcfg
@@ -84,6 +79,14 @@ end
 
 function installstack
     curl -sSL https://get.haskellstack.org/ | sh
+end
+
+function checkclass
+    xprop | grep WM_CLASS
+end
+
+function ghci
+    stack ghci
 end
 
 thefuck --alias | source

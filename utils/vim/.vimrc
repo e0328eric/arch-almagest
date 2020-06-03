@@ -96,6 +96,10 @@ Plugin 'ycm-core/YouCompleteMe'
 " AutoPair
 Plugin 'jiangmiao/auto-pairs'
 
+" Haskell-related
+Plugin 'nbouscal/vim-stylish-haskell'
+Plugin 'begriffs/haskell-vim-now'
+
 " Languages and file types.
 Plugin 'chrisbra/csv.vim'
 Plugin 'ekalinin/dockerfile.vim'
@@ -173,6 +177,7 @@ set directory=/tmp//,.
 set encoding=utf-8
 set expandtab smarttab
 set formatoptions=tcqrn1
+set formatprg=stylish-haskell
 set hidden
 set hlsearch
 set incsearch

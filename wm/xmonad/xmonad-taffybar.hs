@@ -16,9 +16,9 @@ import qualified Data.Map                            as M
 import           Graphics.X11.ExtraTypes.XF86
 import           System.Exit
 import           System.IO
+import           System.Taffybar.Support.PagerHints  ( pagerHints )
 import           XMonad                              hiding ( (|||) )
 import qualified XMonad.StackSet                     as W
-import System.Taffybar.Support.PagerHints (pagerHints)
 
 -- Actions
 import           XMonad.Actions.FloatSnap

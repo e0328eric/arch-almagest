@@ -62,13 +62,13 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define ModMask Mod4Mask
 #define AltMask Mod1Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ ModMask,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ ModMask|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ ModMask|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ ModMask|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define TERMCMD(cmd) { .v = (const char*[]){ "konsole", "-e", cmd, NULL } }
@@ -79,6 +79,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_extended_run", NULL };
 static const char *termcmd[]  = { "konsole", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
+static const char *vscodecmd[]  = { "code-insiders", NULL };
 static const char *officecmd[]  = { "onlyoffice", NULL };
 static const char *guifilecmd[]  = { "krusader", NULL };
 static const char *soundcloudcmd[] = { "auryo", NULL };
@@ -92,67 +93,68 @@ static const char *rebootcmd[] = { "check-twice.sh", "Are you sure you want to r
 static Key keys[] = {
     /* modifier                     key        function        argument */
     { ControlMask|AltMask,          XK_s,      spawn,          {.v = dmenucmd } },
-    { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = browsercmd } },
+    { ModMask,                      XK_Return, spawn,          {.v = termcmd } },
+    { ModMask|ShiftMask,            XK_Return, spawn,          {.v = browsercmd } },
     { ControlMask|ShiftMask,        XK_Return, spawn,          TERMCMD("mocp") },
-    { MODKEY|ControlMask,           XK_Return, spawn,          {.v = soundcloudcmd } },
-    { MODKEY,                       XK_f,      spawn,          TERMCMD("vifm") },
-    { MODKEY,                       XK_F1,     spawn,          {.v = guifilecmd } },
-    { MODKEY,                       XK_o,      spawn,          {.v = officecmd } },
-    { MODKEY|ShiftMask,             XK_x,      quit,           {0} },
-    { MODKEY|ShiftMask,             XK_c,      spawn,          {.v = poweroffcmd } },
-    { MODKEY|ShiftMask,             XK_v,      spawn,          {.v = rebootcmd } },
+    { ModMask,                      XK_e,      spawn,          {.v = vscodecmd } },
+    { ModMask|ControlMask,          XK_Return, spawn,          {.v = soundcloudcmd } },
+    { ModMask,                      XK_f,      spawn,          TERMCMD("vifm") },
+    { ModMask,                      XK_F1,     spawn,          {.v = guifilecmd } },
+    { ModMask,                      XK_o,      spawn,          {.v = officecmd } },
+    { ModMask|ShiftMask,            XK_x,      quit,           {0} },
+    { ModMask|ShiftMask,            XK_c,      spawn,          {.v = poweroffcmd } },
+    { ModMask|ShiftMask,            XK_v,      spawn,          {.v = rebootcmd } },
     { 0,                            XK_Print,  spawn,          {.v = screenAcmd } },
     { ControlMask,                  XK_Print,  spawn,          {.v = screenBcmd } },
     { ControlMask|ShiftMask,        XK_Print,  spawn,          {.v = screenCcmd } },
-    { MODKEY,                       XK_F12,    spawn,          SHCMD("wine ~/.wine/drive_c/Program\\ Files/Kakao/KakaoTalk/KakaoTalk.exe") },
+    { ModMask,                      XK_F12,    spawn,          SHCMD("wine ~/.wine/drive_c/Program\\ Files/Kakao/KakaoTalk/KakaoTalk.exe") },
     { 0,                          0x1008ff13,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +1% && resbar") },
     { 0,                          0x1008ff11,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -1% && resbar") },
     { 0,                          0x1008ff12,  spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && resbar") },
     { 0,                          0x1008ff02,  spawn,          SHCMD("xbacklight -inc 10 && resbar") },
     { 0,                          0x1008ff03,  spawn,          SHCMD("xbacklight -dec 10 && resbar") },
-    { MODKEY,                       XK_b,      togglebar,      {0} },
-    { MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
-    { MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
-    { MODKEY|ShiftMask,             XK_Right,  movestack,     {.i = +1 } },
-    { MODKEY|ShiftMask,             XK_Left,   movestack,     {.i = -1 } },
-    { MODKEY,                       XK_comma,  incnmaster,     {.i = +1 } },
-    { MODKEY,                       XK_period, incnmaster,     {.i = -1 } },
+    { ModMask,                       XK_b,      togglebar,      {0} },
+    { ModMask,                       XK_Right,  focusstack,     {.i = +1 } },
+    { ModMask,                       XK_Left,   focusstack,     {.i = -1 } },
+    { ModMask|ShiftMask,             XK_Right,  movestack,     {.i = +1 } },
+    { ModMask|ShiftMask,             XK_Left,   movestack,     {.i = -1 } },
+    { ModMask,                       XK_comma,  incnmaster,     {.i = +1 } },
+    { ModMask,                       XK_period, incnmaster,     {.i = -1 } },
     { AltMask,                      XK_Left,   setmfact,       {.f = -0.01} },
     { AltMask,                      XK_Right,  setmfact,       {.f = +0.01} },
     { AltMask|ShiftMask,            XK_Left,   setmfact,       {.f = -0.05} },
     { AltMask|ShiftMask,            XK_Right,  setmfact,       {.f = +0.05} },
-    { MODKEY|AltMask,               XK_Up,     incrgaps,       {.i = +1 } },
-    { MODKEY|AltMask,               XK_Down,   incrgaps,       {.i = -1 } },
-    { MODKEY|AltMask|ShiftMask,     XK_Up,     incrogaps,      {.i = +1 } },
-    { MODKEY|AltMask|ShiftMask,     XK_Down,   incrogaps,      {.i = -1 } },
-    { MODKEY|AltMask|ControlMask,   XK_Up,     incrigaps,      {.i = +1 } },
-    { MODKEY|AltMask|ControlMask,   XK_Down,   incrigaps,      {.i = -1 } },
-    { MODKEY|AltMask,               XK_0,      togglegaps,     {0} },
-    { MODKEY|AltMask|ShiftMask,     XK_0,      defaultgaps,    {0} },
-    { MODKEY,                       XK_w,      incrihgaps,     {.i = +1 } },
-    { MODKEY,                       XK_s,      incrihgaps,     {.i = -1 } },
-    { MODKEY|ControlMask,           XK_w,      incrivgaps,     {.i = +1 } },
-    { MODKEY|ControlMask,           XK_s,      incrivgaps,     {.i = -1 } },
-    { MODKEY|AltMask,               XK_w,      incrohgaps,     {.i = +1 } },
-    { MODKEY|AltMask,               XK_s,      incrohgaps,     {.i = -1 } },
-    { MODKEY|ShiftMask,             XK_w,      incrovgaps,     {.i = +1 } },
-    { MODKEY|ShiftMask,             XK_s,      incrovgaps,     {.i = -1 } },
-    { MODKEY|ShiftMask,             XK_e,      zoom,           {0} },
-    { MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-    { MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-    { MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-    { MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
-    { MODKEY|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[3]} },
-    { MODKEY|ShiftMask,             XK_o,      setlayout,      {.v = &layouts[4]} },
-    { MODKEY|AltMask,               XK_space,  setlayout,      {0} },
-    { MODKEY,                       XK_space,  togglefloating, {0} },
-    { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-    { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-    { MODKEY|ControlMask,           XK_comma,  focusmon,       {.i = -1 } },
-    { MODKEY|ControlMask,           XK_period, focusmon,       {.i = +1 } },
-    { MODKEY|ControlMask|ShiftMask, XK_comma,  tagmon,         {.i = -1 } },
-    { MODKEY|ControlMask|ShiftMask, XK_period, tagmon,         {.i = +1 } },
+    { ModMask|AltMask,               XK_Up,     incrgaps,       {.i = +1 } },
+    { ModMask|AltMask,               XK_Down,   incrgaps,       {.i = -1 } },
+    { ModMask|AltMask|ShiftMask,     XK_Up,     incrogaps,      {.i = +1 } },
+    { ModMask|AltMask|ShiftMask,     XK_Down,   incrogaps,      {.i = -1 } },
+    { ModMask|AltMask|ControlMask,   XK_Up,     incrigaps,      {.i = +1 } },
+    { ModMask|AltMask|ControlMask,   XK_Down,   incrigaps,      {.i = -1 } },
+    { ModMask|AltMask,               XK_0,      togglegaps,     {0} },
+    { ModMask|AltMask|ShiftMask,     XK_0,      defaultgaps,    {0} },
+    { ModMask,                       XK_w,      incrihgaps,     {.i = +1 } },
+    { ModMask,                       XK_s,      incrihgaps,     {.i = -1 } },
+    { ModMask|ControlMask,           XK_w,      incrivgaps,     {.i = +1 } },
+    { ModMask|ControlMask,           XK_s,      incrivgaps,     {.i = -1 } },
+    { ModMask|AltMask,               XK_w,      incrohgaps,     {.i = +1 } },
+    { ModMask|AltMask,               XK_s,      incrohgaps,     {.i = -1 } },
+    { ModMask|ShiftMask,             XK_w,      incrovgaps,     {.i = +1 } },
+    { ModMask|ShiftMask,             XK_s,      incrovgaps,     {.i = -1 } },
+    { ModMask|ShiftMask,             XK_e,      zoom,           {0} },
+    { ModMask|ShiftMask,             XK_q,      killclient,     {0} },
+    { ModMask|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
+    { ModMask|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
+    { ModMask|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
+    { ModMask|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[3]} },
+    { ModMask|ShiftMask,             XK_o,      setlayout,      {.v = &layouts[4]} },
+    { ModMask|AltMask,               XK_space,  setlayout,      {0} },
+    { ModMask,                       XK_space,  togglefloating, {0} },
+    { ModMask,                       XK_0,      view,           {.ui = ~0 } },
+    { ModMask|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+    { ModMask|ControlMask,           XK_comma,  focusmon,       {.i = -1 } },
+    { ModMask|ControlMask,           XK_period, focusmon,       {.i = +1 } },
+    { ModMask|ControlMask|ShiftMask, XK_comma,  tagmon,         {.i = -1 } },
+    { ModMask|ControlMask|ShiftMask, XK_period, tagmon,         {.i = +1 } },
     TAGKEYS(                        XK_1,                      0)
     TAGKEYS(                        XK_2,                      1)
     TAGKEYS(                        XK_3,                      2)
@@ -172,12 +174,12 @@ static Button buttons[] = {
     { ClkLtSymbol,          0,                  Button3,        setlayout,      {.v = &layouts[2]} },
     { ClkWinTitle,          0,                  Button2,        zoom,           {0} },
     { ClkStatusText,        0,                  Button2,        spawn,          {.v = termcmd } },
-    { ClkClientWin,         MODKEY,             Button1,        movemouse,      {0} },
-    { ClkClientWin,         MODKEY,             Button2,        togglefloating, {0} },
-    { ClkClientWin,         MODKEY|ShiftMask,   Button1,        resizemouse,    {0} },
+    { ClkClientWin,         ModMask,             Button1,        movemouse,      {0} },
+    { ClkClientWin,         ModMask,             Button2,        togglefloating, {0} },
+    { ClkClientWin,         ModMask|ShiftMask,   Button1,        resizemouse,    {0} },
     { ClkTagBar,            0,                  Button1,        view,           {0} },
     { ClkTagBar,            0,                  Button3,        toggleview,     {0} },
-    { ClkTagBar,            MODKEY,             Button1,        tag,            {0} },
-    { ClkTagBar,            MODKEY,             Button3,        toggletag,      {0} },
+    { ClkTagBar,            ModMask,             Button1,        tag,            {0} },
+    { ClkTagBar,            ModMask,             Button3,        toggletag,      {0} },
 };
 
