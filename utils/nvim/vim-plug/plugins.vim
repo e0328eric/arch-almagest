@@ -95,6 +95,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'ChristianChiarulli/codi.vim'
     " Vim Wiki
     " Plug 'https://github.com/vimwiki/vimwiki.git'
+    Plug 'Chiel92/vim-autoformat'
   endif
 
 
