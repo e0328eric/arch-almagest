@@ -6,117 +6,113 @@
 " Plugins
 " -----------------------------------------------------------------------------
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin()
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
 " Vim Theme
-Plugin 'fneu/breezy'
-Plugin 'gruvbox-community/gruvbox'
+Plug 'fneu/breezy'
+Plug 'gruvbox-community/gruvbox'
 
 "Airline Theme
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Zoom in and out of a specific split pane (similar to tmux).
-Plugin 'dhruvasagar/vim-zoom'
+Plug 'dhruvasagar/vim-zoom'
 
 " Pass focus events from tmux to Vim (useful for autoread and linting tools).
-Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Navigate and manipulate files in a tree view.
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Run a diff on 2 directories.
-Plugin 'will133/vim-dirdiff'
+Plug 'will133/vim-dirdiff'
 
 " Add spelling errors to the quickfix list (vim-ingo-library is a dependency).
-"Plugin 'inkarkat/vim-ingo-library' | Plugin 'inkarkat/vim-SpellCheck'
+"Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-SpellCheck'
 
 " Modify * to also work with visual selections.
-Plugin 'nelstrom/vim-visual-star-search'
+Plug 'nelstrom/vim-visual-star-search'
 
 " Automatically clear search highlights after you move your cursor.
-Plugin 'haya14busa/is.vim'
+Plug 'haya14busa/is.vim'
 
 " Better display unwanted whitespace.
-Plugin 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 
 " Toggle comments in various ways.
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
 " Surround text with quotes, parenthesis, brackets, and more.
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Automatically set 'shiftwidth' + 'expandtab' (indention) based on file type.
-Plugin 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'
 
 " A number of useful motions for the quickfix list, pasting and more.
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
 " Drastically improve insert mode performance in files with folds.
-Plugin 'Konfekt/FastFold'
+Plug 'Konfekt/FastFold'
 
 " Show git file changes in the gutter.
-Plugin 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 
 " A git wrapper.
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Dim paragraphs above and below the active paragraph.
-Plugin 'junegunn/limelight.vim'
+Plug 'junegunn/limelight.vim'
 
 " Distraction free writing by removing UI elements and centering everything.
-Plugin 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 
 " A bunch of useful language related snippets (ultisnips is the engine).
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 " Rust in vim
-Plugin 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
-Plugin 'eagletmt/neco-ghc'
-Plugin 'reedes/vim-thematic'
+Plug 'eagletmt/neco-ghc'
+Plug 'reedes/vim-thematic'
 
-Plugin 'ervandew/supertab'
+Plug 'ervandew/supertab'
 
 " Coloring Hex code
-Plugin 'lilydjwg/colorizer'
+Plug 'lilydjwg/colorizer'
 
 " YouCompleteMe
-Plugin 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 " AutoPair
-Plugin 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " Haskell-related
-Plugin 'nbouscal/vim-stylish-haskell'
-Plugin 'begriffs/haskell-vim-now'
+Plug 'nbouscal/vim-stylish-haskell'
+Plug 'begriffs/haskell-vim-now'
+Plug 'Twinside/vim-hoogle'
 
 " Languages and file types.
-Plugin 'chrisbra/csv.vim'
-Plugin 'ekalinin/dockerfile.vim'
-Plugin 'elixir-editors/vim-elixir'
-Plugin 'elzr/vim-json'
-Plugin 'Glench/Vim-Jinja2-Syntax'
-Plugin 'lifepillar/pgsql.vim'
-Plugin 'othree/html5.vim'
-Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-liquid'
-Plugin 'tpope/vim-rails'
-Plugin 'wgwoods/vim-systemd-syntax'
-Plugin 'neovimhaskell/haskell-vim'
+Plug 'chrisbra/csv.vim'
+Plug 'ekalinin/dockerfile.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'elzr/vim-json'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'lifepillar/pgsql.vim'
+Plug 'othree/html5.vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-liquid'
+Plug 'tpope/vim-rails'
+Plug 'wgwoods/vim-systemd-syntax'
+Plug 'neovimhaskell/haskell-vim'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 " -----------------------------------------------------------------------------
 " Status line
@@ -526,3 +522,10 @@ let g:AutoPairsShortcutFastWrap = '<C-]>'
 "==============================================================================
 
 let g:rustfmt_autosave = 1
+
+"==============================================================================
+" Twinside/vim-hoogle
+"==============================================================================
+
+noremap <leader>ho :Hoogle
+noremap <leader>ht :HoogleLine

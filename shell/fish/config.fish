@@ -35,16 +35,12 @@ function l
     ls
 end
 
-function vim
-    nvim $argv
-end
-
 function xmonadcfg
     vim ~/.xmonad/xmonad.hs
 end
 
 function vimcfg
-    vim ~/.config/nvim/init.vim
+    vim ~/.vimrc
 end
 
 function xmonadcfg
@@ -57,6 +53,16 @@ end
 
 function dwmrest
     cd ~/.dwm
+    sudo make clean install
+    cd ~/
+end
+
+function stcfg
+    vim ~/GitHub/backup/utils/st/config.h
+end
+
+function strest
+    cd ~/GitHub/backup/utils/st
     sudo make clean install
     cd ~/
 end

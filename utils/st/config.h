@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "D2Coding:pixelsize=20:antialias=true:autohint=true";
+static char *font = "D2Coding ligature:style=Bold:pixelsize=20:antialias=true:autohint=true";
 static char *font2[] = {
 "Inconsolata Nerd Font Mono:pixelsize=20:antialias=true:autohint=true",
 "UbuntuMono Nerd Font:pixelsize=20:antialias=true:autohint=true",
@@ -20,7 +20,7 @@ static char *font2[] = {
 "Monospace:pixelsize=20:style=medium:antialias=false"
 };
 
-static int borderpx = 2;
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:

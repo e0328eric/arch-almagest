@@ -21,8 +21,8 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 (package! fira-code-mode)
+(package! gruvbox-theme)
 (package! disable-mouse)
-(package! haskell-mode)
 (package! lua-mode)
 (package! evil-multiedit)
 (package! auto-complete)
@@ -30,6 +30,9 @@
 (package! rust-mode)
 (package! company-racer)
 (package! color-theme-approximate)
+(package! lsp-mode)
+(package! lsp-ui)
+(package! lsp-haskell)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:

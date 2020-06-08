@@ -77,8 +77,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_extended_run", NULL };
-static const char *termcmd[]  = { "konsole", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
+//static const char *emacscmd[]  = { "emacs", NULL };
 static const char *vscodecmd[]  = { "code-insiders", NULL };
 static const char *officecmd[]  = { "onlyoffice", NULL };
 static const char *guifilecmd[]  = { "krusader", NULL };
@@ -96,6 +97,7 @@ static Key keys[] = {
     { ModMask,                      XK_Return, spawn,          {.v = termcmd } },
     { ModMask|ShiftMask,            XK_Return, spawn,          {.v = browsercmd } },
     { ControlMask|ShiftMask,        XK_Return, spawn,          TERMCMD("mocp") },
+    //{ ModMask,                      XK_e,      spawn,          {.v = emacscmd } },
     { ModMask,                      XK_e,      spawn,          {.v = vscodecmd } },
     { ModMask|ControlMask,          XK_Return, spawn,          {.v = soundcloudcmd } },
     { ModMask,                      XK_f,      spawn,          TERMCMD("vifm") },

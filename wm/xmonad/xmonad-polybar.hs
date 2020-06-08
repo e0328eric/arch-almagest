@@ -84,7 +84,7 @@ import           XMonad.Util.WorkspaceCompare
 -- Main
 ---------------------------------------------------------------------------------------
 
-myterm = "konsole"
+myterm = "st"
 
 main :: IO ()
 main = do
@@ -245,23 +245,23 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- See also the statusBar function from Hooks.DynamicLog.
     -- , ((modMask, xK_b), sendMessage ToggleStruts)
     --, ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-    --, ((0, xK_Print), spawn "scrot") -- 0 means no extra modifier key needs to be pressed in this case.
     , ((controlMask, xK_Print), spawn "spectacle -r")
     , ((controlMask .|. shiftMask, xK_Print), spawn "spectacle -u")
     , ((0, xK_Print), spawn "spectacle") -- 0 means no extra modifier key needs to be pressed in this case.
     , ((modMask, xK_F3), spawn "krusader")
     , ((modMask .|. controlMask, xK_a), spawn "scrcpy")
     , ((controlMask .|. mod1Mask, xK_s), spawn "dmenu_extended_run") -- dmenu_extended
-    --, ((modMask, xK_f), spawn $ myterm ++ "-e ranger") -- ranger
-    , ((modMask .|. controlMask, xK_Return), spawn $ "konsole -e mocp") -- terminal based music player
+    , ((modMask, xK_e), spawn $ "code-insiders")
+    , ((modMask, xK_f), spawn $ myterm ++ " -e vifm") -- vifm
+    , ((modMask .|. controlMask, xK_Return), spawn $ myterm ++ " -e mocp") -- terminal based music player
     , ((modMask .|. controlMask .|. shiftMask, xK_Return), spawn "auryo") -- soundcloud music player
     --, ((modMask .|. controlMask, xK_m), spawn $ myterm ++ "-e mahjong")
     , ((modMask, xK_F12), spawn "wine ~/.wine/drive_c/Program\\ Files/Kakao/KakaoTalk/KakaoTalk.exe")
 
     -- Turn on setting files
-    , ((controlMask .|. modMask .|. shiftMask, xK_z), spawn $ "konsole -e vim ~/.zshrc")
-    , ((controlMask .|. modMask .|. shiftMask, xK_v), spawn $ "konsole -e vim ~/.vimrc")
-    , ((controlMask .|. modMask .|. shiftMask, xK_x), spawn $ "konsole -e vim ~/.xmonad/xmonad.hs")
+    , ((controlMask .|. modMask .|. shiftMask, xK_z), spawn $ myterm ++ " -e fishcfg")
+    , ((controlMask .|. modMask .|. shiftMask, xK_v), spawn $ myterm ++ " -e vim ~/.vimrc")
+    , ((controlMask .|. modMask .|. shiftMask, xK_x), spawn $ myterm ++ " -e vim ~/.xmonad/xmonad.hs")
     , ((controlMask .|. modMask .|. shiftMask, xK_e), spawn "~/.emacs.d/bin/doom refresh")
 
     -- End of Computer
@@ -281,7 +281,6 @@ myKeysKeyBoard conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- Reset xmonad
     , ((modMask .|. shiftMask, xK_r), spawn "xmonad --recompile; xmonad --restart")
-    --, ((modMask .|. shiftMask, xK_F3), spawn "gksu pcmanfm")
     ]
 
     ++

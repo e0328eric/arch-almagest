@@ -20,15 +20,15 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "Fira Code Medium" :size 16))
-(set-frame-parameter (selected-frame) 'alpha '(88 . 88))
-(add-to-list 'default-frame-alist '(alpha . (88 . 88)))
+;; (set-frame-parameter (selected-frame) 'alpha '(88 . 88))
+;; (add-to-list 'default-frame-alist '(alpha . (88 . 88)))
 ;; Default Tab Width
 (setq-default tab-width 4)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'gruvbox-drak-soft)
+;; (setq doom-theme 'gruvbox-drak-soft)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
