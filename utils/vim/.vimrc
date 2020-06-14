@@ -528,4 +528,5 @@ let g:rustfmt_autosave = 1
 "==============================================================================
 
 noremap <leader>ho :Hoogle
-noremap <leader>ht :HoogleLine
+noremap <leader>ht :Hoogle<CR>
+noremap <leader>hc :HoogleClose<CR>

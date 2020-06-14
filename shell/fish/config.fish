@@ -95,8 +95,4 @@ function checkclass
     xprop | grep WM_CLASS
 end
 
-function ghci
-    stack ghci
-end
-
 thefuck --alias | source
