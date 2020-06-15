@@ -93,9 +93,8 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'jiangmiao/auto-pairs'
 
 " Haskell-related
-Plug 'nbouscal/vim-stylish-haskell'
-Plug 'begriffs/haskell-vim-now'
 Plug 'Twinside/vim-hoogle'
+Plug 'alx741/vim-hindent'
 
 " Languages and file types.
 Plug 'chrisbra/csv.vim'
@@ -530,3 +529,11 @@ let g:rustfmt_autosave = 1
 noremap <leader>ho :Hoogle
 noremap <leader>ht :Hoogle<CR>
 noremap <leader>hc :HoogleClose<CR>
+
+"==============================================================================
+" alx741/vim-hindent
+"==============================================================================
+
+let g:hindent_on_save = 1
+let g:hindent_indent_size = 4
+let g:hindent_line_length = 80
