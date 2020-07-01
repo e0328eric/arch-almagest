@@ -1,0 +1,4 @@
+engine:
+  main: pdflatex
+  latex: pdflatex
+pdf: zathura

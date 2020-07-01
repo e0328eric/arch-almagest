@@ -269,7 +269,7 @@ myKeysKeyboard conf =
     -- Run Browser
     , ("M-S-<Return>", spawn "firefox")
     -- Run Text editor
-    , ("M-e", spawn "code")
+    , ("M-e", spawn "emacs")
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
@@ -280,7 +280,7 @@ myKeysKeyboard conf =
     , ("C-M1-s", spawn "dmenu_extended_run") -- dmenu_extended
     , ("M-f", spawn $ myterm ++ " -e vifm") -- vifm
     , ("M-C-<Return>", spawn $ myterm ++ " -e mocp") -- terminal based music player
-    , ( "M-<KR_F12>"
+    , ( "M-S-C-k"
       , spawn
             "wine ~/.wine/drive_c/Program\\ Files/Kakao/KakaoTalk/KakaoTalk.exe")
     -- End of Computer
@@ -292,7 +292,7 @@ myKeysKeyboard conf =
     , ( "M-S-z"
       , spawn
             "check-twice.sh \"Are you sure you want to suspend?\" \"systemctl suspend -i\"")
-    , ("M-S-x", io exitSuccess)
+    , ("M-S-C-x", io exitSuccess)
     -- Volume Settings
     , ( "<XF86AudioLowerVolume>"
       , spawn "pactl set-sink-volume @DEFAULT_SINK@ -2%")
@@ -349,8 +349,8 @@ myStartupHook = do
     spawn "picom -b --config $HOME/.config/compton/compton.conf"
     -- screen locking
     spawnOnce "light-locker"
-    -- pcloud
-    spawnOnce "nextcloud"
+    -- Google Drive
+    spawnOnce "insync"
     -- Alert Low Battery
     spawnOnce "battery-low"
     -- Wallpaper

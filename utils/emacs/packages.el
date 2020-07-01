@@ -22,7 +22,6 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 (package! fira-code-mode)
 (package! gruvbox-theme)
-(package! disable-mouse)
 (package! lua-mode)
 (package! evil-multiedit)
 (package! auto-complete)
