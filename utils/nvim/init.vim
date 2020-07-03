@@ -5,7 +5,6 @@
 " -----------------------------------------------------------------------------
 " Plugins
 " -----------------------------------------------------------------------------
-
 call plug#begin()
 
 " Vim Theme
@@ -72,7 +71,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Rust in vim
 Plug 'rust-lang/rust.vim'
-Plug 'arzg/vim-rust-syntax-ext'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -247,7 +245,11 @@ nmap <leader>bd :bp <BAR> bd #<CR>
 " ls
 nmap <leader>ls :ls<CR>
 
-" Window configs
+tnoremap <C-w>w <C-\><C-n><C-w>w
+tnoremap <C-w>h <C-\><C-n><C-w>h
+tnoremap <C-w>j <C-\><C-n><C-w>j
+tnoremap <C-w>k <C-\><C-n><C-w>k
+tnoremap <C-w>l <C-\><C-n><C-w>l
 nmap <leader>wv <C-w>v
 nmap <leader>ws <C-w>S
 nmap <leader>wq <C-w>q
@@ -460,6 +462,11 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " .............................................................................
 " plasticboy/vim-markdown:w
 " .............................................................................
@@ -472,9 +479,9 @@ let g:vim_markdown_math = 1
 " SirVer/ultisnips
 "==============================================================================
 
-let g:UltiSnipsExpandTrigger="<C-TAB>"
-let g:UltiSnipsJumpForwardTrigger="<C-TAB>"
-let g:UltiSnipsJumpBackwardTrigger="<C-S-TAB>"
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsUsePythonVersion = 3
 
 let g:UltiSnipsSnippetDirectories=['/home/almagest/.vim/localSnips']
