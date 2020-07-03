@@ -58,9 +58,6 @@ Plug 'Konfekt/FastFold'
 " Show git file changes in the gutter.
 Plug 'mhinz/vim-signify'
 
-" A git wrapper.
-Plug 'tpope/vim-fugitive'
-
 " Dim paragraphs above and below the active paragraph.
 Plug 'junegunn/limelight.vim'
 
@@ -69,6 +66,9 @@ Plug 'junegunn/goyo.vim'
 
 " A bunch of useful language related snippets (ultisnips is the engine).
 Plug 'SirVer/ultisnips'
+
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Rust in vim
 Plug 'rust-lang/rust.vim'
@@ -80,13 +80,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'eagletmt/neco-ghc'
 Plug 'reedes/vim-thematic'
 
-Plug 'ervandew/supertab'
-
 " Coloring Hex code
 Plug 'lilydjwg/colorizer'
-
-" YouCompleteMe
-Plug 'ycm-core/YouCompleteMe'
 
 " AutoPair
 Plug 'jiangmiao/auto-pairs'
@@ -94,6 +89,8 @@ Plug 'jiangmiao/auto-pairs'
 " Haskell-related
 Plug 'Twinside/vim-hoogle'
 Plug 'alx741/vim-hindent'
+
+Plug 'vimlab/split-term.vim'
 
 " Languages and file types.
 Plug 'chrisbra/csv.vim'
@@ -166,7 +163,6 @@ set clipboard=unnamedplus
 set complete-=i
 set cursorline
 set completeopt=menuone
-set cryptmethod=blowfish2
 set directory=/tmp//,.
 set encoding=utf-8
 set expandtab smarttab
@@ -185,7 +181,6 @@ set nospell
 set nostartofline
 set nu rnu
 set regexpengine=1
-set renderoptions=type:directx
 set ruler
 set scrolloff=3
 set shiftwidth=4
@@ -197,10 +192,8 @@ set softtabstop=4
 set splitbelow
 set tabstop=4
 set textwidth=0
-set term=terminator
 set ttimeout
 set ttyfast
-set ttymouse=sgr
 set undodir=/tmp//,.
 set virtualedit=block
 set whichwrap=b,s,<,>
@@ -237,7 +230,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " -----------------------------------------------------------------------------
 
 " Open Terminal
-map <Leader>tm :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>
+map <Leader>tm :let $NVIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $NVIM_DIR<CR>
 
 " Open new buffer
 nmap <leader>bn :enew<cr>
@@ -413,6 +406,14 @@ endfunction
 
 command! -bang Profile call s:profile(<bang>0)
 
+" Help filetype detection
+autocmd BufRead *.plot set filetype=gnuplot
+autocmd BufRead *.md set filetype=markdown
+autocmd BufRead *.lds set filetype=ld
+autocmd BufRead *.tex set filetype=tex
+autocmd BufRead *.trm set filetype=c
+autocmd BufRead *.xlsx.axlsx set filetype=ruby
+
 " -----------------------------------------------------------------------------
 " Pluginin settings, mappings and autocommands
 " -----------------------------------------------------------------------------
@@ -450,13 +451,14 @@ let g:fastfold_fold_command_suffixes=[]
 let g:limelight_conceal_ctermfg=244
 
 " .............................................................................
-" lervag/vimtex
+" neoclide/coc.nvim
 " .............................................................................
 
-"let g:tex_flavor = 'latex'
-"let g:vimtex_view_general_viewer = 'qpdfview'
-"let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-"let g:vimtex_view_general_options_latexmk = '--unique'
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " .............................................................................
 " plasticboy/vim-markdown:w
@@ -470,9 +472,9 @@ let g:vim_markdown_math = 1
 " SirVer/ultisnips
 "==============================================================================
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<C-TAB>"
+let g:UltiSnipsJumpForwardTrigger="<C-TAB>"
+let g:UltiSnipsJumpBackwardTrigger="<C-S-TAB>"
 let g:UltiSnipsUsePythonVersion = 3
 
 let g:UltiSnipsSnippetDirectories=['/home/almagest/.vim/localSnips']
@@ -493,21 +495,6 @@ let g:haskell_indent_before_where = 2
 let g:haskell_indent_after_bare_where = 2
 let g:haskell_indent_do = 3
 let g:haskell_indent_guard = 2
-
-"==============================================================================
-" ycm-core/YouCompleteMe
-"==============================================================================
-
-noremap <leader>gt :YcmCompleter GetType<CR>
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_error_symbol = '??'
-let g:ycm_warning_symbol = '>>'
-let g:ycm_filetype_blacklist = {
-  \ 'plaintex': 1,
-  \ 'tex': 1
-  \}
 
 "==============================================================================
 " jiangmiao/auto-pairs
@@ -536,3 +523,11 @@ noremap <leader>hc :HoogleClose<CR>
 let g:hindent_on_save = 1
 let g:hindent_indent_size = 4
 let g:hindent_line_length = 80
+
+"==============================================================================
+" vimlab/split-term.vim
+"==============================================================================
+
+noremap <leader>tm :let $NVIM_DIR=expand('%:p:h')<CR>:12Term<CR>cd $NVIM_DIR<CR>
+noremap <leader>tmv :VTerm<CR>
+

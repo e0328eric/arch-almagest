@@ -31,24 +31,28 @@ set -gx PATH $PATH ~/.cabal/bin
 set -gx PATH $PATH ~/.ghcup/bin
 set -gx PATH $PATH ~/.ghcup/env
 
+function vim
+    nvim $argv
+end
+
 function ls
     lsd $argv
 end
 
 function xmonadcfg
-    vim ~/.xmonad/xmonad.hs
+    nvim ~/.xmonad/xmonad.hs
 end
 
 function vimcfg
-    vim ~/.vimrc
+    nvim ~/.config/nvim/init.vim
 end
 
 function xmonadcfg
-    vim ~/.xmonad/xmonad.hs
+    nvim ~/.xmonad/xmonad.hs
 end
 
 function dwmcfg
-    vim ~/.dwm/config.h
+    nvim ~/.dwm/config.h
 end
 
 function dwmrest
@@ -58,7 +62,7 @@ function dwmrest
 end
 
 function stcfg
-    vim ~/GitHub/backup/utils/st/config.h
+    nvim ~/GitHub/backup/utils/st/config.h
 end
 
 function strest
@@ -67,12 +71,8 @@ function strest
     cd ~/
 end
 
-function i3cfg
-    vim ~/.config/i3/config
-end
-
 function fishcfg
-    vim ~/.config/fish/config.fish
+    nvim ~/.config/fish/config.fish
 end
 
 function getmusic
