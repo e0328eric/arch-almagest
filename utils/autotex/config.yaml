@@ -1,4 +1,7 @@
+# Setting the main engine and main latex engine
 engine:
   main: pdflatex
   latex: pdflatex
+
+# Name of the pdf reader
 pdf: zathura

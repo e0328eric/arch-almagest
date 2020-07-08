@@ -383,7 +383,7 @@ dbusOutput dbus str = do
 ---------------------------------------------------------------------------------------
 myScratchPads = [NS "terminal" spawnTerm findTerm manageTerm]
   where
-    spawnTerm = myterm ++ " -n scratchpad"
+    spawnTerm = myterm ++ " --class scratchpad"
     findTerm = resource =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
       where

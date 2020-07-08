@@ -5,11 +5,13 @@
 " -----------------------------------------------------------------------------
 " Plugins
 " -----------------------------------------------------------------------------
+set rtp+=~/dev/others/base16/templates/vim/
 call plug#begin()
 
 " Vim Theme
 Plug 'fneu/breezy'
-Plug 'gruvbox-community/gruvbox'
+"Plug 'gruvbox-community/gruvbox'
+Plug 'chriskempson/base16-vim'
 
 "Airline Theme
 Plug 'vim-airline/vim-airline'
@@ -130,20 +132,20 @@ let &statusline = s:statusline_expr()
 " Color settings
 " -----------------------------------------------------------------------------
 
-colorscheme gruvbox
-set t_Co=256
-
-" For Gruvbox to look correct in terminal Vim you'll want to source a palette
-" script that comes with the Gruvbox plugin.
-"
-" Add this to your ~/.profile file:
-"   source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
-
-" Gruvbox comes with both a dark and light theme.
+" deal with colors
+if !has('gui_running')
+  set t_Co=256
+endif
+set termguicolors
 set background=dark
-
-" This needs to come last, otherwise the colors aren't correct.
+let base16colorspace=256
+let g:base16_shell_path="~/dev/others/base16/templates/shell/scripts/"
+colorscheme base16-gruvbox-dark-medium
 syntax on
+hi Normal ctermbg=NONE
+" Brighter comments
+call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
+" This needs to come last, otherwise the colors aren't correct.
 
 " -----------------------------------------------------------------------------
 " Basic Settings
@@ -165,7 +167,6 @@ set directory=/tmp//,.
 set encoding=utf-8
 set expandtab smarttab
 set formatoptions=tcqrn1
-set formatprg=stylish-haskell
 set hidden
 set hlsearch
 set incsearch
@@ -198,11 +199,6 @@ set whichwrap=b,s,<,>
 set wildmenu
 set wildmode=full
 set wrap
-:hi Normal guibg=NONE ctermbg=NONE
-:hi NonText ctermbg=none
-:highlight SpecialKey ctermbg=none
-:hi CursorLine ctermbg = NONE guibg = NONE
-:highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=Black guibg=#589A5D
 
 let &t_kD = "\x1b[3~"
 
@@ -416,6 +412,9 @@ autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
 
+" For LaTeX3
+nnoremap <leader>lll :syn match texStatement "\\[a-zA-Z_:]\+"<CR>
+
 " -----------------------------------------------------------------------------
 " Pluginin settings, mappings and autocommands
 " -----------------------------------------------------------------------------
@@ -456,11 +455,11 @@ let g:limelight_conceal_ctermfg=244
 " neoclide/coc.nvim
 " .............................................................................
 
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <C-j>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ <SID>check_back_space() ? "\<C-j>>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -479,9 +478,9 @@ let g:vim_markdown_math = 1
 " SirVer/ultisnips
 "==============================================================================
 
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsExpandTrigger="<TAB>"
+let g:UltiSnipsJumpForwardTrigger="<TAB>"
+let g:UltiSnipsJumpBackwardTrigger="<C-TAB>"
 let g:UltiSnipsUsePythonVersion = 3
 
 let g:UltiSnipsSnippetDirectories=['/home/almagest/.vim/localSnips']
@@ -508,6 +507,8 @@ let g:haskell_indent_guard = 2
 "==============================================================================
 
 let g:AutoPairsShortcutFastWrap = '<C-]>'
+au Filetype tex let b:autopairs_enabled = 0
+au Filetype plaintex let b:autopairs_enabled = 0
 
 "==============================================================================
 " rust-lang/rust.vim

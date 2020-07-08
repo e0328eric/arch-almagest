@@ -65,6 +65,10 @@ function stcfg
     nvim ~/GitHub/backup/utils/st/config.h
 end
 
+function alacfg
+    nvim ~/GitHub/backup/utils/alacritty/alacritty.yml
+end
+
 function strest
     cd ~/GitHub/backup/utils/st
     sudo make clean install
