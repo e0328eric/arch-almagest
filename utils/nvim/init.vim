@@ -83,9 +83,6 @@ Plug 'reedes/vim-thematic'
 " Coloring Hex code
 Plug 'lilydjwg/colorizer'
 
-" AutoPair
-Plug 'jiangmiao/auto-pairs'
-
 " Haskell-related
 Plug 'Twinside/vim-hoogle'
 Plug 'alx741/vim-hindent'
@@ -466,6 +463,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+autocmd FileType tex let b:coc_pairs_disabled = ["<", "[", "{", "(", "'", "\"", "`"]
+
 " .............................................................................
 " plasticboy/vim-markdown:w
 " .............................................................................
@@ -501,14 +500,6 @@ let g:haskell_indent_before_where = 2
 let g:haskell_indent_after_bare_where = 2
 let g:haskell_indent_do = 3
 let g:haskell_indent_guard = 2
-
-"==============================================================================
-" jiangmiao/auto-pairs
-"==============================================================================
-
-let g:AutoPairsShortcutFastWrap = '<C-]>'
-au Filetype tex let b:autopairs_enabled = 0
-au Filetype plaintex let b:autopairs_enabled = 0
 
 "==============================================================================
 " rust-lang/rust.vim
