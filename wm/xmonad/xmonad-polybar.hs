@@ -279,6 +279,7 @@ myKeysKeyboard conf =
     , ("M-<KP_F3>", spawn "krusader")
     , ("C-M1-s", spawn "dmenu_extended_run") -- dmenu_extended
     , ("M-f", spawn $ myterm ++ " -e vifm") -- vifm
+    , ("M-m", spawn $ "mathematica") -- mathematica
     , ("M-C-<Return>", spawn $ myterm ++ " -e mocp") -- terminal based music player
     , ( "M-S-C-k"
       , spawn
