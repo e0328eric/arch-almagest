@@ -360,7 +360,7 @@ myStartupHook = do
     -- Palm touchpad
     spawnOnce "syndaemon -i 1.0 -t -K -R"
     -- Polybar Start
-    spawnOnce "~/.config/polybar/launch.sh"
+    spawn "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting
     --spawnOnce "~/.script/keysetting_xmodmap.sh"
     -- KDE Connect
