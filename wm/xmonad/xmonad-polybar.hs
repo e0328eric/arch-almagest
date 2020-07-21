@@ -269,7 +269,7 @@ myKeysKeyboard conf =
     -- Run Browser
     , ("M-S-<Return>", spawn "firefox")
     -- Run Text editor
-    , ("M-e", spawn "emacs")
+    , ("M-e", spawn "code-insiders")
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
@@ -280,6 +280,7 @@ myKeysKeyboard conf =
     , ("C-M1-s", spawn "dmenu_extended_run") -- dmenu_extended
     , ("M-f", spawn $ myterm ++ " -e vifm") -- vifm
     , ("M-m", spawn $ "mathematica") -- mathematica
+    , ("M-n", spawn $ "notion-app") -- notion
     , ("M-C-<Return>", spawn $ myterm ++ " -e mocp") -- terminal based music player
     , ( "M-S-C-k"
       , spawn
@@ -359,7 +360,7 @@ myStartupHook = do
     -- Palm touchpad
     spawnOnce "syndaemon -i 1.0 -t -K -R"
     -- Polybar Start
-    spawn "~/.config/polybar/launch.sh"
+    spawnOnce "~/.config/polybar/launch.sh"
     -- Xmodmap keychange setting
     --spawnOnce "~/.script/keysetting_xmodmap.sh"
     -- KDE Connect
