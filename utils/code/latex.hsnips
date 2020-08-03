@@ -192,3 +192,24 @@ endsnippet
 snippet oo "infty" i
 \infty
 endsnippet
+
+#=========================================================================#
+#
+# Hakwon Template
+#
+#=========================================================================#
+snippet hakwon "Hakwon Template"
+\documentclass{hakwon}
+\maintitle{$1}
+\subtitle{$2}
+\timelimit{$3}
+\defaultdisplay
+\showanswer
+
+\begin{document}
+
+\q $0
+
+\end{document}
+endsnippet
+

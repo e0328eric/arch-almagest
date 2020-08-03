@@ -197,7 +197,6 @@ myManageHook =
         , className =? "Thunar" --> doFloat
         , className =? "Pcmanfm" --> doFloat
         , className =? "Civ6Sub" --> unFloat
-        , className =? "firefox" --> unFloat
         , className =? "naver-whale" --> unFloat
         , className =? "scrcpy" --> doFloat
         , className =? "Kakaotalk.exe" --> doFloat
@@ -352,7 +351,7 @@ myStartupHook = do
     -- screen locking
     spawnOnce "light-locker"
     -- Google Drive
-    spawnOnce "insync"
+    spawnOnce "insync start"
     -- Alert Low Battery
     spawnOnce "battery-low"
     -- Wallpaper

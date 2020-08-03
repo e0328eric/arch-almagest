@@ -31,6 +31,11 @@ set -gx PATH $PATH ~/.cabal/bin
 set -gx PATH $PATH ~/.ghcup/bin
 set -gx PATH $PATH ~/.ghcup/env
 
+function emptytrash
+    rm -rf /home/almagest/.local/share/Trash
+    rm -rf /home/almagest/.local/share/vifm/Trash
+end
+
 function vim
     nvim $argv
 end
