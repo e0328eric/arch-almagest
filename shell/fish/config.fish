@@ -26,10 +26,10 @@ set fish_color_match 1EB176
 set pure_color_info cyan
 set pure_color_success 268BD2
 set pure_color_primary 6699CC
-set -gx PATH $PATH ~/.local/bin
-set -gx PATH $PATH ~/.cabal/bin
-set -gx PATH $PATH ~/.ghcup/bin
-set -gx PATH $PATH ~/.ghcup/env
+set PATH $PATH ~/.local/bin
+set PATH $PATH ~/.cabal/bin
+set PATH $PATH ~/.ghcup/bin
+set PATH $PATH ~/.ghcup/env
 
 function emptytrash
     rm -rf /home/almagest/.local/share/Trash

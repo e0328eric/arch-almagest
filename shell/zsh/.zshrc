@@ -110,8 +110,8 @@ export EDITOR="$VISUAL"
 # Define aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias e='emacs'
-alias vimplupdate='sudo vim =PluginInstall +qall'
+alias vim='nvim'
+alias ls='lsd'
 alias vols='amixer -D pulse sset Master'
 alias getmusic='youtube-dl -x --audio-format m4a'
 alias gsync='cd ~/GDrive && grive'
@@ -123,6 +123,7 @@ alias kakaotalk="wine ~/.wine/drive_c/Program\ Files/Kakao/KakaoTalk/KakaoTalk.e
 alias mahjong="wine ~/.wine/drive_c/Program\ Files/SEGA/MJ_Mahjong/MJ_Launcher.exe"
 alias installstack="curl -sSL https://get.haskellstack.org/ | sh"
 alias autohaskell="stack exec ghcid"
+alias gitall="git add --all && git commit -m"
 
 # Load Configures
 alias qutecfg="vim ~/.config/qutebrowser/config.py"

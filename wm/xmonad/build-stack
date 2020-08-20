@@ -1,7 +1,7 @@
 # ~/.xmonad/build
 #! /bin/sh
 
-exec stack ghc -- \
+exec stack --resolver lts-16.10 ghc -- \
     --make xmonad.hs \
     -i \
     -ilib \
