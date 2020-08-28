@@ -250,8 +250,7 @@ myKeysKeyboard conf =
     , ("M-<Space>", sendMessage NextLayout)
     , ("M-S-<Space>", sendMessage HM.ToggleStruts)
     , ("M-S-n", sendMessage $ Toggle NOBORDERS)
-    , ( "M-S-<KP_Equal>"
-      , sendMessage (Toggle NBFULL) >> sendMessage HM.ToggleStruts)
+    , ("M-S-M1-n", sendMessage (Toggle NBFULL) >> sendMessage HM.ToggleStruts)
     , ("M-S-f", sendMessage (T.Toggle "floats"))
     , ("M-S-t", withFocused $ windows . W.sink)
     , ("M-S-o", sendMessage $ Toggle REFLECTX)

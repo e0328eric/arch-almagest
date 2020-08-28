@@ -177,6 +177,7 @@ set hlsearch
 set incsearch
 set laststatus=2
 set lazyredraw
+set mouse=a
 set matchpairs+=<:> " Use % to jump between pairs
 set nocompatible
 set noerrorbells visualbell t_vb=
