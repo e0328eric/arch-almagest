@@ -348,7 +348,7 @@ myLogHook dbus =
 myStartupHook = do
     spawn "picom -b --config $HOME/.config/compton/compton.conf"
     -- screen locking
-    spawnOnce "light-locker"
+    --spawnOnce "light-locker"
     -- Google Drive
     spawnOnce "insync start"
     -- Alert Low Battery

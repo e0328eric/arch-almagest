@@ -94,7 +94,6 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Preferred editor for local and remote sessions
 export GOROOT=/usr/local/go
 export GOPATH=/home/almagest/.golib
-export GOPATH=$GOPATH:/home/almagest/GitHub/go-study
 
 export PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
