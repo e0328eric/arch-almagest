@@ -267,6 +267,7 @@ myKeysKeyboard conf =
     -- Run Browser
     , ("M-S-<Return>", spawn "firefox")
     -- Run Text editor
+    --, ("M-e", spawn "emacs")
     , ("M-e", spawn "code-insiders")
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.

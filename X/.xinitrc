@@ -9,7 +9,7 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-DEFAULT_SESSION=dwm
+DEFAULT_SESSION=xmonad
 
 xsetroot -cursor_name XC_left_ptr
 

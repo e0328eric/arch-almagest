@@ -1,5 +1,5 @@
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -102,7 +102,7 @@ export PATH="/home/almagest/.cargo/bin:$PATH"
 export PATH="/home/almagest/.npm-global/bin:$PATH"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"m
@@ -138,6 +138,7 @@ alias polybarcfg="vim ~/.config/polybar/config"
 alias zshcfg="vim ~/.zshrc"
 alias vimcfg='vim ~/.vimrc'
 alias urxvtreset="xrdb ~/.Xresources"
+alias v="nvim"
 
 eval $(thefuck --alias)
 

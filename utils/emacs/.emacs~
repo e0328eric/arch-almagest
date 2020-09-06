@@ -1,0 +1,90 @@
+;;;;;;;;;;;;;;;;;;
+;; Basic Config ;;
+;;;;;;;;;;;;;;;;;;
+(setq inhibit-startup-screen t)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(toggle-scroll-bar 0)
+(ido-mode 1)
+(set-face-attribute 'default nil :family "Fira Code" :height 130)
+(set-fontset-font nil 'hangul (font-spec :family "D2Coding" :pixelsize 18))
+(setq face-font-rescale-alist '(("D2Coding" . 1.2)))
+(setq-default line-spacing 2)
+
+;; recentf stuff
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; Package Archives ;;
+;;;;;;;;;;;;;;;;;;;;;;
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
+;;;;;;;;;;;;;;;;;;;;
+;; Line Numbering ;;
+;;;;;;;;;;;;;;;;;;;;
+(use-package nlinum-relative
+    :config
+    ;; something else you want
+    (nlinum-relative-setup-evil)
+    (add-hook 'prog-mode-hook 'nlinum-relative-mode))
+(require 'nlinum-relative)
+(nlinum-relative-setup-evil)                    ;; setup for evil
+(add-hook 'prog-mode-hook 'nlinum-relative-mode)
+(setq nlinum-relative-redisplay-delay 0)      ;; delay
+(setq nlinum-relative-current-symbol "")      ;; or "" for display current line number
+(setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
+(nlinum-relative-on)
+
+;;;;;;;;;;;
+;; Theme ;;
+;;;;;;;;;;;
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(monokai))
+ '(custom-safe-themes
+   '("f3ab34b145c3b2a0f3a570ddff8fabb92dafc7679ac19444c31058ac305275e1" default))
+ '(package-selected-packages
+   '(cargo flycheck-rust flymake-rust racer rust-mode shell-here dante lsp-haskell lsp-mode lsp-ui smex monokai-theme)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+;;;;;;;;;;;;;;;;;;;;
+;; Haskell Config ;;
+;;;;;;;;;;;;;;;;;;;;
+(use-package dante
+  :ensure t
+  :after haskell-mode
+  :commands 'dante-mode
+  :init
+  (add-hook 'haskell-mode-hook 'flycheck-mode)
+  ;; OR for flymake support:
+  (add-hook 'haskell-mode-hook 'flymake-mode)
+  (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
+
+  (add-hook 'haskell-mode-hook 'dante-mode)
+  :config
+  (flycheck-add-next-checker 'haskell-dante '(info . haskell-hlint))
+  )
+
+;;;;;;;;;;;;;;;;;
+;; Rust Config ;;
+;;;;;;;;;;;;;;;;;
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
