@@ -76,8 +76,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Zen mode
     Plug 'junegunn/goyo.vim'
     " Snippets
-    Plug 'honza/vim-snippets'
-    Plug 'mattn/emmet-vim'
+    Plug 'SirVer/ultisnips'
     " Interactive code
     Plug 'metakirby5/codi.vim'
     " Debugging

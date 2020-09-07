@@ -47,10 +47,6 @@
   // "python.sortImports.path": "~/.miniconda/envs/neovim/bin/isort",
   // "python.jediPath": "~/.miniconda/envs/neovim/lib/python3.8/site-packages",
 
-  // snippets
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
-  //"snippets.userSnippetsDirectory": "~/.config/nvim/snips",
-
   // emmet
   "emmet.includeLanguages": {
     "vue-html": "html",

@@ -31,12 +31,11 @@ function! StartifyEntryFormat()
     endfunction
 
 let g:startify_bookmarks = [
-            \ { 'c': '~/.config/i3/config' },
+            \ { 'x': '~/.xmonad/xmonad.hs' },
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 'z': '~/.zshrc' },
-            \ '~/Blog',
-            \ '~/Code',
-            \ '~/Pics',
+            \ '~/GDrive/TeX_Documents',
+            \ '~/GitHub',
             \ ]
 
 let g:startify_enable_special = 0
