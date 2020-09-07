@@ -28,6 +28,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'asvetliakov/vim-easymotion'
   else
 
+    " Rust
+    Plug 'rust-lang/rust.vim'
     " Sneak
     Plug 'justinmk/vim-sneak'
     " Surround

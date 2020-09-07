@@ -104,6 +104,10 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+# Check whether google drive folder exists
+# If so, define a Hakwon path
+[ -d ""$HOME/GDrive"" ] && export HAKWON="$HOME/GDrive/TeX_Documents/Hakwon"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"m
 

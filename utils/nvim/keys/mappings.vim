@@ -1,11 +1,6 @@
-" Basic Key Mappings
-
-imap <C-h> <C-w>h
-imap <C-j> <C-w>j
-imap <C-k> <C-w>k
-imap <C-l> <C-w>l
 " g Leader key
 let mapleader=" "
+
 " let localleader=" "
 nnoremap <Space> <Nop>
 
@@ -81,3 +76,6 @@ endif
 " Better nav for omnicomplete
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
+
+" Move text top while in insert mode
+inoremap <C-S-t> <C-o>zt
