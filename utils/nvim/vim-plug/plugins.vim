@@ -30,6 +30,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Rust
     Plug 'rust-lang/rust.vim'
+    Plug 'mhinz/vim-crates'
     " Sneak
     Plug 'justinmk/vim-sneak'
     " Surround
@@ -50,7 +51,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'alvan/vim-closetag'
     " Themes
     " Plug 'christianchiarulli/nvcode.vim'
-    Plug 'mhartington/oceanic-next'
+    " Plug 'mhartington/oceanic-next'
+    Plug 'morhetz/gruvbox'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Status Line
