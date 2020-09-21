@@ -1,0 +1,245 @@
+nmtui
+sudo pacman -S plasma
+sudo pacman -S xf86-video-intel picom xorg xorg-xinit firefox base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay/
+ls
+makrpkg -si
+makepkg -si
+reboot
+sudo systemctl enable sddm.service
+sudo systemctl start sddm.service
+sudo pacman -S konsole
+reboot
+sudo pacman -S lightdm
+sudo systemctl disable sddm.servie
+sudo systemctl disable sddm.servcie
+sudo systemctl disable sddm.service
+sudo systemctl enable lightdm.service
+ls
+rm -rf yay
+less history
+less .bash_history
+less .bash_history
+.bash_history >> init-install-packages
+./.bash_history >> init-install-packages
+vim .bash_history 
+ls
+rm -rf init-install-packages 
+ls
+cat init-packages.txt 
+sudo pacman -S qt5-style-kvantum qt5-style-kvantum-themes
+sudo pacman -S kvantum-qt5
+sudo pacman -S conky-all
+sudo pacman -S conky
+sudo pacman -S curl jq gawk
+vim .bash_history 
+sudo pacman -S libxcb-randr0-dev libx11-xcb-dev
+reboot
+sudo pacman -S lightdm-gtk-greeter
+reboot
+sudo pacman -S kvantum-qt5
+cd /etc
+vim locale.gen
+sudo pacman -S noto-fonts
+sudo pacman -S 
+sudo pacman -S adobe-source-han-sans-kr-fonts
+git clone https://github.com/VaughnValle/lush-pop.git
+sudo pacman -S cmake extra-cmake-modules python plasma-framework plasma-desktop
+cd lush-pop/
+ls
+cd latte-dock/
+sh install.sh 
+yay -S texlive-install
+yay -S texlive-installer
+sudo pacman -S plasma-integration
+mkdir -p ~/.local/share/kservices5
+ln -s ~/.local/share/kwin/scripts/krohnkite/metadata.desktop ~/.local/share/kservices5/krohnkite.desktop
+sudo pacman -S dolphin
+ cd /home/almagest/lush-pop/lightdm-webkit2-theme-glorious
+ clear
+sudo cp -r ./* /usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-glorious
+cd ..
+sudo cp -r ./lightdm-webkit2-glorious /usr/share/lightdm-webkit/themes/
+sudo cp -r ./lightdm-webkit2-theme-glorious /usr/share/lightdm-webkit/themes/
+sudo pacman -Rsc lightdm-gtk-greeter
+yay -S lightdm-webkit2-greeter
+sudo vim /etc/lightdm/lightdm.conf.d/lightdm.conf
+sudo vim /etc/lightdm/lightdm.conf
+sudo vim /etc/lightdm/lightdm.conf.d/lightdm.conf
+sudo vim /etc/lightdm/lightdm.conf
+sudo vim /etc/lightdm/lightdm-webkit2-greeter.conf 
+reboot
+sudo pacman -S albert
+albert
+ cd /home/almagest
+ clear
+ cd /
+ cd /home/almagest
+ cd /home/almagest/lush-pop
+cd
+vim kwin.kksrc 
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo pacman -S zsh
+echo $SHELL
+chsh -l
+chsh -s /usr/bin/zsh
+sudo su
+chsh -s /usr/bin/zsh
+zsh
+chsh -s /usr/bin/zsh
+chsh -s /bin/zsh
+ cd /home/almagest/Github/backup/wallpapers/
+ clear
+git clone https://github.com/e0328eric/arch-almagest.git
+ls
+mkdir Github
+mv arch-almagest/ ~/Github/backup
+mkdir -p Picture/Wallpaper
+ln -s ~/Github/backup/wallpapers/* ~/Picture/Wallpaper/
+cd /opt/texlive-installer/
+ls
+sudo ./install-tl 
+reboot
+: 1600658181:0;sudo pacman -S zsh-autosuggestions zsh-completions thefuck
+: 1600658224:0;ls
+: 1600658236:0;vim .zshrc
+: 1600658302:0;rm .zshrc
+: 1600658327:0;ln -s ~/Github/backup/shell/zsh/.zshrc ~/
+: 1600658374:0;git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+: 1600658400:0;vim .zshrc
+: 1600658429:0;sudo pacman -Rsc zsh-autosuggestions zsh-completions
+: 1600658485:0;git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+: 1600658491:0;vim .zshrc
+: 1600658577:0;git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+: 1600658591:0;vim .zshrc
+: 1600658695:0;git clone https://github.com/naver/d2codingfont.git
+: 1600658755:0;sudo pacman -S ark
+: 1600658776:0;sudo pacman -S kdeconnect okular
+: 1600658910:0;sudo pacman -S neovim
+: 1600658985:0;yay -S neovim-git
+: 1600659080:0;sudo pacman -S neovim
+: 1600659173:0;sudo pacman -S msgpack-c
+: 1600659365:0;git clone https://github.com/neovim/neovim.git
+: 1600659448:0;cd neovim
+: 1600659448:0;ls
+: 1600659456:0;sudo pacman -S lsd
+: 1600659461:0;ls
+: 1600659771:0;make CMAKE_BUILD_TYPE=RelWithDebInfo
+: 1600659833:0;sudo pacman -S zip unzip rar
+: 1600659843:0;sudo pacman -S zip unzip
+: 1600659860:0;ls
+: 1600659903:0;cat .zsh_history >> init-packages.txt
+: 1600659906:0;cat init-packages.txt
+: 1600659915:0;vim init-packages.txt
+: 1600660026:0;make CMAKE_BUILD_TYPE=RelWithDebInfo
+: 1600660144:0;p10k config
+: 1600660147:0;p10k configure
+: 1600660224:0;sudo make install
+: 1600660236:0;v
+: 1600660243:0;ls -al
+: 1600660261:0;cd .config
+: 1600660262:0;ls
+: 1600660269:0;mkdir autotex
+: 1600660279:0;mkdir nvim
+: 1600660282:0;cd nvim
+: 1600660299:0;ln -s ~/Github/backup/utils/nvim/* ~/.config/nvim
+: 1600660301:0;v
+: 1600660330:0;sudo pacman -S npm
+: 1600660372:0;v
+: 1600660440:0;cd
+: 1600660445:0;v kwin-keymap.kksrc
+: 1600660461:0;sudo pacman -S ctags
+: 1600660482:0;cat .bash_history > init-packages.txt
+: 1600660489:0;cat .zsh_history >> init-packages.txt
+: 1600660495:0;v kwin-keymap.kksrc
+: 1600660513:0;sudo pacman -S vim-polyglot
+: 1600660524:0;v kwin-keymap.kksrc
+: 1600660595:0;sudo pacman -S python3
+: 1600660609:0;sudo pacman -S pip3
+: 1600660611:0;sudo pacman -S pip
+: 1600660645:0;v kwin-keymap.kksrc
+: 1600660731:0;sudo pacman -S python2
+: 1600660783:0;python -m pip install --user --upgrade pynvim
+: 1600660856:0;curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py
+: 1600660875:0;python -m pip install --user --upgrade pynvim
+: 1600660894:0;sudo pacman -S cpan
+: 1600660910:0;npm install -g neovim
+: 1600660921:0;sudo npm install -g neovim
+: 1600660937:0;v kwin-keymap.kksrc
+: 1600660973:0;yay -S nimf-git
+: 1600661185:0;ls
+: 1600661342:0;v
+: 1600661418:0;ls
+: 1600661441:0;git clone https://github.com/e0328eric/autotex
+: 1600661463:0;yay -S insync
+: 1600661864:0;insync
+: 1600661873:0;insync start
+: 1600661975:0;ls
+: 1600661979:0;mkdir GDrive
+: 1600662092:0;sudo pacman -S clementine
+: 1600662394:0;v
+: 1600662428:0;cd .config/nvim
+: 1600662428:0;ls
+: 1600662515:0;v init.vim
+: 1600662567:0;v general/settings.vim
+: 1600662592:0;v init.vim
+: 1600662607:0;v vim-plug/plugins.vim
+: 1600662637:0;v init.vim
+: 1600662684:0;cd
+: 1600662685:0;ls
+: 1600662689:0;vim autotex
+: 1600662694:0;cd autotex
+: 1600662695:0;ls
+: 1600662702:0;cargo install --path .
+: 1600663676:0;cd ..
+: 1600663677:0;ls
+: 1600663679:0;cd Downloads
+: 1600663679:0;ls
+: 1600663682:0;sh Mathematica_12.1.1_LINUX.sh
+: 1600663688:0;sudo sh Mathematica_12.1.1_LINUX.sh
+: 1600664166:0;ls Github
+: 1600664166:0;ls
+: 1600664178:0;mv autotex Github/
+: 1600664180:0;cd Github
+: 1600664181:0;ls
+: 1600664188:0;git clone https://github.com/e0328eric/coprime
+: 1600664206:0;cd /usr/local/texlive/texmf-local
+: 1600664207:0;ls
+: 1600664213:0;cd tex/latex/local
+: 1600664213:0;ls
+: 1600664220:0;sudo mkdir coprime
+: 1600664232:0;sudo mkdir hakwon
+: 1600664263:0;sudo ln -s ~/Github/coprime/* /usr/local/texlive/texmf-local/tex/latex/local/coprime
+: 1600664263:0;ls
+: 1600664266:0;cd coprime
+: 1600664266:0;ls
+: 1600664268:0;cd ..
+: 1600664295:0;sudo ln -s ~/GDrive/TeX_Documents/Exam/Exam-Form/hakwon.cls /usr/local/texlive/texmf-local/tex/latex/local/hakwon
+: 1600664298:0;cd ..
+: 1600664301:0;cd plain
+: 1600664301:0;ls
+: 1600664302:0;cd local
+: 1600664303:0;ls
+: 1600664317:0;sudo ln -s ~/GDrive/TeX_Documents/Exam/Exam-Form/exam.tex /usr/local/texlive/texmf-local/tex/plain/local
+: 1600664324:0;sudo mktexlsr
+: 1600664329:0;cd
+: 1600664340:0;cd .config/autotex
+: 1600664347:0;cd Github/autotex
+: 1600664347:0;ls
+: 1600664352:0;v README.md
+: 1600664371:0;v config.yaml
+: 1600664399:0;cd
+: 1600664408:0;cd $HAKWON
+: 1600664408:0;ls
+: 1600664420:0;cd Exam/Elementary-School-Exam/Special/Highschool/Sep
+: 1600664420:0;ls
+: 1600664439:0;autotex 2020-09-10.tex
+: 1600664444:0;ls
+: 1600664451:0;v 2020-09-10.tex
+: 1600664568:0;xdg-mime default nvim.desktop text/x-tex
+: 1600664771:0;wolfram
+: 1600665252:0;v kwin-keymap.kksrc
+: 1600665325:0;cd ..
+: 1600665354:0;cat .bash_history > init-packages.txt
+: 1600665357:0;cat .zsh_history >> init-packages.txt

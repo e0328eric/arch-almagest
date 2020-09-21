@@ -42,7 +42,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " auto set indent settings
     Plug 'tpope/vim-sleuth'
     " Better Syntax Support
-    Plug 'sheerun/vim-polyglot'
+    " Plug 'sheerun/vim-polyglot'
     " Cool Icons
     Plug 'ryanoasis/vim-devicons'
     " Auto pairs for '(' '[' '{'
