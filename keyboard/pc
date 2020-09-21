@@ -1,7 +1,7 @@
 default  partial alphanumeric_keys modifier_keys
 xkb_symbols "pc105" {
 
-    key <ESC>  {	[ Escape		]	};
+    key <ESC>  {	[ Caps_Lock		]	};
 
     // The extra key on many European keyboards:
     key <LSGT> {	[ less, greater, bar, brokenbar ] };
@@ -19,7 +19,7 @@ xkb_symbols "pc105" {
     key  <TAB> {	[ Tab,	ISO_Left_Tab	]	};
     key <RTRN> {	[ Return		]	};
 
-    key <CAPS> {	[ Caps_Lock		]	};
+    key <CAPS> {	[ Escape		]	};
     key <NMLK> {	[ Num_Lock 		]	};
 
     key <LFSH> {	[ Shift_L		]	};
