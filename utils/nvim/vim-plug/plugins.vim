@@ -28,9 +28,22 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'asvetliakov/vim-easymotion'
   else
 
+    " Add maktaba and codefmt to the runtimepath.
+    " (The latter must be installed before it can be used.)
+    Plug 'google/vim-maktaba'
+    Plug 'google/vim-codefmt'
+    " Also add Glaive, which is used to configure codefmt's maktaba flags. See
+    " `:help :Glaive` for usage.
+    Plug 'google/vim-glaive'
     " Rust
     Plug 'rust-lang/rust.vim'
     Plug 'mhinz/vim-crates'
+    " Haskell
+    Plug 'neovimhaskell/haskell-vim'
+    Plug 'nbouscal/vim-stylish-haskell'
+    "C++
+    Plug 'jackguo380/vim-lsp-cxx-highlight'
+    Plug 'vim-syntastic/syntastic'
     " Sneak
     Plug 'justinmk/vim-sneak'
     " Surround
@@ -42,7 +55,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " auto set indent settings
     Plug 'tpope/vim-sleuth'
     " Better Syntax Support
-    " Plug 'sheerun/vim-polyglot'
+    Plug 'sheerun/vim-polyglot'
     " Cool Icons
     Plug 'ryanoasis/vim-devicons'
     " Auto pairs for '(' '[' '{'
@@ -54,7 +67,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'mhartington/oceanic-next'
     Plug 'morhetz/gruvbox'
     " Intellisense
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() }}
     " Status Line
     Plug 'vim-airline/vim-airline'
     Plug 'kevinhwang91/rnvimr'

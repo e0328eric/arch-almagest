@@ -9,3 +9,5 @@ endif
 let g:gruvbox_contrast_dark = 'soft'
 syntax enable
 colorscheme gruvbox
+hi Normal ctermbg=NONE guibg=NONE
+hi NonText ctermbg=NONE guibg=NONE

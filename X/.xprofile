@@ -1,9 +1,9 @@
 export BROWSER=/usr/bin/firefox
-export TERMINAL=/usr/bin/alacritty
+export TERMINAL=/usr/bin/konsole
 xrdb ~/.Xresources
+
 export GTK_IM_MODULE=nimf
 export QT4_IM_MODULE="nimf"
-export QT5_IM_MODULE="nimf"
 export QT_IM_MODULE=nimf
 export XMODIFIERS="@im=nimf"
 nimf &

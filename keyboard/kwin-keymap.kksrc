@@ -20,7 +20,7 @@ Toggle Touchpad=Touchpad Toggle
 
 [kded5][Global Shortcuts]
 Show System Activity=Ctrl+Esc
-display=Display; Meta+P
+display=Meta+P; Display
 
 [khotkeys][Global Shortcuts]
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=
@@ -40,7 +40,7 @@ _launch=Search; Alt+Space; Alt+F2
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=Ctrl+Alt+Shift+PgDown
-Lock Session=Ctrl+Alt+L; Meta+L; Screensaver
+Lock Session=Meta+L; Ctrl+Alt+L; Screensaver
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=Ctrl+Alt+Shift+Del
 Reboot Without Confirmation=Ctrl+Alt+Shift+PgUp
@@ -57,7 +57,7 @@ Kill Window=Ctrl+Alt+Esc
 Krohnkite: Cycle Layout=
 Krohnkite: Decrease=
 Krohnkite: Down/Next=Meta+Shift+S
-Krohnkite: Float=Meta+F
+Krohnkite: Float=Meta+Shift+F
 Krohnkite: Float All=
 Krohnkite: Floating Layout=
 Krohnkite: Grow Height=Meta+Ctrl+J
@@ -65,10 +65,10 @@ Krohnkite: Grow Width=Meta+Ctrl+L
 Krohnkite: Increase=Meta+I
 Krohnkite: Left=Meta+Shift+A
 Krohnkite: Monocle Layout=
-Krohnkite: Move Down/Next=Alt+Tab
+Krohnkite: Move Down/Next=Meta+Tab
 Krohnkite: Move Left=
 Krohnkite: Move Right=Meta+Shift+L
-Krohnkite: Move Up/Prev=Alt+Shift+Tab
+Krohnkite: Move Up/Prev=Meta+Shift+Tab
 Krohnkite: Next Layout=Meta+Space
 Krohnkite: Previous Layout=Meta+Alt+Space
 Krohnkite: Quarter Layout=
@@ -88,7 +88,7 @@ MoveZoomLeft=
 MoveZoomRight=
 MoveZoomUp=
 Setup Window Shortcut=
-Show Desktop=Meta+D
+Show Desktop=
 ShowDesktopGrid=Ctrl+F8
 Suspend Compositing=Alt+Shift+F12
 Switch One Desktop Down=
@@ -137,8 +137,8 @@ Walk Through Desktop List=
 Walk Through Desktop List (Reverse)=
 Walk Through Desktops=
 Walk Through Desktops (Reverse)=
-Walk Through Windows=Meta+Tab
-Walk Through Windows (Reverse)=Meta+Shift+Backtab
+Walk Through Windows=Alt+Tab
+Walk Through Windows (Reverse)=Alt+Shift+Backtab
 Walk Through Windows Alternative=
 Walk Through Windows Alternative (Reverse)=
 Walk Through Windows of Current Application=Alt+`
@@ -218,7 +218,7 @@ view_zoom_in=Meta+=
 view_zoom_out=Meta+-
 
 [lattedock][Global Shortcuts]
-activate entry 1=
+activate entry 1=Alt+!
 activate entry 10=
 activate entry 11=
 activate entry 12=Meta+X
@@ -226,12 +226,12 @@ activate entry 13=Meta+C
 activate entry 14=Meta+V
 activate entry 15=Meta+B
 activate entry 16=Meta+N
-activate entry 17=Meta+M
+activate entry 17=
 activate entry 18=Meta+,
 activate entry 19=
-activate entry 2=
-activate entry 3=
-activate entry 4=
+activate entry 2=Alt+@
+activate entry 3=Alt+#
+activate entry 4=Alt+$
 activate entry 5=
 activate entry 6=
 activate entry 7=
@@ -264,15 +264,30 @@ new instance for entry 9=Meta+Ctrl+9
 repeat_action=
 show latte global settings=Meta+W
 show latte view=Meta+`
-show view settings=Meta+A
+show view settings=
 show-barcode=
 show-on-mouse-pos=
 
+[mediacontrol][Global Shortcuts]
+mediavolumedown=
+mediavolumeup=
+nextmedia=Media Next
+playpausemedia=Media Play
+previousmedia=Media Previous
+stopmedia=Media Stop
+
 [org.kde.dolphin.desktop][Global Shortcuts]
-_launch=Meta+E
+_launch=Meta+F
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=Meta+.
+
+[org.kde.spectacle.desktop][Global Shortcuts]
+ActiveWindowScreenShot=Meta+Print
+CurrentMonitorScreenShot=
+FullScreenScreenShot=Shift+Print
+RectangularRegionScreenShot=Meta+Shift+Print
+_launch=Print
 
 [org_kde_powerdevil][Global Shortcuts]
 Decrease Keyboard Brightness=Keyboard Brightness Down
@@ -297,12 +312,13 @@ activate task manager entry 6=
 activate task manager entry 7=
 activate task manager entry 8=
 activate task manager entry 9=
+activate widget 20=
 clear-history=
 clipboard_action=Ctrl+Alt+X
 cycleNextAction=
 cyclePrevAction=
 edit_clipboard=
-manage activities=Meta+Q
+manage activities=
 next activity=
 previous activity=
 repeat_action=Ctrl+Alt+R

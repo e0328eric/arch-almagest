@@ -52,7 +52,9 @@ else
   source $HOME/.config/nvim/plug-config/asynctask.vim
   source $HOME/.config/nvim/plug-config/window-swap.vim
   source $HOME/.config/nvim/plug-config/markdown-preview.vim
-  source $HOME/.config/nvim/plug-config/rust.vim
+  source $HOME/.config/nvim/plug-config/vim-codefmt.vim
+  source $HOME/.config/nvim/plug-config/cpp-highlight.vim
+  source $HOME/.config/nvim/plug-config/syntastic.vim
   source $HOME/.config/nvim/plug-config/ultisnips.vim
   source $HOME/.config/nvim/plug-config/vim-crates.vim
   luafile $HOME/.config/nvim/lua/plug-colorizer.lua
