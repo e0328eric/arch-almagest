@@ -12,7 +12,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/almagest/.oh-my-zsh"
+export ZSH="/Users/almagest/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -94,16 +94,23 @@ export GOROOT=/usr/local/go
 export GOPATH=/home/almagest/.golib
 
 export PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export PATH="/home/almagest/.local/bin:$PATH"
-export PATH="/home/almagest/.cargo/bin:$PATH"
-export PATH="/home/almagest/.npm-global/bin:$PATH"
+export PATH="$PATH:/usr/local/texlive/2020/bin/x86_64-darwin"
+export PATH="/Users/linuxbrew/.linuxbrew/bin:$PATH"
+export PATH="/Users/almagest/.local/bin:$PATH"
+export PATH="/Users/almagest/.cargo/bin:$PATH"
+export PATH="/Users/almagest/.npm-global/bin:$PATH"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/
+
+export LDFLAGS="-L/usr/local/opt/qt/lib:$LDFLAGS"
+export LDFLAGS="-L/usr/local/opt/llvm/lib:$LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/qt/include:$CPPFLAGS"
+export CPPFLAGS="-I/usr/local/opt/llvm/include:$CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 
 # Check whether google drive folder exists
 # If so, define a Hakwon path
@@ -119,8 +126,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.rustup/toolchains/nightly-x86_64-
 # Define aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#alias vim='nvim'
-alias ls='lsd'
+alias v='nvim'
 alias vols='amixer -D pulse sset Master'
 alias getmusic='youtube-dl -x --audio-format m4a'
 alias gsync='cd ~/GDrive && grive'
@@ -142,7 +148,6 @@ alias polybarcfg="vim ~/.config/polybar/config"
 alias zshcfg="vim ~/.zshrc"
 alias vimcfg='vim ~/.vimrc'
 alias urxvtreset="xrdb ~/.Xresources"
-alias v="nvim"
 
 eval $(thefuck --alias)
 
@@ -153,3 +158,5 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 bindkey -v
 [ -f "/home/almagest//.ghcup/env" ] && source "/home/almagest//.ghcup/env" # ghcup-env
+export PATH="/usr/local/opt/qt/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"

@@ -1,0 +1,161 @@
+#=========================================================================#
+#
+#  This snippet is comparable with markdown math and vim --- Ver : 0.00b
+#  almagest0328@gmail.com
+#
+#  markdown math snippet, First Release Date : 2019/05/04
+#  This snippet can be used from UltiSnipt plugin
+#
+#=========================================================================#
+
+#=========================================================================#
+#
+# Math Commands
+#
+#=========================================================================#
+
+#Basic Command
+snippet mk "math mode" iA
+$${1}$$0
+endsnippet
+
+#Display Style
+snippet be
+$$
+    $1
+$$
+$0
+endsnippet
+
+#Aligning
+snippet align
+$$
+\begin{aligned}
+$1
+\end{aligned}
+$$
+$0
+endsnippet
+
+#Frac
+snippet "((((\d+)|((\\)?[a-zA-Z]+))[\_\^]?((\d+)|((\\)?[a-zA-Z]+))?[\_\^]?((\d+)|((\\)?[a-zA-Z]+))?)|(\(\S+\)))\/\/" "frac" irA
+`!p
+if '(' in match.group(1):
+	snip.rv = '\\frac{' + str(match.group(1))[1:-1] + '}'
+else:
+	snip.rv = '\\frac{' + match.group(1) + '}'
+`{$2}$0
+endsnippet
+
+snippet oo "infty" i
+\infty
+endsnippet
+
+#=========================================================================#
+#
+# Big Notations
+#
+#=========================================================================#
+
+#sum
+snippet sum
+\sum_{$1}^{$2}$0
+endsnippet
+
+#product
+snippet prod
+\prod_{$1}^{$2}$0
+endsnippet
+
+#union
+snippet bcup
+\bigcup_{$1}^{$2}$0
+endsnippet
+
+#intersection
+snippet bcap
+\bigcap_{$1}^{$2}$0
+endsnippet
+
+#integral
+snippet int
+\int_{$1}^{$2}$0
+endsnippet
+
+#######Limits
+#limit
+snippet lim "limit" i
+\lim_{$1\to ${2}}$0
+endsnippet
+
+#limsup
+snippet lims "limit supremum" i
+\varlimsup_{$1\to ${2}}$0
+endsnippet
+
+#liminf
+snippet limi "limit infimum" i
+\varliminf_{$1\to ${2}}$0
+endsnippet
+
+#sup
+snippet sup "supremum" i
+\sup_{$1}$0
+endsnippet
+
+#inf
+snippet inf "infimum" i
+\inf_{$1}$0
+endsnippet
+
+#=========================================================================#
+#
+# Brackets
+#
+#=========================================================================#
+
+#Bracket
+snippet lrr "bracket" iA
+($1)$0
+endsnippet
+
+snippet LRR "bracket" iA
+\left($1\right)$0
+endsnippet
+
+snippet lrb "bracket" iA
+\\{$1\\}$0
+endsnippet
+
+snippet LRB "bracket" iA
+\left\\{$1\right\\}$0
+endsnippet
+
+snippet lrs "bracket" iA
+[$1]$0
+endsnippet
+
+snippet LRS "bracket" iA
+\left[$1\right]$0
+endsnippet
+
+snippet lra "bracket" i
+\langle $1\rangle
+endsnippet
+
+snippet LRA "bracket" iA
+\left\langle $1\right\rangle
+endsnippet
+
+snippet abs "bracket" i
+|$1|$0
+endsnippet
+
+snippet ABS "bracket" iA
+\left|$1\right|$0
+endsnippet
+
+#####Misellenuous
+snippet lp "Lp space" i
+\\|$1\\|_{$2}^{$3}$0
+endsnippet
