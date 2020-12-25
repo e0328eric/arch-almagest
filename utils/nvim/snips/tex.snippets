@@ -31,7 +31,7 @@ else:
 endsnippet
 
 #Usepackage
-snippet "pac(( (\S+))|( (.+) \| (\S+)));" "Usepackage" brA
+snippet "pkg(( (\S+))|( (.+) \| (\S+)));" "Usepackage" brA
 `!p
 if '|' in match.group(1):
     packageOption = match.group(5)

@@ -1,4 +1,6 @@
-let g:xtabline_settings = {}
+let g:xtabline_settings = {
+    \ 'theme': 'codedark'
+    \}
 
 let g:xtabline_settings.enable_mappings = 0
 

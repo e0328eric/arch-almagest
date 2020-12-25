@@ -88,6 +88,9 @@ Plug 'lilydjwg/colorizer'
 " YouCompleteMe
 Plug 'ycm-core/YouCompleteMe'
 
+" Golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " AutoPair
 Plug 'jiangmiao/auto-pairs'
 

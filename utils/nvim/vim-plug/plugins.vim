@@ -30,6 +30,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Add maktaba and codefmt to the runtimepath.
     " (The latter must be installed before it can be used.)
+    Plug 'dense-analysis/ale'
     Plug 'google/vim-maktaba'
     Plug 'google/vim-codefmt'
     " Also add Glaive, which is used to configure codefmt's maktaba flags. See
@@ -38,6 +39,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Rust
     Plug 'rust-lang/rust.vim'
     Plug 'mhinz/vim-crates'
+    " Golang
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     " Haskell
     Plug 'neovimhaskell/haskell-vim'
     Plug 'nbouscal/vim-stylish-haskell'
@@ -66,11 +69,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'christianchiarulli/nvcode.vim'
     " Plug 'mhartington/oceanic-next'
     Plug 'morhetz/gruvbox'
+    " Plug 'phanviet/vim-monokai-pro'
+    Plug 'vim-airline/vim-airline-themes'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() }}
     " Status Line
     Plug 'vim-airline/vim-airline'
-    Plug 'kevinhwang91/rnvimr'
     " FZF
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'

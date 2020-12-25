@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: Integration
-# key: int
-# --
-\int_{$1}^{$2}$0

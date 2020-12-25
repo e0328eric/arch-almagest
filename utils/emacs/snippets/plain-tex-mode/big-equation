@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: Big Equation
-# key: be
-# --
-$$
-$1
-$$
-$0

@@ -30,54 +30,30 @@ set PATH $PATH ~/.local/bin
 set PATH $PATH ~/.cabal/bin
 set PATH $PATH ~/.ghcup/bin
 set PATH $PATH ~/.ghcup/env
+set PATH $PATH ~/.cargo/bin
+set --universal -x GOPATH ~/.go
+set PATH $PATH $GOROOT/bin:$GOPATH/bin
+set GOLSPPATH $GOPATH/src/github.com/ajaymt/golsp
 
 function emptytrash
     rm -rf /home/almagest/.local/share/Trash
     rm -rf /home/almagest/.local/share/vifm/Trash
 end
 
-function vim
+function v
     nvim $argv
+end
+
+function doom
+  ~/.emacs.d/bin/doom $argv
 end
 
 function ls
     lsd $argv
 end
 
-function xmonadcfg
-    nvim ~/.xmonad/xmonad.hs
-end
-
 function vimcfg
     nvim ~/.config/nvim/init.vim
-end
-
-function xmonadcfg
-    nvim ~/.xmonad/xmonad.hs
-end
-
-function dwmcfg
-    nvim ~/.dwm/config.h
-end
-
-function dwmrest
-    cd ~/.dwm
-    sudo make clean install
-    cd ~/
-end
-
-function stcfg
-    nvim ~/GitHub/backup/utils/st/config.h
-end
-
-function alacfg
-    nvim ~/GitHub/backup/utils/alacritty/alacritty.yml
-end
-
-function strest
-    cd ~/GitHub/backup/utils/st
-    sudo make clean install
-    cd ~/
 end
 
 function fishcfg
@@ -92,16 +68,6 @@ function gitall
     git add . && git commit -m $argv && git push origin master
 end
 
-function conph
-    kdeconnect-cli -n 'Samsung SM-A810S' --share $argv
-end
-
-function installstack
-    curl -sSL https://get.haskellstack.org/ | sh
-end
-
-function checkclass
-    xprop | grep WM_CLASS
-end
+starship init fish | source
 
 thefuck --alias | source
