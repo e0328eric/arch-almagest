@@ -30,7 +30,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Add maktaba and codefmt to the runtimepath.
     " (The latter must be installed before it can be used.)
-    Plug 'dense-analysis/ale'
     Plug 'google/vim-maktaba'
     Plug 'google/vim-codefmt'
     " Also add Glaive, which is used to configure codefmt's maktaba flags. See
@@ -39,6 +38,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Rust
     Plug 'rust-lang/rust.vim'
     Plug 'mhinz/vim-crates'
+    Plug 'arzg/vim-rust-syntax-ext'
     " Golang
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     " Haskell
@@ -129,7 +129,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'luochen1990/rainbow'
     " Async Linting Engine
     " TODO make sure to add ale config before plugin
-    " Plug 'dense-analysis/ale'
+    Plug 'dense-analysis/ale'
     " Better Whitespace
     Plug 'ntpeters/vim-better-whitespace'
     " Multiple Cursors
@@ -139,6 +139,20 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'yuezk/vim-js'
     Plug 'maxmellon/vim-jsx-pretty'
     Plug 'jelera/vim-javascript-syntax'
+    " assuming you're using vim-plug: https://github.com/junegunn/vim-plug
+    Plug 'ncm2/ncm2'
+    Plug 'roxma/nvim-yarp'
+
+    " enable ncm2 for all buffers
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+
+    " IMPORTANT: :help Ncm2PopupOpen for more information
+    set completeopt=noinsert,menuone,noselect
+
+    " NOTE: you need to install completion sources to get completions. Check
+    " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-path'
     " Plugin Graveyard
 
     " jsx syntax support

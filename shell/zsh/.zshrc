@@ -1,5 +1,7 @@
 export EDITOR=nvim
 export VISUAL=nvim
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -26,6 +28,7 @@ export PATH="$PATH:/usr/local/texlive/2020/bin/x86_64-darwin"
 export PATH="/Users/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="/Users/almagest/.local/bin:$PATH"
 export PATH="/Users/almagest/.cargo/bin:$PATH"
+export PATH="/Users/almagest/.flutter/bin:$PATH"
 export PATH="/Users/almagest/.npm-global/bin:$PATH"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
