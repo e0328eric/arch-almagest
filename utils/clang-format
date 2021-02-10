@@ -8,6 +8,7 @@ Language: Cpp
 DerivePointerAlignment: false
 PointerAlignment: Left
 AccessModifierOffset: -3
+BreakBeforeBraces: Allman
 ColumnLimit: 80
 ---
 Language: JavaScript

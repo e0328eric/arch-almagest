@@ -49,6 +49,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 alias v='nvim'
 alias e='emacs -nw'
 alias doom='~/.emacs.d/bin/doom'
+alias ls='exa'
 # alias vols='amixer -D pulse sset Master'
 alias getmusic='youtube-dl -x --audio-format m4a'
 # alias gsync='cd ~/GDrive && grive'
