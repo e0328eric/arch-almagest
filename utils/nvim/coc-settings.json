@@ -70,28 +70,23 @@
   // TODO add to paths.vim g:coc_node_path
 
   // Rust
-  "rust-client.channel": "nightly",
+  "rust-client.channel": "stable",
 
   "languageserver": {
     "ccls": {
       "command": "ccls",
-      "args": ["--log-file=/tmp/ccls.log", "-v=1"],
       "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/"],
       "initializationOptions": {
         "cache": {
           "directory": "/tmp/ccls"
         },
         "client": {
           "snippetSupport": true
-        },
-        "index": {
-          "onChange": true
-        },
-        // This is mandatory!
-        "highlight": { "lsRanges": true }
+        }
       }
     },
+
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],

@@ -48,6 +48,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v='nvim'
 alias e='emacs -nw'
+alias t='tmux'
 alias doom='~/.emacs.d/bin/doom'
 alias ls='exa'
 # alias vols='amixer -D pulse sset Master'

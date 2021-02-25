@@ -38,7 +38,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Rust
     Plug 'rust-lang/rust.vim'
     Plug 'mhinz/vim-crates'
-    Plug 'arzg/vim-rust-syntax-ext'
     " Golang
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     " Haskell
@@ -118,8 +117,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'skywind3000/asyncrun.vim'
     " Swap windows
     Plug 'wesQ3/vim-windowswap'
-    " Markdown Preview
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
     " Easily Create Gists
     Plug 'mattn/vim-gist'
     Plug 'mattn/webapi-vim'

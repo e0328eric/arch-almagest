@@ -70,6 +70,8 @@ Plug 'junegunn/goyo.vim'
 " A bunch of useful language related snippets (ultisnips is the engine).
 Plug 'SirVer/ultisnips'
 
+Plug 'dense-analysis/ale'
+
 " Rust in vim
 Plug 'rust-lang/rust.vim'
 Plug 'arzg/vim-rust-syntax-ext'
@@ -84,9 +86,6 @@ Plug 'ervandew/supertab'
 
 " Coloring Hex code
 Plug 'lilydjwg/colorizer'
-
-" YouCompleteMe
-Plug 'ycm-core/YouCompleteMe'
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -169,7 +168,6 @@ set clipboard=unnamedplus
 set complete-=i
 set cursorline
 set completeopt=menuone
-set cryptmethod=blowfish2
 set directory=/tmp//,.
 set encoding=utf-8
 set expandtab smarttab
@@ -189,7 +187,6 @@ set nospell
 set nostartofline
 set nu rnu
 set regexpengine=1
-set renderoptions=type:directx
 set ruler
 set scrolloff=3
 set shiftwidth=4
@@ -203,7 +200,6 @@ set tabstop=4
 set textwidth=0
 set ttimeout
 set ttyfast
-set ttymouse=sgr
 set undodir=/tmp//,.
 set virtualedit=block
 set whichwrap=b,s,<,>
