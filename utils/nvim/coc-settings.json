@@ -73,20 +73,6 @@
   "rust-client.channel": "stable",
 
   "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/"],
-      "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        },
-        "client": {
-          "snippetSupport": true
-        }
-      }
-    },
-
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
@@ -97,6 +83,11 @@
         "package.yaml"
       ],
       "filetypes": ["haskell", "lhaskell"]
+    },
+
+    "nim": {
+      "command": "nimlsp",
+      "filetypes": ["nim"]
     }
   }
 }

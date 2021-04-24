@@ -8,7 +8,7 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Sungbae Jeong"
       user-mail-address "almagest0328@gmail.com"
-      doom-font (font-spec :family "D2Coding ligature" :size 15 :weight 'medium)
+      doom-font (font-spec :family "D2Coding ligature" :size 17 :weight 'medium)
       doom-variable-pitch-font (font-spec :family "Hack Nerd Font" :size 16)
       doom-theme 'doom-monokai-pro
       default-directory "~/"

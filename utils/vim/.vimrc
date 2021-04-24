@@ -70,11 +70,10 @@ Plug 'junegunn/goyo.vim'
 " A bunch of useful language related snippets (ultisnips is the engine).
 Plug 'SirVer/ultisnips'
 
-Plug 'dense-analysis/ale'
-
 " Rust in vim
 Plug 'rust-lang/rust.vim'
 Plug 'arzg/vim-rust-syntax-ext'
+Plug 'mhinz/vim-crates'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -164,7 +163,11 @@ set autoindent
 set autoread
 set backspace=indent,eol,start
 set backupdir=/tmp//,.
-set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 set complete-=i
 set cursorline
 set completeopt=menuone
@@ -307,6 +310,9 @@ xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 
 " Clear search highlights.
 map <Leader><Space> :let @/=''<CR>
+
+" Open NerdTree
+map <Leader>e <F2>
 
 " Format paragraph (selected or not) to 80 character lines.
 nnoremap <Leader>g gqap

@@ -50,3 +50,4 @@
 ;(unpin! t)
 (package! go-imports)
 (package! irony-mode)
+(package! cmake-ide)

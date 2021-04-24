@@ -28,14 +28,20 @@ export PATH="$PATH:/usr/local/texlive/2020/bin/x86_64-darwin"
 export PATH="/Users/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="/Users/almagest/.local/bin:$PATH"
 export PATH="/Users/almagest/.cargo/bin:$PATH"
+export PATH="/Users/almagest/.ghcup/bin:$PATH"
+export PATH="/Users/almagest/.cabal/bin:$PATH"
+export PATH="/Users/almagest/.nimble/bin:$PATH"
 export PATH="/Users/almagest/.flutter/bin:$PATH"
 export PATH="/Users/almagest/.npm-global/bin:$PATH"
+export PATH="/usr/local/opt/qt/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/
+export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1
 
 export LDFLAGS="-L/usr/local/opt/qt/lib:$LDFLAGS"
 export LDFLAGS="-L/usr/local/opt/llvm/lib:$LDFLAGS"
@@ -46,13 +52,16 @@ export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 # Define aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias c='clear'
 alias v='nvim'
 alias e='emacs -nw'
 alias t='tmux'
+alias xxd='hexyl'
 alias doom='~/.emacs.d/bin/doom'
 alias ls='exa'
 # alias vols='amixer -D pulse sset Master'
 alias getmusic='youtube-dl -x --audio-format m4a'
+alias hakwon='cd ~/Dropbox/TeX_Documents/Hakwon'
 # alias gsync='cd ~/GDrive && grive'
 # alias dynamix='google-chrome-stable --disable-web-security --allow-file-access-from-files --allow-file-access --allow-cross-origin-auth-prompt ~/GDrive/Dynamix/index.html'
 # alias plpdfs="wget -A pdf -m -p -E -k -K -np http://prl.korea.ac.kr/\~pronto/home/courses/cose212/2019/ && cp -r ~/prl.korea.ac.kr/~pronto/home/courses/cose212/2019 ~/GDrive/Haskell/PL/ && rm -r ~/prl.korea.ac.kr"
@@ -78,5 +87,4 @@ eval "$(starship init zsh)"
 
 bindkey -v
 [ -f "/home/almagest//.ghcup/env" ] && source "/home/almagest//.ghcup/env" # ghcup-env
-export PATH="/usr/local/opt/qt/bin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+

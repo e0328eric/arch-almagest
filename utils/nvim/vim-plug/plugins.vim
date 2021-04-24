@@ -18,7 +18,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-repeat'
     " Text Navigation
     Plug 'unblevable/quick-scope'
-    " Useful for React Commenting 
+    " Useful for React Commenting
     Plug 'suy/vim-context-commentstring'
     " highlight all matches under cursor
     Plug 'RRethy/vim-illuminate'
@@ -45,7 +45,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nbouscal/vim-stylish-haskell'
     "C++
     Plug 'jackguo380/vim-lsp-cxx-highlight'
-    Plug 'vim-syntastic/syntastic'
+    Plug 'cdelledonne/vim-cmake'
+    "Nim
+    Plug 'alaviss/nim.nvim'
     " Sneak
     Plug 'justinmk/vim-sneak'
     " Surround
@@ -126,7 +128,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'luochen1990/rainbow'
     " Async Linting Engine
     " TODO make sure to add ale config before plugin
-    Plug 'dense-analysis/ale'
+    " Plug 'dense-analysis/ale'
     " Better Whitespace
     Plug 'ntpeters/vim-better-whitespace'
     " Multiple Cursors
