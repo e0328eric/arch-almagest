@@ -41,7 +41,6 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/
-export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1
 
 export LDFLAGS="-L/usr/local/opt/qt/lib:$LDFLAGS"
 export LDFLAGS="-L/usr/local/opt/llvm/lib:$LDFLAGS"
