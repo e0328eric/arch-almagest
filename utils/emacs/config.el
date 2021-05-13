@@ -8,15 +8,20 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Sungbae Jeong"
       user-mail-address "almagest0328@gmail.com"
-      doom-font (font-spec :family "D2Coding ligature" :size 17 :weight 'medium)
+      doom-font (font-spec :family "D2Coding ligature" :size 18 :weight 'medium)
       doom-variable-pitch-font (font-spec :family "Hack Nerd Font" :size 16)
-      doom-theme 'doom-monokai-pro
+      doom-theme 'doom-gruvbox
       default-directory "~/"
       org-directory "~/Document/org/"
       display-line-numbers-type 'relative)
 
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq mac-command-key-is-meta t)
+(cond (IS-MAC
+       (setq mac-command-modifier      'meta
+             mac-option-modifier       'alt
+             mac-right-option-modifier 'super)))
+
+
 (menu-bar-mode t)
 
 (setq-default tab-width 4)
