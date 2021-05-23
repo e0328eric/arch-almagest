@@ -75,3 +75,5 @@ inoremap <expr> <c-k> ("\<C-p>")
 
 " Move text top while in insert mode
 inoremap <C-S-t> <C-o>zt
+
+norm Q gq

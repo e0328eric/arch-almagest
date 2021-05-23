@@ -22,6 +22,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'suy/vim-context-commentstring'
     " highlight all matches under cursor
     Plug 'RRethy/vim-illuminate'
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+    " Generating license
+    Plug 'antoyo/vim-licenses'
 
   if exists('g:vscode')
     " Easy motion for VSCode
