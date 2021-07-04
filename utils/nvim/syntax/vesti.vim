@@ -1,13 +1,31 @@
-" colors
-let black = "#353535"
-let red = "#D73925"
-let green = "#A8A521"
-let yellow = "#DFA82A"
-let blue = "#549699"
-let magenta = "#BF7897"
-let cyan = "#56b6c2"
-let white = "#b7a996"
+syntax match vestiDelimiter '[(){}\[\]|\.,:;]\+'
 
-" main color
-syn match main "\w"
-execute "highlight main ctermfg=4 guifg=4".white
+" Comments
+syntax region vestiComment start="#" end="$"
+syntax region vestiComment start="#\*" end="\*#"
+syntax region vestiVerbatim start="#-" end="-#"
+syntax region vestiVerbatimInline start="##-" end="-##"
+
+" docclass
+syntax keyword vestiDocClass docclass nextgroup=vestiTypeDef skipwhite skipempty
+syntax keyword vestiDocument document skipwhite skipempty
+
+syntax match vestiTypeDef ' \v[A-Z][A-Za-z0-9]*'
+            \ contained
+            \ nextgroup=vestiTypeDefParams
+
+syntax region vestiTypeDefParams
+            \ matchgroup=vestiDelimiter
+            \ start='('
+            \ end=')'
+            \ keepend
+            \ contains=TOP
+
+highlight default link vestiComment Comment
+highlight default link vestiVerbatim PreProc
+highlight default link vestiVerbatimInline PreProc
+highlight default link vestiDocClass Identifier
+highlight default link vestiDocument Identifier
+highlight default link vestiTypeDef Label
+
+let b:current_syntax = "vesti"

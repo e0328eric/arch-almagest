@@ -47,9 +47,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neovimhaskell/haskell-vim'
     Plug 'nbouscal/vim-stylish-haskell'
     "C++
-    Plug 'justinmk/vim-syntax-extra'
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
     Plug 'cdelledonne/vim-cmake'
+    Plug 'octol/vim-cpp-enhanced-highlight'
     "Nim
     Plug 'alaviss/nim.nvim'
     " Sneak

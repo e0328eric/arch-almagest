@@ -43,6 +43,8 @@ set guifont=Fira\ Code\ Nerd\ Font
 
 " au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+au BufRead,BufNewFile *.ves set filetype=vesti
+au BufRead,BufNewFile *.glasm set filetype=glasm
 filetype plugin indent on
 
 " You can't stop me

@@ -67,9 +67,6 @@ Plug 'junegunn/limelight.vim'
 " Distraction free writing by removing UI elements and centering everything.
 Plug 'junegunn/goyo.vim'
 
-" A bunch of useful language related snippets (ultisnips is the engine).
-Plug 'SirVer/ultisnips'
-
 " Rust in vim
 Plug 'rust-lang/rust.vim'
 Plug 'arzg/vim-rust-syntax-ext'
